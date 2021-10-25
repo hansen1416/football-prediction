@@ -57,7 +57,7 @@ def feach_match_logs(players_info):
                  'gca', 'defense', 'possession', 'misc']
 
     season_urls = [
-        'https://fbref.com/en/players/3201b03d/matchlogs/2016-2017/passing/Danny-Simpson-Match-Logs']
+        'https://fbref.com/en/players/3201b03d/matchlogs/2016-2017/summary/Danny-Simpson-Match-Logs']
 
     fire_fox_service = Service(
         '/home/hlz/.wdm/drivers/geckodriver/linux64/v0.30.0/geckodriver')
@@ -70,15 +70,6 @@ def feach_match_logs(players_info):
 
     thead = matchlogs_all.find_elements(
         By.CSS_SELECTOR, 'tr')[1]
-
-    # summary_keys = ['Date', 'Day', 'Comp', 'Round', 'Venue', 'Result', 'Squad', 'Opponent', 'Start', 'Pos', 'Min', 'Gls', 'Ast',
-    #                 'PK', 'PKatt', 'Sh', 'SoT', 'CrdY', 'CrdR', 'Fls', 'Fld', 'Off', 'Crs', 'TklW', 'Int', 'OG', 'PKwon', 'PKcon', 'Match Report']
-
-    passing_keys = ['Cmp', 'Att', 'Cmp%', 'TotDist', 'PrgDist', 'Cmp', 'Att', 'Cmp%', 'Cmp', 'Att',
-                    'Cmp%', 'Cmp', 'Att', 'Cmp%', 'Ast', 'xA', 'KP', '1/3', 'PPA', 'CrsPA', 'Prog', 'Match Report']
-
-    # misc_keys = ['CrdY', 'CrdR',
-    #             '2CrdY', 'Fls', 'Fld', 'Off', 'Crs', 'Int', 'TklW', 'PKwon', 'PKcon', 'OG', 'Recov', 'Won', 'Lost', 'Won%', 'Match Report']
 
     summary_keys = [td.text for td in thead.find_elements(
         By.CSS_SELECTOR, 'th')]
