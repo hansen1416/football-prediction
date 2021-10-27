@@ -12,6 +12,7 @@ from selenium.webdriver.firefox.service import Service
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import NoSuchElementException, WebDriverException
 
+from constants import *
 # log to stdout
 # logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
 logging.basicConfig(stream=sys.stdout, level=logging.INFO)
@@ -23,8 +24,7 @@ os.environ["https_proxy"] = ""
 
 def fetch_players(match_url):
     # fireFoxService = webdriver.Firefox(executable_path=GeckoDriverManager().install())
-    fire_fox_service = Service(
-        '/home/hlz/.wdm/drivers/geckodriver/linux64/v0.30.0/geckodriver')
+    fire_fox_service = Service(FIREFOX_DRIVER_PATH)
 
     driver = webdriver.Firefox(service=fire_fox_service)
 

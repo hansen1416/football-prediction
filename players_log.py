@@ -4,13 +4,14 @@ import sys
 import logging
 
 import numpy as np
-# from selenium.webdriver.firefox.webdriver import WebDriver
-# from webdriver_manager.chrome import ChromeDriverManager
-# from webdriver_manager.firefox import GeckoDriverManager
+import pandas as pd
 from selenium import webdriver
 from selenium.webdriver.firefox.service import Service
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import NoSuchElementException, WebDriverException
+
+from constants import *
+from data_columns import *
 
 # log to stdout
 # logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
@@ -41,12 +42,17 @@ def feach_match_logs(players_info):
 
     # print(player_url, player_name)
 
-    log_file_name = 'datasets/match_log_{}.npy'.format(player_name[0])
+    log_file_name = PLAYER_LOG_PREFIX + player_name[0] + '.csv'
 
     if os.path.isfile(log_file_name):
-        match_logs = np.load(log_file_name, allow_pickle='TRUE').item()
+        match_logs = pd.read_csv(log_file_name)
     else:
-        match_logs = {}
+        match_logs = pd.DataFrame([], columns=['PlayerUrl', 'PlayerName'] + columns_basic + columns_summary +
+                                  columns_passing + columns_passing_types + columns_gca + columns_defense +
+                                  columns_possession + columns_misc)
+
+    print(match_logs)
+    exit()
 
     # we fetched the data already
     if match_logs.get(player_url):
@@ -56,25 +62,37 @@ def feach_match_logs(players_info):
     data_type = ['summary', 'passing', 'passing_types',
                  'gca', 'defense', 'possession', 'misc']
 
-    season_urls = [
-        'https://fbref.com/en/players/3201b03d/matchlogs/2016-2017/summary/Danny-Simpson-Match-Logs']
+    season_urls = 'https://fbref.com/en/players/3201b03d/matchlogs/2016-2017/summary/Danny-Simpson-Match-Logs'
 
-    fire_fox_service = Service(
-        '/home/hlz/.wdm/drivers/geckodriver/linux64/v0.30.0/geckodriver')
+    fire_fox_service = Service(FIREFOX_DRIVER_PATH)
 
     driver = webdriver.Firefox(service=fire_fox_service)
 
-    driver.get(season_urls[0])
+    driver.get(season_urls)
 
     matchlogs_all = driver.find_element(By.ID, 'matchlogs_all')
 
-    thead = matchlogs_all.find_elements(
-        By.CSS_SELECTOR, 'tr')[1]
+    # only_summary = True
 
-    summary_keys = [td.text for td in thead.find_elements(
-        By.CSS_SELECTOR, 'th')]
+    for row in matchlogs_all.find_elements(By.CSS_SELECTOR, 'tbody tr'):
 
-    print(summary_keys)
+        tds = row.find_elements(By.CSS_SELECTOR, 'th,td')
+
+        data = [td.text for td in tds]
+
+        print(data)
+
+        exit()
+
+        break
+
+    # thead = matchlogs_all.find_elements(
+    #     By.CSS_SELECTOR, 'tr')[1]
+
+    # summary_keys = [td.text for td in thead.find_elements(
+    #     By.CSS_SELECTOR, 'th')]
+
+    # print(summary_keys)
 
     # away = driver.find_element(By.CSS_SELECTOR, '#b.lineup')
     # # fetch the data for all 18 players, but we only use starting 11 players later

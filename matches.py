@@ -13,6 +13,8 @@ from selenium.webdriver.firefox.service import Service
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import NoSuchElementException
 
+from constants import *
+
 # log to stdout
 # logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
 logging.basicConfig(stream=sys.stdout, level=logging.INFO)
@@ -25,7 +27,7 @@ os.environ["https_proxy"] = ""
 def featch_season_history(url, element_id, filename):
 
     # fireFoxService = webdriver.Firefox(executable_path=GeckoDriverManager().install())
-    fire_fox_service=Service('/home/hlz/.wdm/drivers/geckodriver/linux64/v0.30.0/geckodriver')
+    fire_fox_service = Service(FIREFOX_DRIVER_PATH)
 
     driver = webdriver.Firefox(service=fire_fox_service)
 
@@ -34,38 +36,43 @@ def featch_season_history(url, element_id, filename):
     table: WebDriver = driver.find_element(By.ID, element_id)
     match_history = []
 
-    # iterate over all the rows   
+    # iterate over all the rows
     for row in table.find_elements(By.CSS_SELECTOR, "tbody tr:not(.spacer)"):
 
         try:
             info = {}
-            match_time = row.find_element(By.CSS_SELECTOR, 'td[data-stat="time"]')
+            match_time = row.find_element(
+                By.CSS_SELECTOR, 'td[data-stat="time"]')
             info['time'] = match_time.text
         except NoSuchElementException:
             continue
 
         try:
-            keys = ['week', 'day', 'date', 'time', 'home', 'home_xg', 'score', 'away_xg', \
-                'away', 'attendance', 'venue', 'referee', 'match_report']
+            keys = ['week', 'day', 'date', 'time', 'home', 'home_xg', 'score', 'away_xg',
+                    'away', 'attendance', 'venue', 'referee', 'match_report']
 
-            
-            info.update(dict(zip(keys, [td.text for td in row.find_elements(By.CSS_SELECTOR, 'th,td')])))
+            info.update(
+                dict(zip(keys, [td.text for td in row.find_elements(By.CSS_SELECTOR, 'th,td')])))
 
-            home_link = row.find_element(By.CSS_SELECTOR, 'td[data-stat="squad_a"] a')
+            home_link = row.find_element(
+                By.CSS_SELECTOR, 'td[data-stat="squad_a"] a')
             info['home_link'] = home_link.get_attribute('href')
 
-            away_link = row.find_element(By.CSS_SELECTOR, 'td[data-stat="squad_b"] a')
+            away_link = row.find_element(
+                By.CSS_SELECTOR, 'td[data-stat="squad_b"] a')
             info['away_link'] = away_link.get_attribute('href')
 
-            match_link = row.find_element(By.CSS_SELECTOR, 'td[data-stat="score"] a')
+            match_link = row.find_element(
+                By.CSS_SELECTOR, 'td[data-stat="score"] a')
             info['match_link'] = match_link.get_attribute('href')
 
-            report_link = row.find_element(By.CSS_SELECTOR, 'td[data-stat="match_report"] a')
+            report_link = row.find_element(
+                By.CSS_SELECTOR, 'td[data-stat="match_report"] a')
             info['report_link'] = report_link.get_attribute('href')
         except NoSuchElementException:
             pass
         except Exception as e:
-            logger.error('Iterating table exception: '+ str(e))
+            logger.error('Iterating table exception: ' + str(e))
 
         match_history.append(info)
 
@@ -75,7 +82,8 @@ def featch_season_history(url, element_id, filename):
 
     try:
         with open('datasets/' + filename, 'w') as csvfile:
-            writer = csv.DictWriter(csvfile, fieldnames=list(match_history[0].keys()))
+            writer = csv.DictWriter(
+                csvfile, fieldnames=list(match_history[0].keys()))
             writer.writeheader()
             for data in match_history:
                 writer.writerow(data)
