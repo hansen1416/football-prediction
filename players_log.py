@@ -85,11 +85,50 @@ def fetach_summary_data(player_url, player_name, season):
     return summary_data
 
 
+def fetach_passing_data(player_url, player_name, season):
+
+    url = player_url + '/matchlogs/{}/passing/'.format(season)
+
+    logger.info('start fetching passing data for {} from {} '.format(
+        player_name, player_url))
+
+    driver = webdriver.Firefox(service=Service(FIREFOX_DRIVER_PATH))
+
+    driver.get(url)
+
+    matchlogs_all = driver.find_element(By.ID, 'matchlogs_all')
+
+    result: pd.DataFrame = None
+
+    for row in matchlogs_all.find_elements(By.CSS_SELECTOR, 'tbody tr:not(.spacer):not(.thead):not(.hidden)'):
+
+        row_data = [td.text for td in row.find_elements(
+            By.CSS_SELECTOR, 'th,td')]
+
+        data = pd.DataFrame([row_data[11:32]],
+                            columns=columns_passing)
+
+        if result is None:
+            result = data
+        else:
+            result = result.append(data, ignore_index=True)
+
+    driver.quit()
+
+    return result
+
+
 def feach_match_logs(player_info):
 
-    player_url, player_name = player_info
+    player_url, player_name, position, _ = player_info
+
+    # print(player_url, player_name)
+    # exit()
 
     player_url = re.sub(r'/[^/]+$', '', player_url)
+    # goal keeper
+    if position == 'GK':
+        return
 
     # print(player_url, player_name)
 
@@ -112,9 +151,7 @@ def feach_match_logs(player_info):
     data_type = ['summary', 'passing', 'passing_types',
                  'gca', 'defense', 'possession', 'misc']
 
-    summary_data = fetach_summary_data(player_url, player_name, seasons[0])
-
-    if summary_data['Pos'][0] == 'GK':
+    summary_data = fetach_summary_data(player_url, player_name, seasons[1])
 
     if len(summary_data.columns) == 30:
 
@@ -123,10 +160,22 @@ def feach_match_logs(player_info):
         match_logs.to_csv(log_file_name, index=False)
 
     else:
-        pass
+        passing_data = fetach_passing_data(player_url, player_name, seasons[1])
+
+        all_data = pd.concat([summary_data, passing_data], axis=1)
+
+        # print(all_data)
+        match_logs = match_logs.append(all_data, ignore_index=True)
+
+        match_logs.to_csv(log_file_name, index=False)
+
+        exit()
     # todo, fetach detailed data
 
 
-match_players_file = 'datasets/1617match_players.npy'
+match_players_file = 'datasets/1718match_players.npy'
 
 fetch_players(match_players_file)
+
+# fetach_passing_data('https://fbref.com/en/players/336dbcb2',
+#                     'Adama Diomande', '2017-2018')
