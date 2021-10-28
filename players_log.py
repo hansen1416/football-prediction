@@ -1,12 +1,12 @@
-import csv
+# import csv
 import os
+import re
 import sys
 import logging
 
 import numpy as np
 import pandas as pd
 from pandas.core.frame import DataFrame
-from pandas.core.indexes import base
 from selenium import webdriver
 from selenium.webdriver.firefox.service import Service
 from selenium.webdriver.common.by import By
@@ -39,9 +39,57 @@ def fetch_players(match_players_file):
         break
 
 
-def feach_match_logs(players_info):
+def fetach_summary_data(player_url, player_name, season):
 
-    player_url, player_name = players_info
+    url = player_url + '/matchlogs/{}/summary/'.format(season)
+
+    logger.info('start fetching summary data for {} from {} '.format(
+        player_name, player_url))
+
+    driver = webdriver.Firefox(service=Service(FIREFOX_DRIVER_PATH))
+
+    driver.get(url)
+
+    matchlogs_all = driver.find_element(By.ID, 'matchlogs_all')
+
+    summary_data: pd.DataFrame = None
+
+    for row in matchlogs_all.find_elements(By.CSS_SELECTOR, 'tbody tr:not(.spacer):not(.thead):not(.hidden)'):
+
+        row_data = [td.text for td in row.find_elements(
+            By.CSS_SELECTOR, 'th,td')]
+
+        if len(row_data) == 29:
+
+            data = pd.DataFrame([[player_url, player_name] + row_data[:28]],
+                                columns=columns_basic + columns_summary_short)
+
+            if summary_data is None:
+                summary_data = data
+            else:
+                summary_data = summary_data.append(data, ignore_index=True)
+
+        else:
+
+            # print(row_data)
+            data = pd.DataFrame([[player_url, player_name] + row_data[:37]],
+                                columns=columns_basic + columns_summary)
+
+            if summary_data is None:
+                summary_data = data
+            else:
+                summary_data = summary_data.append(data, ignore_index=True)
+
+    driver.quit()
+
+    return summary_data
+
+
+def feach_match_logs(player_info):
+
+    player_url, player_name = player_info
+
+    player_url = re.sub(r'/[^/]+$', '', player_url)
 
     # print(player_url, player_name)
 
@@ -64,57 +112,16 @@ def feach_match_logs(players_info):
     data_type = ['summary', 'passing', 'passing_types',
                  'gca', 'defense', 'possession', 'misc']
 
-    season_urls = 'https://fbref.com/en/players/3201b03d/matchlogs/2016-2017/summary/Danny-Simpson-Match-Logs'
+    summary_data = fetach_summary_data(player_url, player_name, seasons[0])
 
-    fire_fox_service = Service(FIREFOX_DRIVER_PATH)
+    if summary_data['Pos'][0] == 'GK':
 
-    driver = webdriver.Firefox(service=fire_fox_service)
-
-    driver.get(season_urls)
-
-    matchlogs_all = driver.find_element(By.ID, 'matchlogs_all')
-
-    only_summary = True
-
-    summary_data: pd.DataFrame = None
-
-    for row in matchlogs_all.find_elements(By.CSS_SELECTOR, 'tbody tr:not(.spacer):not(.thead):not(.hidden)'):
-
-        row_data = [td.text for td in row.find_elements(
-            By.CSS_SELECTOR, 'th,td')]
-
-        if len(row_data) == 29:
-
-            data = pd.DataFrame([[player_url, player_name] + row_data[:28]],
-                                columns=columns_basic + columns_summary_short)
-
-            if summary_data is None:
-                summary_data = data
-            else:
-                summary_data = summary_data.append(data, ignore_index=True)
-
-        else:
-
-            only_summary = False
-            # print(row_data)
-            data = pd.DataFrame([[player_url, player_name] + row_data[:37]],
-                                columns=columns_basic + columns_summary)
-
-            if summary_data is None:
-                summary_data = data
-            else:
-                summary_data = summary_data.append(data, ignore_index=True)
-
-    # print(summary_data)
-    # exit()
-
-    driver.quit()
-
-    if only_summary:
+    if len(summary_data.columns) == 30:
 
         match_logs = match_logs.append(summary_data, ignore_index=True)
 
         match_logs.to_csv(log_file_name, index=False)
+
     else:
         pass
     # todo, fetach detailed data

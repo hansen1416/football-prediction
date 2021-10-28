@@ -1,5 +1,6 @@
 import csv
 import os
+import re
 import sys
 import logging
 
@@ -22,7 +23,7 @@ os.environ["http_proxy"] = ""
 os.environ["https_proxy"] = ""
 
 
-def fetch_players(match_url):
+def fetch_players(match_url, home_id, away_id):
     # fireFoxService = webdriver.Firefox(executable_path=GeckoDriverManager().install())
     fire_fox_service = Service(FIREFOX_DRIVER_PATH)
 
@@ -30,15 +31,31 @@ def fetch_players(match_url):
 
     driver.get(match_url)
 
-    home = driver.find_element(By.CSS_SELECTOR, '#a.lineup')
+    home_table = driver.find_element(By.ID, 'stats_' + home_id + '_summary')
 
-    away = driver.find_element(By.CSS_SELECTOR, '#b.lineup')
-    # fetch the data for all 18 players, but we only use starting 11 players later
-    home_players = [(a.get_attribute('href'), a.text)
-                    for a in home.find_elements(By.CSS_SELECTOR, 'td a')]
+    away_table = driver.find_element(By.ID, 'stats_' + away_id + '_summary')
 
-    away_players = [(a.get_attribute('href'), a.text)
-                    for a in away.find_elements(By.CSS_SELECTOR, 'td a')]
+    # print(home_table, away_table)
+
+    home_players = []
+
+    for row in home_table.find_elements(By.CSS_SELECTOR, 'tbody tr'):
+        tds = [td for td in row.find_elements(By.CSS_SELECTOR, 'th, td')]
+
+        player_a = tds[0].find_element(By.CSS_SELECTOR, 'a')
+
+        home_players.append((player_a.get_attribute('href'),
+                            player_a.text, tds[3].text, tds[5].text))
+
+    away_players = []
+
+    for row in away_table.find_elements(By.CSS_SELECTOR, 'tbody tr'):
+        tds = [td for td in row.find_elements(By.CSS_SELECTOR, 'th, td')]
+
+        player_a = tds[0].find_element(By.CSS_SELECTOR, 'a')
+
+        away_players.append((player_a.get_attribute('href'),
+                            player_a.text, tds[3].text, tds[5].text))
 
     # print(home_players)
     # print(away_players)
@@ -65,15 +82,26 @@ def match_players(match_history_csv, save_filename):
         for row in csv_reader:
             if not match_players.get(row['match_link']):
                 try:
+
+                    home_re_group = re.match(
+                        "https://fbref.com/en/squads/([\d\w]+)/", row['home_link'])
+
+                    away_re_group = re.match(
+                        "https://fbref.com/en/squads/([\d\w]+)/", row['away_link'])
+
+                    home_id = home_re_group.group(1)
+
+                    away_id = away_re_group.group(1)
+
                     match_players[row['match_link']] = fetch_players(
-                        row['match_link'])
+                        row['match_link'], home_id, away_id)
                 except WebDriverException:
                     logging.error(row['match_link'] + ' fetch failed')
                     continue
 
             counter += 1
             logging.info('fetch data row %d' % counter)
-            # if counter >= 1:
+            # if counter >= 10:
             #     break
 
     # print(counter)
@@ -91,6 +119,3 @@ match_history_csv = 'datasets/1718matches.csv'
 save_filename = 'datasets/1718match_players.npy'
 
 mps = match_players(match_history_csv, save_filename)
-
-# print(mps)
-# print(mps['https://fbref.com/en/matches/78c3fc92/Hull-City-Leicester-City-August-13-2016-Premier-League'])
