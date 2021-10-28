@@ -1,4 +1,4 @@
-columns_basic = ['Date', 'Day', 'Comp', 'Round', 'Venue',
+columns_basic = ['PlayerUrl', 'PlayerName', 'Date', 'Day', 'Comp', 'Round', 'Venue',
                  'Result', 'Squad', 'Opponent', 'Start', 'Pos', 'Min']
 
 columns_summary = ['Summery-Performance-Gls', 'Summery-Performance-Ast', 'Summery-Performance-PK', 'Summery-Performance-PKatt', 'Summery-Performance-Sh', 'Summery-Performance-SoT', 'Summery-Performance-CrdY', 'Summery-Performance-CrdR', 'Summery-Performance-Touches', 'Summery-Performance-Press', 'Summery-Performance-Tkl', 'Summery-Performance-Int',
@@ -26,7 +26,7 @@ columns_misc = ['Misc-Performance-CrdY', 'Misc-Performance-CrdR', 'Misc-Performa
                 'Misc-Performance-TklW', 'Misc-Performance-PKwon', 'Misc-Performance-PKcon', 'Misc-Performance-OG', 'Misc-Performance-Recov', 'Misc-AerialDuels-Won', 'Misc-AerialDuels-Lost', 'Misc-AerialDuels-Won%']
 
 columns_summary_short = ['Summery-Performance-Gls', 'Summery-Performance-Ast', 'Summery-Performance-PK', 'Summery-Performance-PKatt', 'Summery-Performance-Sh', 'Summery-Performance-SoT', 'Summery-Performance-CrdY',
-                         'Summery-Performance-CrdR', 'Misc-Performance-Fls', 'Misc-Performance-Fld', 'Misc-Performance-Off', 'Misc-Performance-Crs', 'Misc-Performance-Int', 'Misc-Performance-TklW', 'Misc-Performance-PKwon', 'Misc-Performance-PKcon']
+                         'Summery-Performance-CrdR', 'Misc-Performance-Fls', 'Misc-Performance-Fld', 'Misc-Performance-Off', 'Misc-Performance-Crs', 'Misc-Performance-TklW', 'Misc-Performance-Int', 'Misc-Performance-OG', 'Misc-Performance-PKwon', 'Misc-Performance-PKcon']
 
 if __name__ == "__main__":
     result = list(map(lambda x: x.replace(" ", "-"), columns_summary_short))

@@ -5,6 +5,8 @@ import logging
 
 import numpy as np
 import pandas as pd
+from pandas.core.frame import DataFrame
+from pandas.core.indexes import base
 from selenium import webdriver
 from selenium.webdriver.firefox.service import Service
 from selenium.webdriver.common.by import By
@@ -30,8 +32,9 @@ def fetch_players(match_players_file):
 
         for p in players['home_players']:
             feach_match_logs(p)
-        for p in players['away_players']:
-            feach_match_logs(p)
+            break
+        # for p in players['away_players']:
+        #     feach_match_logs(p)
 
         break
 
@@ -44,19 +47,18 @@ def feach_match_logs(players_info):
 
     log_file_name = PLAYER_LOG_PREFIX + player_name[0] + '.csv'
 
+    all_columns = columns_basic + columns_summary + columns_passing + \
+        columns_passing_types + columns_gca + \
+        columns_defense + columns_possession + columns_misc
+
     if os.path.isfile(log_file_name):
         match_logs = pd.read_csv(log_file_name)
     else:
-        match_logs = pd.DataFrame([], columns=['PlayerUrl', 'PlayerName'] + columns_basic + columns_summary +
-                                  columns_passing + columns_passing_types + columns_gca + columns_defense +
-                                  columns_possession + columns_misc)
-
-    print(match_logs)
-    exit()
+        match_logs = pd.DataFrame([], columns=all_columns)
 
     # we fetched the data already
-    if match_logs.get(player_url):
-        return
+    # if match_logs.get(player_url):
+    #     return
 
     seasons = ['2016-2017', '2017-2018', '2018-2019', '2019-2020']
     data_type = ['summary', 'passing', 'passing_types',
@@ -72,42 +74,50 @@ def feach_match_logs(players_info):
 
     matchlogs_all = driver.find_element(By.ID, 'matchlogs_all')
 
-    # only_summary = True
+    only_summary = True
 
-    for row in matchlogs_all.find_elements(By.CSS_SELECTOR, 'tbody tr'):
+    summary_data: pd.DataFrame = None
 
-        tds = row.find_elements(By.CSS_SELECTOR, 'th,td')
+    for row in matchlogs_all.find_elements(By.CSS_SELECTOR, 'tbody tr:not(.spacer):not(.thead):not(.hidden)'):
 
-        data = [td.text for td in tds]
+        row_data = [td.text for td in row.find_elements(
+            By.CSS_SELECTOR, 'th,td')]
 
-        print(data)
+        if len(row_data) == 29:
 
-        exit()
+            data = pd.DataFrame([[player_url, player_name] + row_data[:28]],
+                                columns=columns_basic + columns_summary_short)
 
-        break
+            if summary_data is None:
+                summary_data = data
+            else:
+                summary_data = summary_data.append(data, ignore_index=True)
 
-    # thead = matchlogs_all.find_elements(
-    #     By.CSS_SELECTOR, 'tr')[1]
+        else:
 
-    # summary_keys = [td.text for td in thead.find_elements(
-    #     By.CSS_SELECTOR, 'th')]
+            only_summary = False
+            # print(row_data)
+            data = pd.DataFrame([[player_url, player_name] + row_data[:37]],
+                                columns=columns_basic + columns_summary)
 
-    # print(summary_keys)
+            if summary_data is None:
+                summary_data = data
+            else:
+                summary_data = summary_data.append(data, ignore_index=True)
 
-    # away = driver.find_element(By.CSS_SELECTOR, '#b.lineup')
-    # # fetch the data for all 18 players, but we only use starting 11 players later
-    # home_players = [(a.get_attribute('href'), a.text)
-    #                 for a in home.find_elements(By.CSS_SELECTOR, 'td a')]
+    # print(summary_data)
+    # exit()
 
-    # away_players = [(a.get_attribute('href'), a.text)
-    #                 for a in away.find_elements(By.CSS_SELECTOR, 'td a')]
+    driver.quit()
 
-    # # print(home_players)
-    # # print(away_players)
+    if only_summary:
 
-    # driver.quit()
+        match_logs = match_logs.append(summary_data, ignore_index=True)
 
-    # return {'home_players': home_players, 'away_players': away_players}
+        match_logs.to_csv(log_file_name, index=False)
+    else:
+        pass
+    # todo, fetach detailed data
 
 
 match_players_file = 'datasets/1617match_players.npy'
