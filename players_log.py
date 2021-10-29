@@ -5,16 +5,16 @@ import sys
 import logging
 from queue import Queue
 
+
 import numpy as np
 import pandas as pd
 from pandas.core.frame import DataFrame
 from selenium import webdriver
 from selenium.webdriver.firefox.service import Service
 from selenium.webdriver.common.by import By
-from selenium.common.exceptions import NoSuchElementException, WebDriverException
+from selenium.common.exceptions import WebDriverException
 
 from constants import *
-from data_columns import *
 
 # log to stdout
 # logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
@@ -25,7 +25,7 @@ os.environ["http_proxy"] = ""
 os.environ["https_proxy"] = ""
 
 
-def fetch_players(match_players_file):
+def build_players_queue(match_players_file):
 
     q = Queue()
 
@@ -41,20 +41,12 @@ def fetch_players(match_players_file):
     return q
 
 
-match_players_file = 'datasets/1718match_players.npy'
-
-player_queue = fetch_players(match_players_file)
-
-while player_queue.qsize() > 0:
-    print(player_queue.get())
-
-
 def fetach_summary_data(player_url, player_name, season):
 
     url = player_url + '/matchlogs/{}/summary/'.format(season)
 
-    logger.info('start fetching summary data for {} from {} '.format(
-        player_name, player_url))
+    logger.info('start fetching summary data for {} from {}, in season {}'.format(
+        player_name, player_url, season))
 
     driver = webdriver.Firefox(service=Service(FIREFOX_DRIVER_PATH))
 
@@ -71,7 +63,7 @@ def fetach_summary_data(player_url, player_name, season):
 
         if len(row_data) == 29:
 
-            data = pd.DataFrame([[player_url, player_name] + row_data[:28]],
+            data = pd.DataFrame([[player_url, player_name, season] + row_data[:28]],
                                 columns=columns_basic + columns_summary_short)
 
             if summary_data is None:
@@ -82,7 +74,7 @@ def fetach_summary_data(player_url, player_name, season):
         else:
 
             # print(row_data)
-            data = pd.DataFrame([[player_url, player_name] + row_data[:37]],
+            data = pd.DataFrame([[player_url, player_name, season] + row_data[:37]],
                                 columns=columns_basic + columns_summary)
 
             if summary_data is None:
@@ -103,8 +95,8 @@ def fetach_advanced_data(player_url, player_name, season, block_name):
 
     url = player_url + '/matchlogs/{}/{}/'.format(season, block_name)
 
-    logger.info('start fetching {} data for {} from {}'.format(
-        block_name, player_name, player_url))
+    logger.info('start fetching {} data for {} from {}, in season {}'.format(
+        block_name, player_name, player_url, season))
 
     driver = webdriver.Firefox(service=Service(FIREFOX_DRIVER_PATH))
 
@@ -132,78 +124,98 @@ def fetach_advanced_data(player_url, player_name, season, block_name):
     return result
 
 
-def feach_match_logs(player_info):
+if __name__ == "__main__":
 
-    player_url, player_name, position, _ = player_info
+    match_players_file = os.path.join('datasets', '1718match_players.npy')
 
-    # print(player_url, player_name)
-    # exit()
+    player_queue = build_players_queue(match_players_file)
 
-    player_url = re.sub(r'/[^/]+$', '', player_url)
-    # goal keeper
-    if position == 'GK':
-        return
+    counter = 0
 
-    # print(player_url, player_name)
+    while player_queue.qsize() > 0:
 
-    log_file_name = PLAYER_LOG_PREFIX + player_name[0] + '.csv'
+        url, name, pos, min = player_queue.queue[0]
 
-    all_columns = columns_basic + columns_summary + columns_passing + \
-        columns_passing_types + columns_gca + \
-        columns_defense + columns_possession + columns_misc
+        url = re.sub(r'/[^/]+$', '', url)
 
-    if os.path.isfile(log_file_name):
-        match_logs = pd.read_csv(log_file_name)
-    else:
-        match_logs = pd.DataFrame([], columns=all_columns)
+        # we deal goal keeper differently
+        if pos == 'GK':
+            player_queue.get()
+            continue
 
-    # we fetched the data already
-    # if match_logs.get(player_url):
-    #     return
+        log_file_name = PLAYER_LOG_PREFIX + strip_accents(name[0]) + '.csv'
 
-    seasons = ['2016-2017', '2017-2018', '2018-2019', '2019-2020']
-    data_type = ['summary', 'passing', 'passing_types',
-                 'gca', 'defense', 'possession', 'misc']
+        if not os.path.isfile(log_file_name):
+            all_columns = columns_basic + columns_summary + columns_passing + \
+                columns_passing_types + columns_gca + \
+                columns_defense + columns_possession + columns_misc
 
-    summary_data = fetach_summary_data(player_url, player_name, seasons[1])
+            empty_data = pd.DataFrame([], columns=all_columns)
 
-    if len(summary_data.columns) == 30:
+            with open(log_file_name, 'w') as f:
+                empty_data.to_csv(f, index=False)
 
-        match_logs = match_logs.append(summary_data, ignore_index=True)
+        df = pd.read_csv(log_file_name)
 
-        match_logs.to_csv(log_file_name, index=False)
+        season_queue = Queue()
+        [season_queue.put(t) for t in ['2015-2016', '2016-2017',
+                                       '2017-2018', '2018-2019', '2019-2020', '2020-2021']]
 
-    else:
-        passing_data = fetach_advanced_data(
-            player_url, player_name, seasons[2], 'passing')
+        while season_queue.qsize() > 0:
 
-        passing_types_data = fetach_advanced_data(
-            player_url, player_name, seasons[2], 'passing_types')
+            season = season_queue.queue[0]
 
-        print(passing_types_data)
+            season_df = df.loc[(df['PlayerUrl'] == url) &
+                               (df['Season'] == season)]
 
-        gca_data = fetach_advanced_data(
-            player_url, player_name, seasons[2], 'gca')
+            # we already players info in this season
+            if season_df.shape[0] > 0:
+                season_queue.get()
+                continue
 
-        defense_data = fetach_advanced_data(
-            player_url, player_name, seasons[2], 'defense')
+            try:
+                summary_data = fetach_summary_data(url, name, season)
 
-        possession_data = fetach_advanced_data(
-            player_url, player_name, seasons[2], 'possession')
+                if len(summary_data.columns) == 31:
 
-        misc_data = fetach_advanced_data(
-            player_url, player_name, seasons[2], 'misc')
+                    summary_data = pd.DataFrame([], columns=all_columns).append(
+                        summary_data, ignore_index=True)
 
-        all_data = pd.concat([summary_data, passing_data, passing_types_data, gca_data,
-                              defense_data, possession_data, misc_data], axis=1)
+                    with open(log_file_name, 'a') as f:
+                        summary_data.to_csv(f, header=False)
 
-        # print(all_data)
-        match_logs = match_logs.append(all_data, ignore_index=True)
+                    logger.info("add player {} {}, season {} summary data to {}".format(
+                        url, name, season, log_file_name))
 
-        match_logs.to_csv(log_file_name, index=False)
+                else:
 
-    # todo, fetach detailed data
+                    advanced_data = []
 
+                    for block in ['passing', 'passing_types', 'gca', 'defense', 'possession', 'misc']:
+                        advanced_data.append(
+                            fetach_advanced_data(url, name, season, block))
 
-# fetach_passing_data('https://fbref.com/en/players/336dbcb2',
-#                     'Adama Diomande', '2017-2018')
+                    full_data = pd.concat(
+                        [summary_data] + advanced_data, axis=1)
+
+                    with open(log_file_name, 'a') as f:
+                        full_data.to_csv(f, header=False)
+
+                    logger.info("add player {} {}, season {} full data to {}".format(
+                        url, name, season, log_file_name))
+
+            except WebDriverException:
+                # in case of crawling failed, we don't remove item from queue
+                continue
+
+            season_queue.get()
+
+        player_queue.get()
+
+        logger.info(
+            "player {} {}, data is saved for all season".format(url, name))
+
+        counter += 1
+
+        if counter > 1:
+            break
