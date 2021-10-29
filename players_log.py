@@ -12,7 +12,7 @@ from pandas.core.frame import DataFrame
 from selenium import webdriver
 from selenium.webdriver.firefox.service import Service
 from selenium.webdriver.common.by import By
-from selenium.common.exceptions import WebDriverException
+from selenium.common.exceptions import NoSuchElementException, WebDriverException
 
 from constants import *
 
@@ -48,41 +48,42 @@ def fetach_summary_data(player_url, player_name, season):
     logger.info('start fetching summary data for {} from {}, in season {}'.format(
         player_name, player_url, season))
 
-    driver = webdriver.Firefox(service=Service(FIREFOX_DRIVER_PATH))
+    try:
+        driver = webdriver.Firefox(service=Service(FIREFOX_DRIVER_PATH))
 
-    driver.get(url)
+        driver.get(url)
 
-    matchlogs_all = driver.find_element(By.ID, 'matchlogs_all')
+        matchlogs_all = driver.find_element(By.ID, 'matchlogs_all')
 
-    summary_data: pd.DataFrame = None
+        summary_data: pd.DataFrame = None
 
-    for row in matchlogs_all.find_elements(By.CSS_SELECTOR, 'tbody tr:not(.spacer):not(.thead):not(.hidden)'):
+        for row in matchlogs_all.find_elements(By.CSS_SELECTOR, 'tbody tr:not(.spacer):not(.thead):not(.hidden)'):
 
-        row_data = [td.text for td in row.find_elements(
-            By.CSS_SELECTOR, 'th,td')]
+            row_data = [td.text for td in row.find_elements(
+                By.CSS_SELECTOR, 'th,td')]
 
-        if len(row_data) == 29:
+            if len(row_data) == 29:
 
-            data = pd.DataFrame([[player_url, player_name, season] + row_data[:28]],
-                                columns=columns_basic + columns_summary_short)
+                data = pd.DataFrame([[player_url, player_name, season] + row_data[:28]],
+                                    columns=columns_basic + columns_summary_short)
 
-            if summary_data is None:
-                summary_data = data
+                if summary_data is None:
+                    summary_data = data
+                else:
+                    summary_data = summary_data.append(data, ignore_index=True)
+
             else:
-                summary_data = summary_data.append(data, ignore_index=True)
 
-        else:
+                # print(row_data)
+                data = pd.DataFrame([[player_url, player_name, season] + row_data[:37]],
+                                    columns=columns_basic + columns_summary)
 
-            # print(row_data)
-            data = pd.DataFrame([[player_url, player_name, season] + row_data[:37]],
-                                columns=columns_basic + columns_summary)
-
-            if summary_data is None:
-                summary_data = data
-            else:
-                summary_data = summary_data.append(data, ignore_index=True)
-
-    driver.quit()
+                if summary_data is None:
+                    summary_data = data
+                else:
+                    summary_data = summary_data.append(data, ignore_index=True)
+    finally:
+        driver.quit()
 
     return summary_data
 
@@ -98,28 +99,29 @@ def fetach_advanced_data(player_url, player_name, season, block_name):
     logger.info('start fetching {} data for {} from {}, in season {}'.format(
         block_name, player_name, player_url, season))
 
-    driver = webdriver.Firefox(service=Service(FIREFOX_DRIVER_PATH))
+    try:
+        driver = webdriver.Firefox(service=Service(FIREFOX_DRIVER_PATH))
 
-    driver.get(url)
+        driver.get(url)
 
-    matchlogs_all = driver.find_element(By.ID, 'matchlogs_all')
+        matchlogs_all = driver.find_element(By.ID, 'matchlogs_all')
 
-    result: pd.DataFrame = None
+        result: pd.DataFrame = None
 
-    for row in matchlogs_all.find_elements(By.CSS_SELECTOR, 'tbody tr:not(.spacer):not(.thead):not(.hidden)'):
+        for row in matchlogs_all.find_elements(By.CSS_SELECTOR, 'tbody tr:not(.spacer):not(.thead):not(.hidden)'):
 
-        row_data = [td.text for td in row.find_elements(
-            By.CSS_SELECTOR, 'th,td')]
+            row_data = [td.text for td in row.find_elements(
+                By.CSS_SELECTOR, 'th,td')]
 
-        data = pd.DataFrame([row_data[block_dict[block_name][0]:block_dict[block_name][1]]],
-                            columns=block_dict[block_name][2])
+            data = pd.DataFrame([row_data[block_dict[block_name][0]:block_dict[block_name][1]]],
+                                columns=block_dict[block_name][2])
 
-        if result is None:
-            result = data
-        else:
-            result = result.append(data, ignore_index=True)
-
-    driver.quit()
+            if result is None:
+                result = data
+            else:
+                result = result.append(data, ignore_index=True)
+    finally:
+        driver.quit()
 
     return result
 
@@ -207,6 +209,11 @@ if __name__ == "__main__":
             except WebDriverException:
                 # in case of crawling failed, we don't remove item from queue
                 continue
+            except NoSuchElementException:
+                # it means there is not data for this player in this season, just pass
+                logger.info(
+                    "no data for player {} in season".format(url, season))
+                pass
 
             season_queue.get()
 
