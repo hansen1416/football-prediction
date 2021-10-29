@@ -3,6 +3,7 @@ import os
 import re
 import sys
 import logging
+from queue import Queue
 
 import numpy as np
 import pandas as pd
@@ -26,17 +27,26 @@ os.environ["https_proxy"] = ""
 
 def fetch_players(match_players_file):
 
+    q = Queue()
+
     match_players = np.load(match_players_file, allow_pickle='TRUE').item()
 
     for _, players in match_players.items():
 
         for p in players['home_players']:
-            feach_match_logs(p)
-            break
-        # for p in players['away_players']:
-        #     feach_match_logs(p)
+            q.put(p)
+        for p in players['away_players']:
+            q.put(p)
 
-        break
+    return q
+
+
+match_players_file = 'datasets/1718match_players.npy'
+
+player_queue = fetch_players(match_players_file)
+
+while player_queue.qsize() > 0:
+    print(player_queue.get())
 
 
 def fetach_summary_data(player_url, player_name, season):
@@ -85,12 +95,16 @@ def fetach_summary_data(player_url, player_name, season):
     return summary_data
 
 
-def fetach_passing_data(player_url, player_name, season):
+def fetach_advanced_data(player_url, player_name, season, block_name):
 
-    url = player_url + '/matchlogs/{}/passing/'.format(season)
+    block_dict = {'passing': (11, 32, columns_passing), 'passing_types': (11, 36, columns_passing_types),
+                  'gca': (11, 25, columns_gca), 'defense': (11, 34, columns_defense),
+                  'possession': (11, 35, columns_possession), 'misc': (11, 27, columns_misc)}
 
-    logger.info('start fetching passing data for {} from {} '.format(
-        player_name, player_url))
+    url = player_url + '/matchlogs/{}/{}/'.format(season, block_name)
+
+    logger.info('start fetching {} data for {} from {}'.format(
+        block_name, player_name, player_url))
 
     driver = webdriver.Firefox(service=Service(FIREFOX_DRIVER_PATH))
 
@@ -105,8 +119,8 @@ def fetach_passing_data(player_url, player_name, season):
         row_data = [td.text for td in row.find_elements(
             By.CSS_SELECTOR, 'th,td')]
 
-        data = pd.DataFrame([row_data[11:32]],
-                            columns=columns_passing)
+        data = pd.DataFrame([row_data[block_dict[block_name][0]:block_dict[block_name][1]]],
+                            columns=block_dict[block_name][2])
 
         if result is None:
             result = data
@@ -160,22 +174,36 @@ def feach_match_logs(player_info):
         match_logs.to_csv(log_file_name, index=False)
 
     else:
-        passing_data = fetach_passing_data(player_url, player_name, seasons[1])
+        passing_data = fetach_advanced_data(
+            player_url, player_name, seasons[2], 'passing')
 
-        all_data = pd.concat([summary_data, passing_data], axis=1)
+        passing_types_data = fetach_advanced_data(
+            player_url, player_name, seasons[2], 'passing_types')
+
+        print(passing_types_data)
+
+        gca_data = fetach_advanced_data(
+            player_url, player_name, seasons[2], 'gca')
+
+        defense_data = fetach_advanced_data(
+            player_url, player_name, seasons[2], 'defense')
+
+        possession_data = fetach_advanced_data(
+            player_url, player_name, seasons[2], 'possession')
+
+        misc_data = fetach_advanced_data(
+            player_url, player_name, seasons[2], 'misc')
+
+        all_data = pd.concat([summary_data, passing_data, passing_types_data, gca_data,
+                              defense_data, possession_data, misc_data], axis=1)
 
         # print(all_data)
         match_logs = match_logs.append(all_data, ignore_index=True)
 
         match_logs.to_csv(log_file_name, index=False)
 
-        exit()
     # todo, fetach detailed data
 
-
-match_players_file = 'datasets/1718match_players.npy'
-
-fetch_players(match_players_file)
 
 # fetach_passing_data('https://fbref.com/en/players/336dbcb2',
 #                     'Adama Diomande', '2017-2018')

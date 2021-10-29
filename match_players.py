@@ -101,7 +101,7 @@ def match_players(match_history_csv, save_filename):
 
             counter += 1
             logging.info('fetch data row %d' % counter)
-            # if counter >= 10:
+            # if counter >= 30:
             #     break
 
     # print(counter)
@@ -112,10 +112,6 @@ def match_players(match_history_csv, save_filename):
     return match_players
 
 
-match_history_csv = 'datasets/1617matches.csv'
-save_filename = 'datasets/1617match_players.npy'
-
-match_history_csv = 'datasets/1718matches.csv'
-save_filename = 'datasets/1718match_players.npy'
-
-mps = match_players(match_history_csv, save_filename)
+for d in [('datasets/1617matches.csv', 'datasets/1617match_players.npy'),
+          ('datasets/1718matches.csv', 'datasets/1718match_players.npy')]:
+    match_players(d[0], d[1])
