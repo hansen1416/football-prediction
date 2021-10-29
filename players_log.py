@@ -25,18 +25,20 @@ os.environ["http_proxy"] = ""
 os.environ["https_proxy"] = ""
 
 
-def build_players_queue(match_players_file):
+def build_players_queue(match_players_files):
 
     q = Queue()
 
-    match_players = np.load(match_players_file, allow_pickle='TRUE').item()
+    for file in match_players_files:
 
-    for _, players in match_players.items():
+        match_players = np.load(file, allow_pickle='TRUE').item()
 
-        for p in players['home_players']:
-            q.put(p)
-        for p in players['away_players']:
-            q.put(p)
+        for _, players in match_players.items():
+
+            for p in players['home_players']:
+                q.put(p)
+            for p in players['away_players']:
+                q.put(p)
 
     return q
 
@@ -128,9 +130,13 @@ def fetach_advanced_data(player_url, player_name, season, block_name):
 
 if __name__ == "__main__":
 
-    match_players_file = os.path.join('datasets', '1718match_players.npy')
+    match_players_files = [os.path.join('datasets', '1617match_players.npy'),
+                           os.path.join('datasets', '1718match_players.npy'),
+                           os.path.join('datasets', '1819match_players.npy')]
 
-    player_queue = build_players_queue(match_players_file)
+    player_queue = build_players_queue(match_players_files)
+
+    logger.info('build players queue of size {}'.format(player_queue.qsize()))
 
     counter = 0
 

@@ -27,40 +27,43 @@ def fetch_players(match_url, home_id, away_id):
     # fireFoxService = webdriver.Firefox(executable_path=GeckoDriverManager().install())
     fire_fox_service = Service(FIREFOX_DRIVER_PATH)
 
-    driver = webdriver.Firefox(service=fire_fox_service)
+    try:
+        driver = webdriver.Firefox(service=fire_fox_service)
 
-    driver.get(match_url)
+        driver.get(match_url)
 
-    home_table = driver.find_element(By.ID, 'stats_' + home_id + '_summary')
+        home_table = driver.find_element(
+            By.ID, 'stats_' + home_id + '_summary')
 
-    away_table = driver.find_element(By.ID, 'stats_' + away_id + '_summary')
+        away_table = driver.find_element(
+            By.ID, 'stats_' + away_id + '_summary')
 
-    # print(home_table, away_table)
+        # print(home_table, away_table)
 
-    home_players = []
+        home_players = []
 
-    for row in home_table.find_elements(By.CSS_SELECTOR, 'tbody tr'):
-        tds = [td for td in row.find_elements(By.CSS_SELECTOR, 'th, td')]
+        for row in home_table.find_elements(By.CSS_SELECTOR, 'tbody tr'):
+            tds = [td for td in row.find_elements(By.CSS_SELECTOR, 'th, td')]
 
-        player_a = tds[0].find_element(By.CSS_SELECTOR, 'a')
+            player_a = tds[0].find_element(By.CSS_SELECTOR, 'a')
 
-        home_players.append((player_a.get_attribute('href'),
-                            player_a.text, tds[3].text, tds[5].text))
+            home_players.append((player_a.get_attribute('href'),
+                                player_a.text, tds[3].text, tds[5].text))
 
-    away_players = []
+        away_players = []
 
-    for row in away_table.find_elements(By.CSS_SELECTOR, 'tbody tr'):
-        tds = [td for td in row.find_elements(By.CSS_SELECTOR, 'th, td')]
+        for row in away_table.find_elements(By.CSS_SELECTOR, 'tbody tr'):
+            tds = [td for td in row.find_elements(By.CSS_SELECTOR, 'th, td')]
 
-        player_a = tds[0].find_element(By.CSS_SELECTOR, 'a')
+            player_a = tds[0].find_element(By.CSS_SELECTOR, 'a')
 
-        away_players.append((player_a.get_attribute('href'),
-                            player_a.text, tds[3].text, tds[5].text))
+            away_players.append((player_a.get_attribute('href'),
+                                player_a.text, tds[3].text, tds[5].text))
 
-    # print(home_players)
-    # print(away_players)
-
-    driver.quit()
+        # print(home_players)
+        # print(away_players)
+    finally:
+        driver.quit()
 
     return {'home_players': home_players, 'away_players': away_players}
 
@@ -101,8 +104,8 @@ def match_players(match_history_csv, save_filename):
 
             counter += 1
             logging.info('fetch data row %d' % counter)
-            # if counter >= 35:
-            #     break
+            if counter >= 41:
+                break
 
     # print(counter)
     # print(match_players)
@@ -113,5 +116,6 @@ def match_players(match_history_csv, save_filename):
 
 
 for d in [('datasets/1617matches.csv', 'datasets/1617match_players.npy'),
-          ('datasets/1718matches.csv', 'datasets/1718match_players.npy')]:
+          ('datasets/1718matches.csv', 'datasets/1718match_players.npy'),
+          ('datasets/1819matches.csv', 'datasets/1819match_players.npy')]:
     match_players(d[0], d[1])
