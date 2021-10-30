@@ -68,8 +68,8 @@ def fetch_keeper_data(player_url, player_name, season):
     return result
 
 
-res = fetch_keeper_data('https://fbref.com/en/players/53af52f3/',
-                        'Kasper Schmeichel', '2015-2016')
+# res = fetch_keeper_data('https://fbref.com/en/players/53af52f3/',
+#                         'Kasper Schmeichel', '2015-2016')
 
 
-print(res)
+# print(res)

@@ -339,5 +339,5 @@ if __name__ == "__main__":
 
         counter += 1
 
-        if counter > 35:
+        if counter > 70:
             break
