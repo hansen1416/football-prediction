@@ -95,12 +95,21 @@ url = 'https://fbref.com/en/comps/9/1526/schedule/2016-2017-Premier-League-Score
 element_id = "sched_1526_1"
 filename = "1617matches.csv"
 
-# url = 'https://fbref.com/en/comps/9/1631/schedule/2017-2018-Premier-League-Scores-and-Fixtures'
-# element_id = "sched_1631_1"
-# filename = "1718matches.csv"
+url = 'https://fbref.com/en/comps/9/1631/schedule/2017-2018-Premier-League-Scores-and-Fixtures'
+element_id = "sched_1631_1"
+filename = "1718matches.csv"
 
-# url = "https://fbref.com/en/comps/9/1889/schedule/2018-2019-Premier-League-Scores-and-Fixtures"
-# element_id = "sched_1889_1"
-# filename = "1819matches.csv"
+url = "https://fbref.com/en/comps/9/1889/schedule/2018-2019-Premier-League-Scores-and-Fixtures"
+element_id = "sched_1889_1"
+filename = "1819matches.csv"
 
-featch_season_history(url, element_id, filename)
+url = "https://fbref.com/en/comps/9/3232/schedule/2018-2019-Premier-League-Scores-and-Fixtures"
+element_id = "sched_3232_1"
+filename = "1920matches.csv"
+
+url = "https://fbref.com/en/comps/9/10728/schedule/2020-2021-Premier-League-Scores-and-Fixtures"
+element_id = "sched_10728_1"
+filename = "2021matches.csv"
+
+
+# featch_season_history(url, element_id, filename)

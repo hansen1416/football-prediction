@@ -117,5 +117,7 @@ def match_players(match_history_csv, save_filename):
 
 for d in [('datasets/1617matches.csv', 'datasets/1617match_players.npy'),
           ('datasets/1718matches.csv', 'datasets/1718match_players.npy'),
-          ('datasets/1819matches.csv', 'datasets/1819match_players.npy')]:
+          ('datasets/1819matches.csv', 'datasets/1819match_players.npy'),
+          ('datasets/1920matches.csv', 'datasets/1920match_players.npy'),
+          ('datasets/2021matches.csv', 'datasets/2021match_players.npy'), ]:
     match_players(d[0], d[1])
