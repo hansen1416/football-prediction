@@ -104,7 +104,7 @@ def match_players(match_history_csv, save_filename):
 
             counter += 1
             logging.info('fetch data row %d' % counter)
-            if counter >= 41:
+            if counter >= 1:
                 break
 
     # print(counter)

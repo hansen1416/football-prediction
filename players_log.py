@@ -134,6 +134,10 @@ if __name__ == "__main__":
                            os.path.join('datasets', '1718match_players.npy'),
                            os.path.join('datasets', '1819match_players.npy')]
 
+    all_columns = columns_basic + columns_summary + columns_passing + \
+        columns_passing_types + columns_gca + \
+        columns_defense + columns_possession + columns_misc
+
     player_queue = build_players_queue(match_players_files)
 
     logger.info('build players queue of size {}'.format(player_queue.qsize()))
@@ -154,9 +158,6 @@ if __name__ == "__main__":
         log_file_name = PLAYER_LOG_PREFIX + strip_accents(name[0]) + '.csv'
 
         if not os.path.isfile(log_file_name):
-            all_columns = columns_basic + columns_summary + columns_passing + \
-                columns_passing_types + columns_gca + \
-                columns_defense + columns_possession + columns_misc
 
             empty_data = pd.DataFrame([], columns=all_columns)
 
@@ -212,16 +213,16 @@ if __name__ == "__main__":
                     logger.info("add player {} {}, season {} full data to {}".format(
                         url, name, season, log_file_name))
 
-            except WebDriverException:
-                # in case of crawling failed, we don't remove item from queue
-                continue
             except NoSuchElementException:
                 # it means there is not data for this player in this season, just pass
                 logger.info(
-                    "no data for player {} in season".format(url, season))
-                pass
-
-            season_queue.get()
+                    "no data for player {} in season {}".format(url, season))
+            except WebDriverException:
+                # in case of crawling failed, we just skip it, try fetch it later
+                logger.error(
+                    'fetchinf data from {} in season {} failed'.format(url, season))
+            finally:
+                season_queue.get()
 
         player_queue.get()
 
@@ -230,5 +231,5 @@ if __name__ == "__main__":
 
         counter += 1
 
-        if counter > 1:
+        if counter > 20:
             break
