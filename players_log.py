@@ -138,6 +138,47 @@ def fetach_advanced_data(player_url, player_name, season, block_name):
     return result
 
 
+def fetch_keeper_data(player_url, player_name, season):
+
+    url = player_url + '/matchlogs/{}/keeper/'.format(season)
+
+    logger.info('start fetching keeper data for {} from {}, in season {}'.format(
+        player_name, player_url, season))
+
+    try:
+        driver = webdriver.Firefox(service=Service(
+            FIREFOX_DRIVER_PATH), options=opts)
+
+        driver.get(url)
+
+        matchlogs_all = driver.find_element(By.ID, 'matchlogs_all')
+
+        result: pd.DataFrame = pd.DataFrame(
+            [], columns=columns_basic + columns_keeper)
+
+        for row in matchlogs_all.find_elements(By.CSS_SELECTOR, 'tbody tr:not(.spacer):not(.thead):not(.hidden)'):
+
+            row_data = [td.text for td in row.find_elements(
+                By.CSS_SELECTOR, 'th,td')]
+
+            if len(row_data) == 21:
+                data = pd.DataFrame([[player_url, player_name, season] + row_data[:20]],
+                                    columns=columns_basic + columns_keeper_short)
+            else:
+                data = pd.DataFrame([[player_url, player_name, season] + row_data[:36]],
+                                    columns=columns_basic + columns_keeper)
+
+            result = result.append(data, ignore_index=True)
+
+        if result is None:
+            raise NoSuchElementException
+
+    finally:
+        driver.quit()
+
+    return result
+
+
 if __name__ == "__main__":
 
     match_players_files = [os.path.join('datasets', '1617match_players.npy'),
@@ -166,16 +207,15 @@ if __name__ == "__main__":
 
     counter = 0
 
+    keeper_log_file = os.path.join('datasets', 'keeper_log.csv')
+
+    keeper_df = pd.read_csv(keeper_log_file)
+
     while player_queue.qsize() > 0:
 
         url, name, pos, min = player_queue.queue[0]
 
         url = re.sub(r'/[^/]+$', '', url)
-
-        # we deal goal keeper differently
-        if pos == 'GK':
-            player_queue.get()
-            continue
 
         log_file_name = PLAYER_LOG_PREFIX + strip_accents(name[0]) + '.csv'
 
@@ -203,59 +243,94 @@ if __name__ == "__main__":
                 season_queue.get()
                 continue
 
-            season_df = df.loc[(df['PlayerUrl'] == url) &
-                               (df['Season'] == season)]
+            # we deal goal keeper differently
+            if pos == 'GK':
+                season_df = keeper_df.loc[(keeper_df['PlayerUrl'] == url) &
+                                          (keeper_df['Season'] == season)]
 
-            # we already players info in this season
-            if season_df.shape[0] > 0:
-                season_queue.get()
-                continue
+                # we already players info in this season
+                if season_df.shape[0] > 0:
+                    season_queue.get()
+                    continue
 
-            try:
-                summary_data = fetach_summary_data(url, name, season)
+                try:
+                    keeper_data = fetch_keeper_data(url, name, season)
 
-                if len(summary_data.columns) == 31:
+                    with open(keeper_log_file, 'a') as f:
+                        keeper_data.to_csv(f, index=False, header=False)
 
-                    summary_data = pd.DataFrame([], columns=all_columns).append(
-                        summary_data, ignore_index=True)
+                    logger.info("add keeper {} season {} data to {}".format(
+                        url, season, keeper_log_file))
 
-                    with open(log_file_name, 'a') as f:
-                        summary_data.to_csv(f, header=False)
+                except NoSuchElementException:
+                    # it means there is not data for this player in this season, just pass
+                    with open(no_data_season_file, 'a') as f:
+                        pd.DataFrame([[url, season]], columns=[
+                            'PlayerUrl', 'Season']).to_csv(f, header=False, index=False)
 
-                    logger.info("add player {} {}, season {} summary data to {}".format(
-                        url, name, season, log_file_name))
+                    logger.warning(
+                        "no keeper data for player {} in season {}".format(url, season))
+                except WebDriverException:
+                    # in case of crawling failed, we just skip it, try fetch it later
+                    logger.error(
+                        'fetchinf keeper data from {} in season {} failed'.format(url, season))
+                finally:
+                    season_queue.get()
+            # non-keeper players
+            else:
+                season_df = df.loc[(df['PlayerUrl'] == url) &
+                                   (df['Season'] == season)]
 
-                else:
+                # we already players info in this season
+                if season_df.shape[0] > 0:
+                    season_queue.get()
+                    continue
 
-                    advanced_data = []
+                try:
+                    summary_data = fetach_summary_data(url, name, season)
 
-                    for block in ['passing', 'passing_types', 'gca', 'defense', 'possession', 'misc']:
-                        advanced_data.append(
-                            fetach_advanced_data(url, name, season, block))
+                    if len(summary_data.columns) == 31:
 
-                    full_data = pd.concat(
-                        [summary_data] + advanced_data, axis=1)
+                        summary_data = pd.DataFrame([], columns=all_columns).append(
+                            summary_data, ignore_index=True)
 
-                    with open(log_file_name, 'a') as f:
-                        full_data.to_csv(f, header=False)
+                        with open(log_file_name, 'a') as f:
+                            summary_data.to_csv(f, header=False)
 
-                    logger.info("add player {} {}, season {} full data to {}".format(
-                        url, name, season, log_file_name))
+                        logger.info("add player {} {}, season {} summary data to {}".format(
+                            url, name, season, log_file_name))
 
-            except NoSuchElementException:
-                # it means there is not data for this player in this season, just pass
-                with open(no_data_season_file, 'a') as f:
-                    pd.DataFrame([[url, season]], columns=[
-                                 'PlayerUrl', 'Season']).to_csv(f, header=False, index=False)
+                    else:
 
-                logger.warning(
-                    "no data for player {} in season {}".format(url, season))
-            except WebDriverException:
-                # in case of crawling failed, we just skip it, try fetch it later
-                logger.error(
-                    'fetchinf data from {} in season {} failed'.format(url, season))
-            finally:
-                season_queue.get()
+                        advanced_data = []
+
+                        for block in ['passing', 'passing_types', 'gca', 'defense', 'possession', 'misc']:
+                            advanced_data.append(
+                                fetach_advanced_data(url, name, season, block))
+
+                        full_data = pd.concat(
+                            [summary_data] + advanced_data, axis=1)
+
+                        with open(log_file_name, 'a') as f:
+                            full_data.to_csv(f, header=False)
+
+                        logger.info("add player {} {}, season {} full data to {}".format(
+                            url, name, season, log_file_name))
+
+                except NoSuchElementException:
+                    # it means there is not data for this player in this season, just pass
+                    with open(no_data_season_file, 'a') as f:
+                        pd.DataFrame([[url, season]], columns=[
+                            'PlayerUrl', 'Season']).to_csv(f, header=False, index=False)
+
+                    logger.warning(
+                        "no data for player {} in season {}".format(url, season))
+                except WebDriverException:
+                    # in case of crawling failed, we just skip it, try fetch it later
+                    logger.error(
+                        'fetchinf data from {} in season {} failed'.format(url, season))
+                finally:
+                    season_queue.get()
 
         player_queue.get()
 
@@ -264,5 +339,5 @@ if __name__ == "__main__":
 
         counter += 1
 
-        if counter > 25:
+        if counter > 35:
             break

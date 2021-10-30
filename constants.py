@@ -36,6 +36,13 @@ columns_summary_short = ['Summery-Performance-Gls', 'Summery-Performance-Ast', '
                          'Summery-Performance-CrdR', 'Misc-Performance-Fls', 'Misc-Performance-Fld', 'Misc-Performance-Off', 'Misc-Performance-Crs', 'Misc-Performance-TklW', 'Misc-Performance-Int', 'Misc-Performance-OG', 'Misc-Performance-PKwon', 'Misc-Performance-PKcon']
 
 
+columns_keeper = ['KeeperPerformance-SoTA', 'KeeperPerformance-GA', 'KeeperPerformance-Saves', 'KeeperPerformance-Save%', 'KeeperPerformance-CS', 'KeeperPerformance-PSxG', 'KeeperPenaltyKicks-PKatt', 'KeeperPenaltyKicks-PKA', 'KeeperPenaltyKicks-PKsv', 'KeeperPenaltyKicks-PKm', 'KeeperLaunched-Cmp',
+                  'KeeperLaunched-Att', 'KeeperLaunched-Cmp%', 'KeeperPasses-Att', 'KeeperPasses-Thr', 'KeeperPasses-Launch%', 'KeeperPasses-AvgLen', 'KeeperGoalKicks-Att', 'KeeperGoalKicks-Launch%', 'KeeperGoalKicks-AvgLen', 'KeeperCrosses-Opp', 'KeeperCrosses-Stp', 'KeeperCrosses-Stp%', 'KeeperSweeper-#OPA', 'KeeperSweeper-AvgDist']
+
+columns_keeper_short = ['KeeperPerformance-SoTA', 'KeeperPerformance-GA', 'KeeperPerformance-Saves', 'KeeperPerformance-Save%',
+                        'KeeperPerformance-CS', 'KeeperPenaltyKicks-PKatt', 'KeeperPenaltyKicks-PKA', 'KeeperPenaltyKicks-PKsv', 'KeeperPenaltyKicks-PKm']
+
+
 def strip_accents(text):
 
     try:
