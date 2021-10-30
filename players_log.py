@@ -1,4 +1,7 @@
 # import csv
+from constants import *
+from selenium.common.exceptions import NoSuchElementException, WebDriverException
+from selenium.webdriver.common.by import By
 import os
 import re
 import sys
@@ -11,10 +14,6 @@ import pandas as pd
 from pandas.core.frame import DataFrame
 from selenium import webdriver
 from selenium.webdriver.firefox.service import Service
-from selenium.webdriver.common.by import By
-from selenium.common.exceptions import NoSuchElementException, WebDriverException
-
-from constants import *
 
 # log to stdout
 # logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
@@ -23,6 +22,11 @@ logger = logging.getLogger()
 
 os.environ["http_proxy"] = ""
 os.environ["https_proxy"] = ""
+
+opts = webdriver.FirefoxOptions()
+# opts.add_argument("--width=1024")
+# opts.add_argument("--height=678")
+opts.add_argument("--headless")
 
 
 def build_players_queue(match_players_files):
@@ -51,7 +55,8 @@ def fetach_summary_data(player_url, player_name, season):
         player_name, player_url, season))
 
     try:
-        driver = webdriver.Firefox(service=Service(FIREFOX_DRIVER_PATH))
+        driver = webdriver.Firefox(service=Service(
+            FIREFOX_DRIVER_PATH), options=opts)
 
         driver.get(url)
 
@@ -84,6 +89,10 @@ def fetach_summary_data(player_url, player_name, season):
                     summary_data = data
                 else:
                     summary_data = summary_data.append(data, ignore_index=True)
+
+        if summary_data is None:
+            raise NoSuchElementException
+
     finally:
         driver.quit()
 
@@ -102,7 +111,8 @@ def fetach_advanced_data(player_url, player_name, season, block_name):
         block_name, player_name, player_url, season))
 
     try:
-        driver = webdriver.Firefox(service=Service(FIREFOX_DRIVER_PATH))
+        driver = webdriver.Firefox(service=Service(
+            FIREFOX_DRIVER_PATH), options=opts)
 
         driver.get(url)
 
@@ -132,7 +142,19 @@ if __name__ == "__main__":
 
     match_players_files = [os.path.join('datasets', '1617match_players.npy'),
                            os.path.join('datasets', '1718match_players.npy'),
-                           os.path.join('datasets', '1819match_players.npy')]
+                           os.path.join('datasets', '1819match_players.npy'),
+                           os.path.join('datasets', '1920match_players.npy'),
+                           os.path.join('datasets', '2021match_players.npy')]
+
+    no_data_season_file = os.path.join('logs', 'no_data_season.csv')
+
+    if not os.path.isfile(no_data_season_file):
+
+        with open(no_data_season_file, 'w') as f:
+            pd.DataFrame([], columns=['PlayerUrl', 'Season']
+                         ).to_csv(f, index=False)
+    # for some there is no data in some season, save it so we don't have to check it again
+    no_data_df = pd.read_csv(no_data_season_file)
 
     all_columns = columns_basic + columns_summary + columns_passing + \
         columns_passing_types + columns_gca + \
@@ -173,6 +195,13 @@ if __name__ == "__main__":
         while season_queue.qsize() > 0:
 
             season = season_queue.queue[0]
+
+            no_df = no_data_df[(no_data_df['PlayerUrl'] == url) &
+                               (no_data_df['Season'] == season)]
+
+            if no_df.shape[0] > 0:
+                season_queue.get()
+                continue
 
             season_df = df.loc[(df['PlayerUrl'] == url) &
                                (df['Season'] == season)]
@@ -215,7 +244,11 @@ if __name__ == "__main__":
 
             except NoSuchElementException:
                 # it means there is not data for this player in this season, just pass
-                logger.info(
+                with open(no_data_season_file, 'a') as f:
+                    pd.DataFrame([[url, season]], columns=[
+                                 'PlayerUrl', 'Season']).to_csv(f, header=False, index=False)
+
+                logger.warning(
                     "no data for player {} in season {}".format(url, season))
             except WebDriverException:
                 # in case of crawling failed, we just skip it, try fetch it later
