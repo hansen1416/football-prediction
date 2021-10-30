@@ -90,7 +90,7 @@ def fetach_summary_data(player_url, player_name, season):
                 else:
                     summary_data = summary_data.append(data, ignore_index=True)
 
-        if summary_data is None:
+        if summary_data is None or summary_data.shape[0] == 0:
             raise NoSuchElementException
 
     finally:
@@ -170,7 +170,7 @@ def fetch_keeper_data(player_url, player_name, season):
 
             result = result.append(data, ignore_index=True)
 
-        if result is None:
+        if result is None or result.shape[0] == 0:
             raise NoSuchElementException
 
     finally:
@@ -339,5 +339,5 @@ if __name__ == "__main__":
 
         counter += 1
 
-        if counter > 70:
+        if counter > 90:
             break
