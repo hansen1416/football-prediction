@@ -22,13 +22,16 @@ logger = logging.getLogger()
 os.environ["http_proxy"] = ""
 os.environ["https_proxy"] = ""
 
+opts = webdriver.FirefoxOptions()
+opts.add_argument("--headless")
+
 
 def fetch_players(match_url, home_id, away_id):
     # fireFoxService = webdriver.Firefox(executable_path=GeckoDriverManager().install())
     fire_fox_service = Service(FIREFOX_DRIVER_PATH)
 
     try:
-        driver = webdriver.Firefox(service=fire_fox_service)
+        driver = webdriver.Firefox(service=fire_fox_service, options=opts)
 
         driver.get(match_url)
 
@@ -104,7 +107,7 @@ def match_players(match_history_csv, save_filename):
 
             counter += 1
             logging.info('fetch data row %d' % counter)
-            if counter >= 30:
+            if counter >= 35:
                 break
 
     # print(counter)

@@ -264,5 +264,5 @@ if __name__ == "__main__":
 
         counter += 1
 
-        if counter > 20:
+        if counter > 25:
             break
