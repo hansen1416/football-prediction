@@ -27,49 +27,24 @@ opts = webdriver.FirefoxOptions()
 opts.add_argument("--headless")
 
 
-def fetch_keeper_data(player_url, player_name, season):
+if __name__ == "__main__":
+    match_players_files = [os.path.join('datasets', '1617match_players.npy'),
+                           os.path.join('datasets', '1718match_players.npy'),
+                           os.path.join('datasets', '1819match_players.npy'),
+                           os.path.join('datasets', '1920match_players.npy'),
+                           os.path.join('datasets', '2021match_players.npy')]
 
-    url = player_url + '/matchlogs/{}/keeper/'.format(season)
+    q = set()
 
-    logger.info('start fetching keeper data for {} from {}, in season {}'.format(
-        player_name, player_url, season))
+    for file in match_players_files:
 
-    try:
-        driver = webdriver.Firefox(service=Service(
-            FIREFOX_DRIVER_PATH), options=opts)
+        match_players = np.load(file, allow_pickle='TRUE').item()
 
-        driver.get(url)
+        for _, players in match_players.items():
 
-        matchlogs_all = driver.find_element(By.ID, 'matchlogs_all')
+            for p in players['home_players']:
+                q.add(p[0])
+            for p in players['away_players']:
+                q.add(p[0])
 
-        result: pd.DataFrame = pd.DataFrame(
-            [], columns=columns_basic + columns_keeper)
-
-        for row in matchlogs_all.find_elements(By.CSS_SELECTOR, 'tbody tr:not(.spacer):not(.thead):not(.hidden)'):
-
-            row_data = [td.text for td in row.find_elements(
-                By.CSS_SELECTOR, 'th,td')]
-
-            if len(row_data) == 21:
-                data = pd.DataFrame([[player_url, player_name, season] + row_data[:20]],
-                                    columns=columns_basic + columns_keeper_short)
-            else:
-                data = pd.DataFrame([[player_url, player_name, season] + row_data[:36]],
-                                    columns=columns_basic + columns_keeper)
-
-            result = result.append(data, ignore_index=True)
-
-        if result is None:
-            raise NoSuchElementException
-
-    finally:
-        driver.quit()
-
-    return result
-
-
-# res = fetch_keeper_data('https://fbref.com/en/players/53af52f3/',
-#                         'Kasper Schmeichel', '2015-2016')
-
-
-# print(res)
+    print(len(q), q)

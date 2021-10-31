@@ -181,11 +181,19 @@ def fetch_keeper_data(player_url, player_name, season):
 
 if __name__ == "__main__":
 
+    all_columns = columns_basic + columns_summary + columns_passing + \
+        columns_passing_types + columns_gca + \
+        columns_defense + columns_possession + columns_misc
+
     match_players_files = [os.path.join('datasets', '1617match_players.npy'),
                            os.path.join('datasets', '1718match_players.npy'),
                            os.path.join('datasets', '1819match_players.npy'),
                            os.path.join('datasets', '1920match_players.npy'),
                            os.path.join('datasets', '2021match_players.npy')]
+
+    player_queue = build_players_queue(match_players_files)
+
+    logger.info('build players queue of size {}'.format(player_queue.qsize()))
 
     no_data_season_file = os.path.join('logs', 'no_data_season.csv')
 
@@ -196,14 +204,6 @@ if __name__ == "__main__":
                          ).to_csv(f, index=False)
     # for some there is no data in some season, save it so we don't have to check it again
     no_data_df = pd.read_csv(no_data_season_file)
-
-    all_columns = columns_basic + columns_summary + columns_passing + \
-        columns_passing_types + columns_gca + \
-        columns_defense + columns_possession + columns_misc
-
-    player_queue = build_players_queue(match_players_files)
-
-    logger.info('build players queue of size {}'.format(player_queue.qsize()))
 
     counter = 0
 
@@ -339,5 +339,5 @@ if __name__ == "__main__":
 
         counter += 1
 
-        if counter > 200:
+        if counter > 240:
             break
