@@ -1,7 +1,8 @@
 import os
 import unicodedata
 
-FIREFOX_DRIVER_PATH = '/home/hlz/.wdm/drivers/geckodriver/linux64/v0.30.0/geckodriver'
+# FIREFOX_DRIVER_PATH = '/home/hlz/.wdm/drivers/geckodriver/linux64/v0.30.0/geckodriver'
+FIREFOX_DRIVER_PATH = '~/soccer-data/driver/geckodriver'
 
 PLAYER_LOG_PREFIX = os.path.join('datasets', 'player_log_')
 
