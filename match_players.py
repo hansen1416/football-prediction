@@ -86,6 +86,23 @@ def match_players(match_history_csv, save_filename):
     with open(match_history_csv, mode='r') as csvfile:
         csv_reader = csv.DictReader(csvfile)
         for row in csv_reader:
+            # some link might fail, fix it
+            # if row['match_link'] == 'https://fbref.com/en/matches/d27f6889/Stoke-City-Tottenham-Hotspur-September-10-2016-Premier-League':
+
+            #     home_re_group = re.match(
+            #         "https://fbref.com/en/squads/([\d\w]+)/", row['home_link'])
+
+            #     away_re_group = re.match(
+            #         "https://fbref.com/en/squads/([\d\w]+)/", row['away_link'])
+
+            #     home_id = home_re_group.group(1)
+
+            #     away_id = away_re_group.group(1)
+
+            #     match_players[row['match_link']] = fetch_players(
+            #         row['match_link'], home_id, away_id)
+            #     # exit()
+
             if not match_players.get(row['match_link']):
                 try:
 
@@ -118,9 +135,11 @@ def match_players(match_history_csv, save_filename):
     return match_players
 
 
-for d in [('datasets/1617matches.csv', 'datasets/1617match_players.npy'),
-          ('datasets/1718matches.csv', 'datasets/1718match_players.npy'),
-          ('datasets/1819matches.csv', 'datasets/1819match_players.npy'),
-          ('datasets/1920matches.csv', 'datasets/1920match_players.npy'),
-          ('datasets/2021matches.csv', 'datasets/2021match_players.npy'), ]:
-    match_players(d[0], d[1])
+if __name__ == "__main__":
+
+    for d in [('datasets/1617matches.csv', 'datasets/1617match_players.npy'),
+              ('datasets/1718matches.csv', 'datasets/1718match_players.npy'),
+              ('datasets/1819matches.csv', 'datasets/1819match_players.npy'),
+              ('datasets/1920matches.csv', 'datasets/1920match_players.npy'),
+              ('datasets/2021matches.csv', 'datasets/2021match_players.npy'), ]:
+        match_players(d[0], d[1])

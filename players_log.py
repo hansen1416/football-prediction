@@ -192,8 +192,9 @@ if __name__ == "__main__":
                            os.path.join('datasets', '2021match_players.npy')]
 
     player_queue = build_players_queue(match_players_files)
+    total = player_queue.qsize()
 
-    logger.info('build players queue of size {}'.format(player_queue.qsize()))
+    logger.info('build players queue of size {}'.format(total))
 
     no_data_season_file = os.path.join('logs', 'no_data_season.csv')
 
@@ -217,7 +218,13 @@ if __name__ == "__main__":
 
         url = re.sub(r'/[^/]+$', '', url)
 
-        log_file_name = PLAYER_LOG_PREFIX + strip_accents(name[0]) + '.csv'
+        try:
+
+            log_file_name = PLAYER_LOG_PREFIX + strip_accents(name[0]) + '.csv'
+        except IndexError:
+            logger.error("IndexError url is {}, name is {}".format(url, name))
+            player_queue.get()
+            continue
 
         if not os.path.isfile(log_file_name):
 
@@ -335,7 +342,7 @@ if __name__ == "__main__":
         player_queue.get()
 
         logger.info(
-            "player {} {}, data is saved for all season".format(url, name))
+            "{}/{}, player {} {}, data is saved for all season".format(counter, total, url, name))
 
         counter += 1
 
