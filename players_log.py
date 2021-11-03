@@ -1,9 +1,12 @@
 # import csv
+from threading import Thread
+from pandas.core.indexes.base import Index
 from constants import *
 from selenium.common.exceptions import NoSuchElementException, WebDriverException
 from selenium.webdriver.common.by import By
 import os
 import re
+import string
 import sys
 import logging
 from queue import Queue
@@ -27,24 +30,6 @@ opts = webdriver.FirefoxOptions()
 # opts.add_argument("--width=1024")
 # opts.add_argument("--height=678")
 opts.add_argument("--headless")
-
-
-def build_players_queue(match_players_files):
-
-    q = Queue()
-
-    for file in match_players_files:
-
-        match_players = np.load(file, allow_pickle='TRUE').item()
-
-        for _, players in match_players.items():
-
-            for p in players['home_players']:
-                q.put(p)
-            for p in players['away_players']:
-                q.put(p)
-
-    return q
 
 
 def fetach_summary_data(player_url, player_name, season):
@@ -179,23 +164,171 @@ def fetch_keeper_data(player_url, player_name, season):
     return result
 
 
+def clean_url(url):
+    return re.sub(r'/[^/]+$', '',  url)
+
+
+class Worker(Thread):
+
+    def __init__(self, queue, thread_name):
+        Thread.__init__(self)
+        self.queue: Queue = queue
+        self.thread_name = thread_name
+
+    def run(self):
+        counter = 0
+
+        while self.queue.qsize() > 0:
+
+            url, name, pos = player_queue.get()
+
+            try:
+
+                log_file_name = PLAYER_LOG_PREFIX + \
+                    strip_accents(name[0]) + '.csv'
+            except IndexError:
+                logger.error(
+                    "IndexError url is {}, name is {}".format(url, name))
+                continue
+
+            season_queue = Queue()
+            [season_queue.put(t) for t in ['2015-2016', '2016-2017',
+                                           '2017-2018', '2018-2019', '2019-2020', '2020-2021']]
+
+            while season_queue.qsize() > 0:
+
+                season = season_queue.get()
+
+                # we deal goal keeper differently
+                if pos == 'GK':
+
+                    try:
+                        keeper_data = fetch_keeper_data(url, name, season)
+
+                        with open(keeper_log_file, 'a') as f:
+                            keeper_data.to_csv(f, index=False, header=False)
+
+                        logger.info("add keeper {} season {} data to {}".format(
+                            url, season, keeper_log_file))
+
+                    except NoSuchElementException:
+                        # it means there is not data for this player in this season, just pass
+                        with open(no_data_season_file, 'a') as f:
+                            pd.DataFrame([[url, season]], columns=[
+                                'PlayerUrl', 'Season']).to_csv(f, header=False, index=False)
+
+                        logger.warning(
+                            "no keeper data for player {} in season {}".format(url, season))
+                    except WebDriverException:
+                        # in case of crawling failed, we just skip it, try fetch it later
+                        logger.error(
+                            'fetchinf keeper data from {} in season {} failed'.format(url, season))
+                    finally:
+                        continue
+                # non-keeper players
+                else:
+
+                    try:
+                        summary_data = fetach_summary_data(url, name, season)
+
+                        if len(summary_data.columns) == 31:
+
+                            summary_data = pd.DataFrame([], columns=all_columns).append(
+                                summary_data, ignore_index=True)
+
+                            with open(log_file_name, 'a') as f:
+                                summary_data.to_csv(f, header=False)
+
+                            logger.info("add player {} {}, season {} summary data to {}".format(
+                                url, name, season, log_file_name))
+
+                        else:
+
+                            advanced_data = []
+
+                            for block in ['passing', 'passing_types', 'gca', 'defense', 'possession', 'misc']:
+                                advanced_data.append(
+                                    fetach_advanced_data(url, name, season, block))
+
+                            full_data = pd.concat(
+                                [summary_data] + advanced_data, axis=1)
+
+                            with open(log_file_name, 'a') as f:
+                                full_data.to_csv(f, header=False)
+
+                            logger.info("add player {} {}, season {} full data to {}".format(
+                                url, name, season, log_file_name))
+
+                    except NoSuchElementException:
+                        # it means there is not data for this player in this season, just pass
+                        with open(no_data_season_file, 'a') as f:
+                            pd.DataFrame([[url, season]], columns=[
+                                'PlayerUrl', 'Season']).to_csv(f, header=False, index=False)
+
+                        logger.warning(
+                            "no data for player {} in season {}".format(url, season))
+                    except WebDriverException:
+                        # in case of crawling failed, we just skip it, try fetch it later
+                        logger.error(
+                            'fetchinf data from {} in season {} failed'.format(url, season))
+                    finally:
+                        continue
+
+            logger.info(
+                "{}/{}, player {} {}, data is saved for all season".format(counter, total, url, name))
+
+            counter += 1
+
+            if counter > 100:
+                break
+
+
 if __name__ == "__main__":
 
     all_columns = columns_basic + columns_summary + columns_passing + \
         columns_passing_types + columns_gca + \
         columns_defense + columns_possession + columns_misc
 
-    match_players_files = [os.path.join('datasets', '1617match_players.npy'),
-                           os.path.join('datasets', '1718match_players.npy'),
-                           os.path.join('datasets', '1819match_players.npy'),
-                           os.path.join('datasets', '1920match_players.npy'),
-                           os.path.join('datasets', '2021match_players.npy')]
+    names = np.array(list(string.ascii_uppercase))
 
-    player_queue = build_players_queue(match_players_files)
-    total = player_queue.qsize()
+    existing_players = set()
 
-    logger.info('build players queue of size {}'.format(total))
+    for C in names:
+        fn = PLAYER_LOG_PREFIX + C + '.csv'
 
+        if not os.path.isfile(fn):
+
+            empty_data = pd.DataFrame([], columns=all_columns)
+
+            with open(fn, 'w') as f:
+                empty_data.to_csv(f, index=False)
+
+        ep_df = pd.read_csv(fn)
+
+        ep_df = ep_df[['PlayerUrl', 'Season']]
+
+        ep_tuples = [tuple(x) for x in ep_df.to_numpy()]
+
+        existing_players.update(ep_tuples)
+
+    # fetched keeper data
+    keeper_log_file = os.path.join('datasets', 'keeper_log.csv')
+
+    if not os.path.isfile(keeper_log_file):
+
+        empty_data = pd.DataFrame([], columns=all_columns)
+
+        with open(keeper_log_file, 'w') as f:
+            empty_data.to_csv(f, index=False)
+
+    keeper_df = pd.read_csv(keeper_log_file)
+
+    kp_tuples = [tuple(x)
+                 for x in keeper_df[['PlayerUrl', 'Season']].to_numpy()]
+
+    existing_players.update(kp_tuples)
+
+    # there is no data for some season
     no_data_season_file = os.path.join('logs', 'no_data_season.csv')
 
     if not os.path.isfile(no_data_season_file):
@@ -203,148 +336,52 @@ if __name__ == "__main__":
         with open(no_data_season_file, 'w') as f:
             pd.DataFrame([], columns=['PlayerUrl', 'Season']
                          ).to_csv(f, index=False)
+
     # for some there is no data in some season, save it so we don't have to check it again
     no_data_df = pd.read_csv(no_data_season_file)
 
-    counter = 0
+    nd_tuples = [tuple(x)
+                 for x in no_data_df[['PlayerUrl', 'Season']].to_numpy()]
 
-    keeper_log_file = os.path.join('datasets', 'keeper_log.csv')
+    existing_players.update(nd_tuples)
 
-    keeper_df = pd.read_csv(keeper_log_file)
+    seasons = ['2015-2016', '2016-2017', '2017-2018',
+               '2018-2019', '2019-2020', '2020-2021']
 
-    while player_queue.qsize() > 0:
+    # match_players_files = [os.path.join(
+    #     'datasets', s + 'match_players.npy') for s in seasons[1:]]
 
-        url, name, pos, min = player_queue.queue[0]
+    player_queue = Queue()
 
-        url = re.sub(r'/[^/]+$', '', url)
+    for s in seasons[1:]:
 
-        try:
+        file = os.path.join('datasets', s + 'match_players.npy')
 
-            log_file_name = PLAYER_LOG_PREFIX + strip_accents(name[0]) + '.csv'
-        except IndexError:
-            logger.error("IndexError url is {}, name is {}".format(url, name))
-            player_queue.get()
-            continue
+        match_players = np.load(file, allow_pickle='TRUE').item()
 
-        if not os.path.isfile(log_file_name):
+        for _, players in match_players.items():
+            try:
+                for p in players['home_players']:
+                    url = clean_url(p[0])
 
-            empty_data = pd.DataFrame([], columns=all_columns)
+                    item = (url, p[1], p[2])
 
-            with open(log_file_name, 'w') as f:
-                empty_data.to_csv(f, index=False)
+                    if (url, s) not in existing_players and item not in list(player_queue.queue):
+                        player_queue.put(item)
 
-        df = pd.read_csv(log_file_name)
+                for p in players['away_players']:
+                    url = clean_url(p[0])
 
-        season_queue = Queue()
-        [season_queue.put(t) for t in ['2015-2016', '2016-2017',
-                                       '2017-2018', '2018-2019', '2019-2020', '2020-2021']]
+                    item = (url, p[1], p[2])
 
-        while season_queue.qsize() > 0:
+                    if (url, s) not in existing_players and item not in list(player_queue.queue):
+                        player_queue.put(item)
 
-            season = season_queue.queue[0]
+            except IndexError:
+                logger.info('name error, {} {}'.format(p[0], p[1]))
 
-            no_df = no_data_df[(no_data_df['PlayerUrl'] == url) &
-                               (no_data_df['Season'] == season)]
+    total = player_queue.qsize()
 
-            if no_df.shape[0] > 0:
-                season_queue.get()
-                continue
+    logger.info('build players queue of size {}'.format(total))
 
-            # we deal goal keeper differently
-            if pos == 'GK':
-                season_df = keeper_df.loc[(keeper_df['PlayerUrl'] == url) &
-                                          (keeper_df['Season'] == season)]
-
-                # we already players info in this season
-                if season_df.shape[0] > 0:
-                    season_queue.get()
-                    continue
-
-                try:
-                    keeper_data = fetch_keeper_data(url, name, season)
-
-                    with open(keeper_log_file, 'a') as f:
-                        keeper_data.to_csv(f, index=False, header=False)
-
-                    logger.info("add keeper {} season {} data to {}".format(
-                        url, season, keeper_log_file))
-
-                except NoSuchElementException:
-                    # it means there is not data for this player in this season, just pass
-                    with open(no_data_season_file, 'a') as f:
-                        pd.DataFrame([[url, season]], columns=[
-                            'PlayerUrl', 'Season']).to_csv(f, header=False, index=False)
-
-                    logger.warning(
-                        "no keeper data for player {} in season {}".format(url, season))
-                except WebDriverException:
-                    # in case of crawling failed, we just skip it, try fetch it later
-                    logger.error(
-                        'fetchinf keeper data from {} in season {} failed'.format(url, season))
-                finally:
-                    season_queue.get()
-            # non-keeper players
-            else:
-                season_df = df.loc[(df['PlayerUrl'] == url) &
-                                   (df['Season'] == season)]
-
-                # we already players info in this season
-                if season_df.shape[0] > 0:
-                    season_queue.get()
-                    continue
-
-                try:
-                    summary_data = fetach_summary_data(url, name, season)
-
-                    if len(summary_data.columns) == 31:
-
-                        summary_data = pd.DataFrame([], columns=all_columns).append(
-                            summary_data, ignore_index=True)
-
-                        with open(log_file_name, 'a') as f:
-                            summary_data.to_csv(f, header=False)
-
-                        logger.info("add player {} {}, season {} summary data to {}".format(
-                            url, name, season, log_file_name))
-
-                    else:
-
-                        advanced_data = []
-
-                        for block in ['passing', 'passing_types', 'gca', 'defense', 'possession', 'misc']:
-                            advanced_data.append(
-                                fetach_advanced_data(url, name, season, block))
-
-                        full_data = pd.concat(
-                            [summary_data] + advanced_data, axis=1)
-
-                        with open(log_file_name, 'a') as f:
-                            full_data.to_csv(f, header=False)
-
-                        logger.info("add player {} {}, season {} full data to {}".format(
-                            url, name, season, log_file_name))
-
-                except NoSuchElementException:
-                    # it means there is not data for this player in this season, just pass
-                    with open(no_data_season_file, 'a') as f:
-                        pd.DataFrame([[url, season]], columns=[
-                            'PlayerUrl', 'Season']).to_csv(f, header=False, index=False)
-
-                    logger.warning(
-                        "no data for player {} in season {}".format(url, season))
-                except WebDriverException:
-                    # in case of crawling failed, we just skip it, try fetch it later
-                    logger.error(
-                        'fetchinf data from {} in season {} failed'.format(url, season))
-                finally:
-                    season_queue.get()
-
-        player_queue.get()
-
-        logger.info(
-            "{}/{}, player {} {}, data is saved for all season".format(counter, total, url, name))
-
-        counter += 1
-
-        if counter > 1200:
-            break
+    # print(player_queue.queue)

@@ -1,4 +1,7 @@
 # import csv
+import time
+import random
+from threading import Thread
 from constants import *
 from selenium.common.exceptions import NoSuchElementException, WebDriverException
 from selenium.webdriver.common.by import By
@@ -27,24 +30,32 @@ opts = webdriver.FirefoxOptions()
 opts.add_argument("--headless")
 
 
+class Worker(Thread):
+
+    def __init__(self, queue, thread_name):
+        Thread.__init__(self)
+        self.queue: Queue = queue
+        self.thread_name = thread_name
+
+    def run(self):
+        while self.queue.qsize() > 0:
+            # Get the work from the queue and expand the tuple
+            i = self.queue.get()
+            # try:
+            pause = random.randint(1, 3)
+            print(self.thread_name, i, 'sleep {}'.format(pause))
+            time.sleep(pause)
+            # finally:
+            #     self.queue.task_done()
+
+
 if __name__ == "__main__":
-    match_players_files = [os.path.join('datasets', '1617match_players.npy'),
-                           os.path.join('datasets', '1718match_players.npy'),
-                           os.path.join('datasets', '1819match_players.npy'),
-                           os.path.join('datasets', '1920match_players.npy'),
-                           os.path.join('datasets', '2021match_players.npy')]
+    que = Queue()
 
-    q = set()
+    for i in range(100):
+        que.put(i)
 
-    for file in match_players_files:
-
-        match_players = np.load(file, allow_pickle='TRUE').item()
-
-        for _, players in match_players.items():
-
-            for p in players['home_players']:
-                q.add(p[0])
-            for p in players['away_players']:
-                q.add(p[0])
-
-    print(len(q), q)
+    for n in range(10):
+        worker = Worker(que, 'thread-' + str(n))
+        # worker.daemon = True
+        worker.start()
