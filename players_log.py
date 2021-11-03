@@ -275,7 +275,7 @@ class Worker(Thread):
                         continue
 
             logger.info(
-                "{}/{}, player {} {}, data is saved for all season".format(counter, total, url, name))
+                "{} {}/{}, player {} {}, data is saved for all season".format(self.thread_name, counter, total, url, name))
 
             counter += 1
 
@@ -348,9 +348,6 @@ if __name__ == "__main__":
     seasons = ['2015-2016', '2016-2017', '2017-2018',
                '2018-2019', '2019-2020', '2020-2021']
 
-    # match_players_files = [os.path.join(
-    #     'datasets', s + 'match_players.npy') for s in seasons[1:]]
-
     player_queue = Queue()
 
     for s in seasons[1:]:
@@ -384,4 +381,6 @@ if __name__ == "__main__":
 
     logger.info('build players queue of size {}'.format(total))
 
-    # print(player_queue.queue)
+    for n in range(3):
+        worker = Worker(player_queue, 'thread-' + str(n))
+        worker.start()
