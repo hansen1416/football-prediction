@@ -271,6 +271,8 @@ class Worker(Thread):
                         # in case of crawling failed, we just skip it, try fetch it later
                         logger.error(
                             'fetchinf data from {} in season {} failed'.format(url, season))
+                    except Exception as e:
+                        logger.error(str(e))
                     finally:
                         continue
 
