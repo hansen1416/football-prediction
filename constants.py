@@ -1,10 +1,18 @@
 import os
 import unicodedata
 
-# FIREFOX_DRIVER_PATH = '/home/hlz/.wdm/drivers/geckodriver/linux64/v0.30.0/geckodriver'
-FIREFOX_DRIVER_PATH = '/home/hlz/soccer-data/driver/geckodriver'
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
 
-PLAYER_LOG_PREFIX = os.path.join('datasets', 'player_log_')
+if os.name == 'nt':
+    BROWSER_DRIVER_PATH = r'C:\Users\hanse\.wdm\drivers\chromedriver\win32\95.0.4638.54\chromedriver.exe'
+else:
+    # FIREFOX_DRIVER_PATH = '/home/hlz/.wdm/drivers/geckodriver/linux64/v0.30.0/geckodriver'
+    BROWSER_DRIVER_PATH = '/home/hlz/soccer-data/driver/geckodriver'
+
+PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
+
+PLAYER_LOG_PREFIX = os.path.join(PROJECT_DIR, 'datasets', 'player_log_')
 
 columns_basic = ['PlayerUrl', 'PlayerName', 'Season', 'Date', 'Day', 'Comp', 'Round', 'Venue',
                  'Result', 'Squad', 'Opponent', 'Start', 'Pos', 'Min']
@@ -57,6 +65,16 @@ def strip_accents(text):
 
     return str(text).upper()
 
+def browser_driver():
+
+    options = webdriver.ChromeOptions()
+    options.add_argument("--headless")
+    options.add_argument('--ignore-certificate-errors')
+    options.add_argument('--ignore-ssl-errors')
+
+    chrome_service = Service(BROWSER_DRIVER_PATH)
+
+    return webdriver.Chrome(service=chrome_service, options=options)
 
 if __name__ == "__main__":
-    pass
+    print(PROJECT_DIR, PLAYER_LOG_PREFIX)

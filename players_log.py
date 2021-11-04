@@ -6,13 +6,14 @@ import os
 import re
 import string
 import sys
+import time
 import logging
 from queue import Queue
 
 import numpy as np
 import pandas as pd
-from selenium import webdriver
-from selenium.webdriver.firefox.service import Service
+# from selenium import webdriver
+# from selenium.webdriver.firefox.service import Service
 
 from constants import *
 
@@ -24,12 +25,6 @@ logger = logging.getLogger()
 os.environ["http_proxy"] = ""
 os.environ["https_proxy"] = ""
 
-opts = webdriver.FirefoxOptions()
-# opts.add_argument("--width=1024")
-# opts.add_argument("--height=678")
-opts.add_argument("--headless")
-
-
 def fetach_summary_data(player_url, player_name, season):
 
     url = player_url + '/matchlogs/{}/summary/'.format(season)
@@ -38,8 +33,7 @@ def fetach_summary_data(player_url, player_name, season):
         player_name, player_url, season))
 
     try:
-        driver = webdriver.Firefox(service=Service(
-            FIREFOX_DRIVER_PATH), options=opts)
+        driver = browser_driver()
 
         driver.get(url)
 
@@ -94,8 +88,7 @@ def fetach_advanced_data(player_url, player_name, season, block_name):
         block_name, player_name, player_url, season))
 
     try:
-        driver = webdriver.Firefox(service=Service(
-            FIREFOX_DRIVER_PATH), options=opts)
+        driver = browser_driver()
 
         driver.get(url)
 
@@ -129,8 +122,7 @@ def fetch_keeper_data(player_url, player_name, season):
         player_name, player_url, season))
 
     try:
-        driver = webdriver.Firefox(service=Service(
-            FIREFOX_DRIVER_PATH), options=opts)
+        driver = browser_driver()
 
         driver.get(url)
 
@@ -312,7 +304,7 @@ if __name__ == "__main__":
         existing_players.update(ep_tuples)
 
     # fetched keeper data
-    keeper_log_file = os.path.join('datasets', 'keeper_log.csv')
+    keeper_log_file = os.path.join(PROJECT_DIR, 'datasets', 'keeper_log.csv')
 
     if not os.path.isfile(keeper_log_file):
 
@@ -329,7 +321,7 @@ if __name__ == "__main__":
     existing_players.update(kp_tuples)
 
     # there is no data for some season
-    no_data_season_file = os.path.join('logs', 'no_data_season.csv')
+    no_data_season_file = os.path.join(PROJECT_DIR, 'logs', 'no_data_season.csv')
 
     if not os.path.isfile(no_data_season_file):
 
@@ -352,7 +344,7 @@ if __name__ == "__main__":
 
     for s in seasons[1:]:
 
-        file = os.path.join('datasets', s + 'match_players.npy')
+        file = os.path.join(PROJECT_DIR, 'datasets', s + 'match_players.npy')
 
         match_players = np.load(file, allow_pickle='TRUE').item()
 
@@ -381,6 +373,10 @@ if __name__ == "__main__":
 
     logger.info('build players queue of size {}'.format(total))
 
-    for n in range(3):
+    for n in range(2):
         worker = Worker(player_queue, 'thread-' + str(n))
+        worker.daemon = True
         worker.start()
+
+    while True:
+        time.sleep(1)
