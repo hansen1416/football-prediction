@@ -1,7 +1,5 @@
 # import csv
 from threading import Thread
-from pandas.core.indexes.base import Index
-from constants import *
 from selenium.common.exceptions import NoSuchElementException, WebDriverException
 from selenium.webdriver.common.by import By
 import os
@@ -11,12 +9,12 @@ import sys
 import logging
 from queue import Queue
 
-
 import numpy as np
 import pandas as pd
-from pandas.core.frame import DataFrame
 from selenium import webdriver
 from selenium.webdriver.firefox.service import Service
+
+from constants import *
 
 # log to stdout
 # logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
@@ -383,6 +381,6 @@ if __name__ == "__main__":
 
     logger.info('build players queue of size {}'.format(total))
 
-    for n in range(7):
+    for n in range(3):
         worker = Worker(player_queue, 'thread-' + str(n))
         worker.start()
