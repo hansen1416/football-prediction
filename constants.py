@@ -5,10 +5,28 @@ from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 
 if os.name == 'nt':
-    BROWSER_DRIVER_PATH = r'C:\Users\hanse\.wdm\drivers\chromedriver\win32\95.0.4638.54\chromedriver.exe'
+
+    def browser_driver():
+
+        options = webdriver.ChromeOptions()
+        options.add_argument("--headless")
+        options.add_argument('--ignore-certificate-errors')
+        options.add_argument('--ignore-ssl-errors')
+
+        chrome_service = Service(r'C:\Users\hanse\.wdm\drivers\chromedriver\win32\95.0.4638.54\chromedriver.exe')
+
+        return webdriver.Chrome(service=chrome_service, options=options)
 else:
     # FIREFOX_DRIVER_PATH = '/home/hlz/.wdm/drivers/geckodriver/linux64/v0.30.0/geckodriver'
-    BROWSER_DRIVER_PATH = '/home/hlz/soccer-data/driver/geckodriver'
+
+    def browser_driver():
+
+        options = webdriver.FirefoxOptions()
+        options.add_argument("--headless")
+
+        firefox_service = Service('/home/hlz/soccer-data/driver/geckodriver')
+
+        return webdriver.Firefox(service=firefox_service, options=options)
 
 PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
 
@@ -64,17 +82,6 @@ def strip_accents(text):
         .decode("utf-8")
 
     return str(text).upper()
-
-def browser_driver():
-
-    options = webdriver.ChromeOptions()
-    options.add_argument("--headless")
-    options.add_argument('--ignore-certificate-errors')
-    options.add_argument('--ignore-ssl-errors')
-
-    chrome_service = Service(BROWSER_DRIVER_PATH)
-
-    return webdriver.Chrome(service=chrome_service, options=options)
 
 if __name__ == "__main__":
     print(PROJECT_DIR, PLAYER_LOG_PREFIX)

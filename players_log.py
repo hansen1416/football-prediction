@@ -1,19 +1,17 @@
 # import csv
-from threading import Thread
-from selenium.common.exceptions import NoSuchElementException, WebDriverException
-from selenium.webdriver.common.by import By
+import logging
 import os
+from queue import Queue
 import re
 import string
 import sys
 import time
-import logging
-from queue import Queue
+from threading import Thread
 
 import numpy as np
 import pandas as pd
-# from selenium import webdriver
-# from selenium.webdriver.firefox.service import Service
+from selenium.common.exceptions import NoSuchElementException, WebDriverException
+from selenium.webdriver.common.by import By
 
 from constants import *
 
