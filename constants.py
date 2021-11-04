@@ -11,6 +11,7 @@ if os.name == 'nt':
         options = webdriver.ChromeOptions()
         options.add_argument("--headless")
         options.add_argument('--ignore-certificate-errors')
+        options.add_argument('--ignore-certificate-errors-spki-list')
         options.add_argument('--ignore-ssl-errors')
 
         chrome_service = Service(r'C:\Users\hanse\.wdm\drivers\chromedriver\win32\95.0.4638.54\chromedriver.exe')
