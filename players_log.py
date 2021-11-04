@@ -271,7 +271,7 @@ class Worker(Thread):
 
             counter += 1
 
-            if counter > 100:
+            if counter > 10:
                 break
 
 
@@ -373,7 +373,7 @@ if __name__ == "__main__":
 
     logger.info('build players queue of size {}'.format(total))
 
-    for n in range(2):
+    for n in range(4):
         worker = Worker(player_queue, 'thread-' + str(n))
         worker.daemon = True
         worker.start()
