@@ -23,6 +23,7 @@ logger = logging.getLogger()
 os.environ["http_proxy"] = ""
 os.environ["https_proxy"] = ""
 
+
 def fetach_summary_data(player_url, player_name, season):
 
     url = player_url + '/matchlogs/{}/summary/'.format(season)
@@ -319,7 +320,8 @@ if __name__ == "__main__":
     existing_players.update(kp_tuples)
 
     # there is no data for some season
-    no_data_season_file = os.path.join(PROJECT_DIR, 'logs', 'no_data_season.csv')
+    no_data_season_file = os.path.join(
+        PROJECT_DIR, 'logs', 'no_data_season.csv')
 
     if not os.path.isfile(no_data_season_file):
 
@@ -373,8 +375,8 @@ if __name__ == "__main__":
 
     for n in range(4):
         worker = Worker(player_queue, 'thread-' + str(n))
-        worker.daemon = True
+        # worker.daemon = True
         worker.start()
 
-    while True:
-        time.sleep(1)
+    # while True:
+    #     time.sleep(1)
