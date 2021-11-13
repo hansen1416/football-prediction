@@ -27,11 +27,9 @@ opts.add_argument("--headless")
 
 
 def fetch_players(match_url, home_id, away_id):
-    # fireFoxService = webdriver.Firefox(executable_path=GeckoDriverManager().install())
-    fire_fox_service = Service(FIREFOX_DRIVER_PATH)
 
     try:
-        driver = webdriver.Firefox(service=fire_fox_service, options=opts)
+        driver = browser_driver()
 
         driver.get(match_url)
 
@@ -137,9 +135,9 @@ def match_players(match_history_csv, save_filename):
 
 if __name__ == "__main__":
 
-    for d in [('datasets/1617matches.csv', 'datasets/1617match_players.npy'),
-              ('datasets/1718matches.csv', 'datasets/1718match_players.npy'),
-              ('datasets/1819matches.csv', 'datasets/1819match_players.npy'),
-              ('datasets/1920matches.csv', 'datasets/1920match_players.npy'),
-              ('datasets/2021matches.csv', 'datasets/2021match_players.npy'), ]:
-        match_players(d[0], d[1])
+    seasons = ['2016-2017', '2017-2018', '2018-2019', '2019-2020', '2020-2021']
+
+    for s in seasons:
+        m = os.path.join('datasets', s + 'matches.csv')
+        mp = os.path.join('datasets', s + 'match_players.npy')
+        match_players(m, mp)
