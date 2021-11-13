@@ -2,14 +2,10 @@ import csv
 import os
 import sys
 import logging
-from selenium.webdriver.firefox.webdriver import WebDriver
-# from pprint import pprint
 
-# from selenium.webdriver import Chrome
-# from webdriver_manager.chrome import ChromeDriverManager
-from webdriver_manager.firefox import GeckoDriverManager
-from selenium import webdriver
-from selenium.webdriver.firefox.service import Service
+import pandas as pd
+from pandas.core.indexes.base import Index
+from selenium.webdriver.firefox.webdriver import WebDriver
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import NoSuchElementException
 
@@ -26,15 +22,28 @@ os.environ["https_proxy"] = ""
 
 def featch_season_history(url, element_id, filename):
 
-    # fireFoxService = webdriver.Firefox(executable_path=GeckoDriverManager().install())
-    fire_fox_service = Service(FIREFOX_DRIVER_PATH)
+    if element_id == 'sched_1526_1':
+        columns = ['week', 'day', 'date', 'time', 'home', 'score', 'away', 'attendance', 'venue',
+                   'referee', 'match_report', 'home_link', 'away_link', 'match_link', 'report_link']
+    else:
+        columns = ['week', 'day', 'date', 'time', 'home', 'home_xg', 'score', 'away_xg', 'away', 'attendance',
+                   'venue', 'referee', 'match_report', 'home_link', 'away_link', 'match_link', 'report_link']
 
-    driver = webdriver.Firefox(service=fire_fox_service)
+    driver = browser_driver()
 
     driver.get(url)
 
+    log_file = os.path.join('datasets', filename)
+
+    empty_data = pd.DataFrame([], columns=columns)
+    # by doing this, we emptyed the file
+    with open(log_file, 'w') as f:
+        empty_data.to_csv(f, index=False)
+
     table: WebDriver = driver.find_element(By.ID, element_id)
     match_history = []
+
+    counter = 1
 
     # iterate over all the rows
     for row in table.find_elements(By.CSS_SELECTOR, "tbody tr:not(.spacer)"):
@@ -48,27 +57,42 @@ def featch_season_history(url, element_id, filename):
             continue
 
         try:
-            keys = ['week', 'day', 'date', 'time', 'home', 'home_xg', 'score', 'away_xg',
-                    'away', 'attendance', 'venue', 'referee', 'match_report']
 
-            info.update(
-                dict(zip(keys, [td.text for td in row.find_elements(By.CSS_SELECTOR, 'th,td')])))
+            data = [td.text for td in row.find_elements(
+                By.CSS_SELECTOR, 'th,td')]
+
+            # we don't need the last "note" column
+            data.pop()
 
             home_link = row.find_element(
                 By.CSS_SELECTOR, 'td[data-stat="squad_a"] a')
-            info['home_link'] = home_link.get_attribute('href')
+            # info['home_link'] = home_link.get_attribute('href')
+            data.append(home_link.get_attribute('href'))
 
             away_link = row.find_element(
                 By.CSS_SELECTOR, 'td[data-stat="squad_b"] a')
-            info['away_link'] = away_link.get_attribute('href')
+            # info['away_link'] = away_link.get_attribute('href')
+            data.append(away_link.get_attribute('href'))
 
             match_link = row.find_element(
                 By.CSS_SELECTOR, 'td[data-stat="score"] a')
-            info['match_link'] = match_link.get_attribute('href')
+            # info['match_link'] = match_link.get_attribute('href')
+            data.append(match_link.get_attribute('href'))
 
             report_link = row.find_element(
                 By.CSS_SELECTOR, 'td[data-stat="match_report"] a')
-            info['report_link'] = report_link.get_attribute('href')
+            # info['report_link'] = report_link.get_attribute('href')
+            data.append(report_link.get_attribute('href'))
+
+            df = pd.DataFrame([data], columns=columns)
+
+            with open(log_file, 'a') as f:
+                df.to_csv(f, header=False, index=False)
+
+            counter += 1
+            if counter % 10 == 0:
+                logger.info("saving data row {}".format(counter))
+
         except NoSuchElementException:
             pass
         except Exception as e:
@@ -76,40 +100,28 @@ def featch_season_history(url, element_id, filename):
 
         match_history.append(info)
 
-    # print(match_history)
-
     driver.quit()
-
-    try:
-        with open('datasets/' + filename, 'w') as csvfile:
-            writer = csv.DictWriter(
-                csvfile, fieldnames=list(match_history[0].keys()))
-            writer.writeheader()
-            for data in match_history:
-                writer.writerow(data)
-    except IOError:
-        print("I/O error")
 
 
 url = 'https://fbref.com/en/comps/9/1526/schedule/2016-2017-Premier-League-Scores-and-Fixtures'
 element_id = "sched_1526_1"
-filename = "1617matches.csv"
+filename = "2016-2017matches.csv"
 
 url = 'https://fbref.com/en/comps/9/1631/schedule/2017-2018-Premier-League-Scores-and-Fixtures'
 element_id = "sched_1631_1"
-filename = "1718matches.csv"
+filename = "2017-2018matches.csv"
 
 url = "https://fbref.com/en/comps/9/1889/schedule/2018-2019-Premier-League-Scores-and-Fixtures"
 element_id = "sched_1889_1"
-filename = "1819matches.csv"
+filename = "2018-2019matches.csv"
 
 url = "https://fbref.com/en/comps/9/3232/schedule/2018-2019-Premier-League-Scores-and-Fixtures"
 element_id = "sched_3232_1"
-filename = "1920matches.csv"
+filename = "2019-2020matches.csv"
 
 url = "https://fbref.com/en/comps/9/10728/schedule/2020-2021-Premier-League-Scores-and-Fixtures"
 element_id = "sched_10728_1"
-filename = "2021matches.csv"
+filename = "2020-2021matches.csv"
 
 
-# featch_season_history(url, element_id, filename)
+featch_season_history(url, element_id, filename)
