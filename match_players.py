@@ -5,6 +5,7 @@ import sys
 import logging
 
 import numpy as np
+import pandas as pd
 from selenium.webdriver.firefox.webdriver import WebDriver
 # from webdriver_manager.chrome import ChromeDriverManager
 from webdriver_manager.firefox import GeckoDriverManager
@@ -122,8 +123,8 @@ def match_players(match_history_csv, save_filename):
 
             counter += 1
             logging.info('fetch data row %d' % counter)
-            if counter >= 8000:
-                break
+            # if counter >= 8000:
+            #     break
 
     # print(counter)
     # print(match_players)
@@ -133,11 +134,77 @@ def match_players(match_history_csv, save_filename):
     return match_players
 
 
+def get_team_id(link):
+    re_group = re.match(
+        "https://fbref.com/en/squads/([\d\w]+)/", link)
+
+    return re_group.group(1)
+
+
+def check_missing():
+    seasons = ['2016-2017', '2017-2018', '2018-2019', '2019-2020', '2020-2021']
+
+    for s in seasons:
+
+        matches = pd.read_csv(os.path.join('datasets', s + 'matches.csv'))
+
+        filename = os.path.join('datasets', s + 'match_players.npy')
+        match_players = np.load(filename, allow_pickle='TRUE').item()
+
+        missing_links = set()
+
+        for match_link, item in match_players.items():
+            for p in item['home_players']:
+                if p[1] == '' or p[2] == '':
+                    missing_links.add(match_link)
+
+            for p in item['away_players']:
+                if p[1] == '' or p[2] == '':
+                    missing_links.add(match_link)
+
+        for match_link in list(missing_links):
+
+            match_row = matches[matches['match_link'] == match_link]
+
+            # print(match_row['home_link'].values[0],
+            #       match_row['away_link'].values[0])
+
+            home_id = get_team_id(match_row['home_link'].values[0])
+            away_id = get_team_id(match_row['away_link'].values[0])
+
+            logging.info('fetch missing data for %s' % match_link)
+            # print(match_link, p, home_id, away_id)
+            data = fetch_players(match_link, home_id, away_id)
+
+            match_players[match_link] = data
+
+        np.save(filename, match_players)
+
+
 if __name__ == "__main__":
 
-    seasons = ['2016-2017', '2017-2018', '2018-2019', '2019-2020', '2020-2021']
-    seasons = ['2018-2019']
-    for s in seasons:
-        m = os.path.join('datasets', s + 'matches.csv')
-        mp = os.path.join('datasets', s + 'match_players.npy')
-        match_players(m, mp)
+    # seasons = ['2016-2017', '2017-2018', '2018-2019', '2019-2020', '2020-2021']
+    # for s in seasons:
+    #     m = os.path.join('datasets', s + 'matches.csv')
+    #     mp = os.path.join('datasets', s + 'match_players.npy')
+    #     match_players(m, mp)
+
+    check_missing()
+
+    # seasons = ['2016-2017', '2017-2018', '2018-2019', '2019-2020', '2020-2021']
+
+    # mis = ['https://fbref.com/en/matches/0e98ac46/Tottenham-Hotspur-Bournemouth-October-14-2017-Premier-League',
+    #        'https://fbref.com/en/matches/aeb979e2/Brighton-and-Hove-Albion-Crystal-Palace-February-29-2020-Premier-League']
+
+    # for s in seasons:
+
+    #     matches = pd.read_csv(os.path.join('datasets', s + 'matches.csv'))
+
+    #     filename = os.path.join('datasets', s + 'match_players.npy')
+    #     mplayers = np.load(filename, allow_pickle='TRUE').item()
+
+    #     if mis[0] in mplayers.keys():
+    #         print(mplayers[mis[0]])
+
+    #     if mis[1] in mplayers.keys():
+    #         print(mplayers[mis[1]])
