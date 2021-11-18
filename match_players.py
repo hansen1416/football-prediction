@@ -136,7 +136,7 @@ def match_players(match_history_csv, save_filename):
 if __name__ == "__main__":
 
     seasons = ['2016-2017', '2017-2018', '2018-2019', '2019-2020', '2020-2021']
-
+    seasons = ['2018-2019']
     for s in seasons:
         m = os.path.join('datasets', s + 'matches.csv')
         mp = os.path.join('datasets', s + 'match_players.npy')
