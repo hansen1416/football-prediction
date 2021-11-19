@@ -157,6 +157,40 @@ def clean_url(url):
     return re.sub(r'/[^/]+$', '',  url)
 
 
+def filter_players_data():
+
+    cap = list(map(lambda x: x.upper(), string.ascii_uppercase))
+    # data = dict(zip(cap, [None] * len(cap)))
+
+    for c in cap:
+
+        filename = os.path.join(PROJECT_DIR, 'datasets',
+                                'player_log_' + c + '.csv')
+
+        df = pd.read_csv(filename)
+
+        shape1 = df.shape[0]
+
+        # df_dup = df[df.duplicated(subset=['PlayerUrl','Date'], keep=False)]
+        df = df.drop_duplicates(ignore_index=True, keep='first')
+
+        shape2 = df.shape[0]
+
+        if shape1 > shape2:
+            logger.info("removed duplicated {} rows".format(shape1-shape2))
+
+        df = df.sort_values(
+            by=['PlayerUrl', 'Date'], ascending=True, na_position='first', ignore_index=True)
+
+        # print(df[['PlayerUrl', 'Date']].head(100))
+
+        with open(filename, 'w') as f:
+            df.to_csv(f, index=False, header=True)
+
+            logger.info("Data saved to {} in shape {},{}".format(
+                filename, df.shape[0], df.shape[1]))
+
+
 class Worker(Thread):
 
     def __init__(self, queue, thread_name):
