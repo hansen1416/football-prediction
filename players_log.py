@@ -2,10 +2,8 @@
 import logging
 import os
 from queue import Queue
-import re
 import string
 import sys
-import time
 from threading import Thread
 
 import numpy as np
@@ -151,10 +149,6 @@ def fetch_keeper_data(player_url, player_name, season):
         driver.quit()
 
     return result
-
-
-def clean_url(url):
-    return re.sub(r'/[^/]+$', '',  url)
 
 
 def filter_players_data():

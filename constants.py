@@ -1,4 +1,5 @@
 import os
+import re
 import unicodedata
 
 from selenium import webdriver
@@ -14,7 +15,8 @@ if os.name == 'nt':
         options.add_argument('--ignore-certificate-errors-spki-list')
         options.add_argument('--ignore-ssl-errors')
 
-        chrome_service = Service(r'C:\Users\hanse\.wdm\drivers\chromedriver\win32\95.0.4638.54\chromedriver.exe')
+        chrome_service = Service(
+            r'C:\Users\hanse\.wdm\drivers\chromedriver\win32\95.0.4638.54\chromedriver.exe')
 
         return webdriver.Chrome(service=chrome_service, options=options)
 else:
@@ -30,6 +32,8 @@ else:
         return webdriver.Firefox(service=firefox_service, options=options)
 
 PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
+
+DATASETS_DIR = os.path.join(PROJECT_DIR, 'datasets')
 
 PLAYER_LOG_PREFIX = os.path.join(PROJECT_DIR, 'datasets', 'player_log_')
 
@@ -83,6 +87,11 @@ def strip_accents(text):
         .decode("utf-8")
 
     return str(text).upper()
+
+
+def clean_url(url):
+    return re.sub(r'/[^/]+$', '',  url)
+
 
 if __name__ == "__main__":
     print(PROJECT_DIR, PLAYER_LOG_PREFIX)
