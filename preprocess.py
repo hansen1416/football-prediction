@@ -19,29 +19,32 @@ logger = logging.getLogger()
 HISTORY_LENGTH = 5
 
 
-def matches_data(seasons):
+def matches_data(leagues, seasons):
     matches_df = None
 
-    for season in seasons:
-        df = pd.read_csv(os.path.join(DATASETS_DIR, season + 'matches.csv'))
-        df['Season'] = season
+    for l in leagues:
+        for season in seasons:
+            df = pd.read_csv(os.path.join(
+                DATASETS_DIR, season + l + 'matches.csv'))
+            df['Season'] = season
 
-        if matches_df is None:
-            matches_df = pd.DataFrame([], columns=df.columns)
+            if matches_df is None:
+                matches_df = pd.DataFrame([], columns=df.columns)
 
-        matches_df = matches_df.append(df)
+            matches_df = matches_df.append(df)
 
     return matches_df
 
 
-def match_players(seasons):
+def match_players(leagues, seasons):
     dic = {}
 
-    for season in seasons:
-        d = np.load(os.path.join(DATASETS_DIR, season +
-                    'match_players.npy'), allow_pickle='TRUE').item()
+    for l in leagues:
+        for season in seasons:
+            d = np.load(os.path.join(DATASETS_DIR, season + l +
+                        'match_players.npy'), allow_pickle='TRUE').item()
 
-        dic.update(d)
+            dic.update(d)
 
     return dic
 
@@ -261,17 +264,19 @@ def test_match_metrics(mdata, pdata_c, rand_n=100):
 
 if __name__ == "__main__":
 
-    seasons = ['2016-2017', '2017-2018', '2018-2019', '2019-2020', '2020-2021']
+    # seasons = ['2016-2017', '2017-2018', '2018-2019', '2019-2020', '2020-2021']
+    leagues = ['EPL']
+    seasons = ['2018-2019', '2019-2020', '2020-2021']
 
-    mdata = matches_data(seasons)
-    mpdata = match_players(seasons)
+    mdata = matches_data(leagues, seasons)
+    mpdata = match_players(leagues, seasons)
     pdata = players_data()
 
     # check match links, they should be the same
     assert sorted(mdata['match_link'].values) == sorted(list(
         mpdata.keys())), "match links not match in match data and match players data"
 
-    sdata = mdata[['match_link', 'Season', 'date']].copy(deep=True)
+    sdata = mdata[['league', 'match_link', 'Season', 'date']].copy(deep=True)
 
     sdata['score'] = mdata['score'].str.split('–')  # .copy(deep=True)
 
@@ -296,7 +301,7 @@ if __name__ == "__main__":
                 'Opponent', 'Pos', 'Start', 'Squad', 'Day', 'Round']
 
     pdata1821 = pdata[pdata['Season'].isin(
-        ['2018-2019', '2019-2020', '2020-2021'])]
+        ['2017-2018', '2018-2019', '2019-2020', '2020-2021'])]
 
     # count nan in numeric data
 
@@ -319,11 +324,13 @@ if __name__ == "__main__":
 
     # test_match_metrics(mdata, pdata1821c)
 
-    for season in ['2018-2019', '2019-2020', '2020-2021']:
-        data_season = build_season_data(pdata1821c, sdata, season)
+    for l in leagues:
+        for season in seasons:
+            data_season = build_season_data(pdata1821c, sdata, season)
 
-        filename = season + '-' + str(HISTORY_LENGTH) + '-PL.csv'
+            filename = season + l + '-' + str(HISTORY_LENGTH) + '-.csv'
 
-        data_season.to_csv(os.path.join(DATASETS_DIR, filename), index=False)
+            data_season.to_csv(os.path.join(
+                DATASETS_DIR, filename), index=False)
 
-        print(pd.read_csv(os.path.join(DATASETS_DIR, filename)))
+            print(pd.read_csv(os.path.join(DATASETS_DIR, filename)))

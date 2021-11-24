@@ -158,8 +158,7 @@ def filter_players_data():
 
     for c in cap:
 
-        filename = os.path.join(PROJECT_DIR, 'datasets',
-                                'player_log_' + c + '.csv')
+        filename = os.path.join(DATASETS_DIR, 'player_log_' + c + '.csv')
 
         df = pd.read_csv(filename)
 
@@ -209,8 +208,10 @@ class Worker(Thread):
                 continue
 
             season_queue = Queue()
-            [season_queue.put(t) for t in ['2015-2016', '2016-2017',
-                                           '2017-2018', '2018-2019', '2019-2020', '2020-2021']]
+            # [season_queue.put(t) for t in ['2015-2016', '2016-2017',
+            #                                '2017-2018', '2018-2019', '2019-2020', '2020-2021']]
+            [season_queue.put(t) for t in ['2017-2018',
+                                           '2018-2019', '2019-2020', '2020-2021']]
 
             while season_queue.qsize() > 0:
 
@@ -331,7 +332,7 @@ if __name__ == "__main__":
         existing_players.update(ep_tuples)
 
     # fetched keeper data
-    keeper_log_file = os.path.join(PROJECT_DIR, 'datasets', 'keeper_log.csv')
+    keeper_log_file = os.path.join(DATASETS_DIR, 'keeper_log.csv')
 
     if not os.path.isfile(keeper_log_file):
 
@@ -348,8 +349,7 @@ if __name__ == "__main__":
     existing_players.update(kp_tuples)
 
     # there is no data for some season
-    no_data_season_file = os.path.join(
-        PROJECT_DIR, 'logs', 'no_data_season.csv')
+    no_data_season_file = os.path.join(DATASETS_DIR, 'no_data_season.csv')
 
     if not os.path.isfile(no_data_season_file):
 
@@ -365,37 +365,41 @@ if __name__ == "__main__":
 
     existing_players.update(nd_tuples)
 
-    seasons = ['2015-2016', '2016-2017', '2017-2018',
-               '2018-2019', '2019-2020', '2020-2021']
+    # seasons = ['2015-2016', '2016-2017', '2017-2018',
+    #            '2018-2019', '2019-2020', '2020-2021']
+
+    leagues = ['SLL', 'ISA']
+    seasons = ['2017-2018', '2018-2019', '2019-2020', '2020-2021']
 
     player_queue = Queue()
 
-    for s in seasons[1:]:
+    for l in leagues:
+        for s in seasons[1:]:
 
-        file = os.path.join(PROJECT_DIR, 'datasets', s + 'match_players.npy')
+            file = os.path.join(DATASETS_DIR, s + l + 'match_players.npy')
 
-        match_players = np.load(file, allow_pickle='TRUE').item()
+            match_players = np.load(file, allow_pickle='TRUE').item()
 
-        for _, players in match_players.items():
-            try:
-                for p in players['home_players']:
-                    url = clean_url(p[0])
+            for _, players in match_players.items():
+                try:
+                    for p in players['home_players']:
+                        url = clean_url(p[0])
 
-                    item = (url, p[1], p[2])
+                        item = (url, p[1], p[2])
 
-                    if (url, s) not in existing_players and item not in list(player_queue.queue):
-                        player_queue.put(item)
+                        if (url, s) not in existing_players and item not in list(player_queue.queue):
+                            player_queue.put(item)
 
-                for p in players['away_players']:
-                    url = clean_url(p[0])
+                    for p in players['away_players']:
+                        url = clean_url(p[0])
 
-                    item = (url, p[1], p[2])
+                        item = (url, p[1], p[2])
 
-                    if (url, s) not in existing_players and item not in list(player_queue.queue):
-                        player_queue.put(item)
+                        if (url, s) not in existing_players and item not in list(player_queue.queue):
+                            player_queue.put(item)
 
-            except IndexError:
-                logger.info('name error, {} {}'.format(p[0], p[1]))
+                except IndexError:
+                    logger.info('name error, {} {}'.format(p[0], p[1]))
 
     total = player_queue.qsize()
 
@@ -405,6 +409,3 @@ if __name__ == "__main__":
         worker = Worker(player_queue, 'thread-' + str(n))
         # worker.daemon = True
         worker.start()
-
-    # while True:
-    #     time.sleep(1)

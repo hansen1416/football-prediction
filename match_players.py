@@ -141,70 +141,58 @@ def get_team_id(link):
     return re_group.group(1)
 
 
-def check_missing():
-    seasons = ['2016-2017', '2017-2018', '2018-2019', '2019-2020', '2020-2021']
+def check_missing(leagues, seasons=['2018-2019', '2019-2020', '2020-2021']):
 
-    for s in seasons:
+    for l in leagues:
+        for s in seasons:
 
-        matches = pd.read_csv(os.path.join('datasets', s + 'matches.csv'))
+            matches = pd.read_csv(os.path.join(
+                DATASETS_DIR, s + l + 'matches.csv'))
 
-        filename = os.path.join('datasets', s + 'match_players.npy')
-        match_players = np.load(filename, allow_pickle='TRUE').item()
+            filename = os.path.join(DATASETS_DIR, s + l + 'match_players.npy')
+            match_players = np.load(filename, allow_pickle='TRUE').item()
 
-        missing_links = set()
+            missing_links = set()
 
-        for match_link, item in match_players.items():
-            for p in item['home_players']:
-                if p[1] == '' or p[2] == '':
-                    missing_links.add(match_link)
+            for match_link, item in match_players.items():
+                for p in item['home_players']:
+                    if p[1] == '' or p[2] == '':
+                        missing_links.add(match_link)
 
-            for p in item['away_players']:
-                if p[1] == '' or p[2] == '':
-                    missing_links.add(match_link)
+                for p in item['away_players']:
+                    if p[1] == '' or p[2] == '':
+                        missing_links.add(match_link)
 
-        for match_link in list(missing_links):
+            for match_link in list(missing_links):
 
-            match_row = matches[matches['match_link'] == match_link]
+                match_row = matches[matches['match_link'] == match_link]
 
-            # print(match_row['home_link'].values[0],
-            #       match_row['away_link'].values[0])
+                # print(match_row['home_link'].values[0],
+                #       match_row['away_link'].values[0])
 
-            home_id = get_team_id(match_row['home_link'].values[0])
-            away_id = get_team_id(match_row['away_link'].values[0])
+                home_id = get_team_id(match_row['home_link'].values[0])
+                away_id = get_team_id(match_row['away_link'].values[0])
 
-            logging.info('fetch missing data for %s' % match_link)
-            # print(match_link, p, home_id, away_id)
-            data = fetch_players(match_link, home_id, away_id)
+                logging.info('fetch missing data for %s' % match_link)
+                # print(match_link, p, home_id, away_id)
+                data = fetch_players(match_link, home_id, away_id)
 
-            match_players[match_link] = data
+                match_players[match_link] = data
 
-        np.save(filename, match_players)
+            np.save(filename, match_players)
+
+            logging.info('save match players data to %s' % filename)
 
 
 if __name__ == "__main__":
 
-    # seasons = ['2016-2017', '2017-2018', '2018-2019', '2019-2020', '2020-2021']
-    # for s in seasons:
-    #     m = os.path.join('datasets', s + 'matches.csv')
-    #     mp = os.path.join('datasets', s + 'match_players.npy')
-    #     match_players(m, mp)
+    leagues = ['EPL', 'SLL', 'ISA']
+    seasons = ['2018-2019', '2019-2020', '2020-2021']
 
-    check_missing()
+    for l in leagues:
+        for s in seasons:
+            m = os.path.join(DATASETS_DIR, s + l + 'matches.csv')
+            mp = os.path.join(DATASETS_DIR, s + l + 'match_players.npy')
+            match_players(m, mp)
 
-    # seasons = ['2016-2017', '2017-2018', '2018-2019', '2019-2020', '2020-2021']
-
-    # mis = ['https://fbref.com/en/matches/0e98ac46/Tottenham-Hotspur-Bournemouth-October-14-2017-Premier-League',
-    #        'https://fbref.com/en/matches/aeb979e2/Brighton-and-Hove-Albion-Crystal-Palace-February-29-2020-Premier-League']
-
-    # for s in seasons:
-
-    #     matches = pd.read_csv(os.path.join('datasets', s + 'matches.csv'))
-
-    #     filename = os.path.join('datasets', s + 'match_players.npy')
-    #     mplayers = np.load(filename, allow_pickle='TRUE').item()
-
-    #     if mis[0] in mplayers.keys():
-    #         print(mplayers[mis[0]])
-
-    #     if mis[1] in mplayers.keys():
-    #         print(mplayers[mis[1]])
+    check_missing(leagues, seasons)

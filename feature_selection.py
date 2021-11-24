@@ -16,10 +16,7 @@ from sklearn.feature_selection import SelectKBest
 from sklearn.feature_selection import chi2, f_regression
 from sklearn.metrics import mean_squared_error, accuracy_score
 from sklearn.preprocessing import MinMaxScaler
-from sklearn.model_selection import train_test_split
-from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
-from sklearn.datasets import make_moons, make_circles, make_classification
 from sklearn.neural_network import MLPClassifier
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.svm import SVC
@@ -44,16 +41,17 @@ def read_match_metrics():
 
     data = None
 
-    for season in ['2018-2019', '2019-2020', '2020-2021']:
+    for league in ['EPL']:
+        for season in ['2018-2019', '2019-2020', '2020-2021']:
 
-        filename = season + '-' + str(HISTORY_LENGTH) + '-PL.csv'
+            filename = season + league + '-' + str(HISTORY_LENGTH) + '-.csv'
 
-        df = pd.read_csv(os.path.join(DATASETS_DIR, filename))
+            df = pd.read_csv(os.path.join(DATASETS_DIR, filename))
 
-        if data is None:
-            data = df
-        else:
-            data = data.append(df)
+            if data is None:
+                data = df
+            else:
+                data = data.append(df)
 
     return data.reset_index(drop=True)
 
