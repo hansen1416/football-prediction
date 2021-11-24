@@ -86,9 +86,6 @@ if __name__ == "__main__":
                 'score', 'label', 'spread'], axis=1)
     y = df['label']
 
-    # print(X)
-    # exit()
-
     n_features = 70
 
     scaler = MinMaxScaler(feature_range=(0, 1))
