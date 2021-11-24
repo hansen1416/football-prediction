@@ -328,7 +328,7 @@ if __name__ == "__main__":
         for season in seasons:
             data_season = build_season_data(pdata1821c, sdata, season)
 
-            filename = season + l + '-' + str(HISTORY_LENGTH) + '-.csv'
+            filename = season + l + '-' + str(HISTORY_LENGTH) + '.csv'
 
             data_season.to_csv(os.path.join(
                 DATASETS_DIR, filename), index=False)

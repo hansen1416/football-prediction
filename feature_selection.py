@@ -15,8 +15,6 @@ from sklearn.linear_model import Lasso, RidgeClassifier
 from sklearn.feature_selection import SelectKBest
 from sklearn.feature_selection import chi2, f_regression
 from sklearn.metrics import mean_squared_error, accuracy_score
-from sklearn.preprocessing import MinMaxScaler
-from sklearn.preprocessing import StandardScaler
 from sklearn.neural_network import MLPClassifier
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.svm import SVC
@@ -44,7 +42,7 @@ def read_match_metrics():
     for league in ['EPL']:
         for season in ['2018-2019', '2019-2020', '2020-2021']:
 
-            filename = season + league + '-' + str(HISTORY_LENGTH) + '-.csv'
+            filename = season + league + '-' + str(HISTORY_LENGTH) + '.csv'
 
             df = pd.read_csv(os.path.join(DATASETS_DIR, filename))
 
@@ -84,28 +82,32 @@ if __name__ == "__main__":
 
     # print(df.dtypes)
 
-    X = df.drop(['match_link', 'Season', 'date',
+    X = df.drop(['league', 'match_link', 'Season', 'date',
                 'score', 'label', 'spread'], axis=1)
     y = df['label']
 
-    n_features = 30
+    # print(X)
+    # exit()
+
+    n_features = 70
+
+    scaler = MinMaxScaler(feature_range=(0, 1))
+
+    X_scaled = scaler.fit_transform(X)
 
     select = SelectKBest(score_func=chi2, k=n_features)
-    x_selected = select.fit_transform(X, y)
+    x_selected = select.fit_transform(X_scaled, y)
 
     print("After selecting best {} features: {}, reduced from origin {}".format(
         n_features, x_selected.shape, X.shape))
 
-    filter = select.get_support()
-
-    features = X.columns
-
+    # filter = select.get_support()
+    # features = X.columns
     # print("All features:")
     # print(features)
-
-    print("Selected best {}:".format(n_features))
-    print(features[filter])
-    print(x_selected)
+    # print("Selected best {}:".format(n_features))
+    # print(features[filter])
+    # print(x_selected)
 
     names = [
         "Nearest Neighbors",
@@ -118,7 +120,7 @@ if __name__ == "__main__":
         "Naive Bayes",
         "QDA",
         # "LGBM",
-        "Gaussian Process",
+        # "Gaussian Process",
     ]
 
     classifiers = [
@@ -132,7 +134,7 @@ if __name__ == "__main__":
         GaussianNB(),
         QuadraticDiscriminantAnalysis(),
         # LGBMClassifier(),
-        GaussianProcessClassifier(1.0 * RBF(1.0)),
+        # GaussianProcessClassifier(1.0 * RBF(1.0)),
     ]
 
     X_train, X_test, y_train, y_test = train_test_split(
@@ -142,7 +144,10 @@ if __name__ == "__main__":
 
     for name, clf in zip(names, classifiers):
         clf.fit(X_train, y_train)
-        score = clf.score(X_test, y_test)
+        # score = clf.score(X_test, y_test)
+        y_pred = clf.predict(X_test)
+
+        score = accuracy_score(y_test, y_pred)
 
         print("classifier {}, score {}".format(name, score))
 
