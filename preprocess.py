@@ -68,6 +68,21 @@ def players_data():
     return data.reset_index(drop=True)
 
 
+def keeper_data():
+    df = pd.read_csv(os.path.join(DATASETS_DIR, 'keeper_log.csv'))
+
+    df = df.drop_duplicates(ignore_index=True, keep='first')
+
+    df = df.sort_values(by=['PlayerUrl', 'Date'], ascending=True,
+                        na_position='first', ignore_index=True)
+
+    df = df.fillna(0)
+
+    df['Date'] = pd.to_datetime(df['Date'])
+
+    return df.reset_index(drop=True)
+
+
 def score_label(x):
     # print(x)
     spread = int(x[0]) - int(x[1])
@@ -114,6 +129,26 @@ def get_player_history(df, date, player_link, player_name):
     return hist
 
 
+def get_keeper_history(date, player_link, player_name):
+
+    player_link = clean_url(player_link)
+
+    dp = list(map(int, date.split('-')))
+
+    hist = kpdata[(kpdata['Date'].dt.date < datetime.date(*dp))
+                  & (kpdata['PlayerUrl'] == player_link)]
+
+    hist = hist.tail(HISTORY_LENGTH)
+    hist = hist.drop(['Season', 'Date', 'Comp', 'PlayerUrl', 'PlayerName', 'Day', 'Round', 'Venue', 'Result', 'Squad',
+                      'Opponent', 'Start', 'Pos', 'Min'], axis=1)
+    hist = hist.reset_index(drop=True)
+
+    logger.debug("Got goal keeper {}'s history, shape {}, {}".format(
+        player_name, hist.shape[0], hist.shape[1]))
+
+    return hist
+
+
 def pad_players_data(df):
     if df.shape[0] >= HISTORY_LENGTH:
         return df
@@ -129,22 +164,40 @@ def combine_players_data(pdata_c, date, players_list):
     logger.info("combining {} players' data, {}".
                 format(len(players_list), str([str(p[1]) + '-' + str(p[2]) + '-' + str(p[3]) for p in players_list])))
 
-    nogk = None
-
-    counter = 0
-
+    gk = None
+    # goal keeper's history
     for p in players_list:
+
+        if p[2] != 'GK':
+            continue
         # only include players played more than 45 minutes
         if p[1] == '' or p[2] == '':
             logger.error('play time wrong, {}'.format(
                 json.dumps({'info': p}, indent=4)))
             raise ValueError('play time wrong')
-
+        # todo consider the case two player each play 45 minutes
         if p[3] == '' or int(p[3]) < 45:
             continue
 
+        gk = get_keeper_history(date, p[0], p[1])
+        gk = pad_players_data(gk)
+        gk = gk.reset_index(drop=True)
+
+    nogk = None
+    counter = 0
+
+    for p in players_list:
+
         # goal keeper's data is different
         if p[2] == 'GK':
+            continue
+        # only include players played more than 45 minutes
+        if p[1] == '' or p[2] == '':
+            logger.error('play time wrong, {}'.format(
+                json.dumps({'info': p}, indent=4)))
+            raise ValueError('play time wrong')
+        # todo consider the case two player each play 45 minutes
+        if p[3] == '' or int(p[3]) < 45:
             continue
 
         # print(pdata1821c.dtypes)
@@ -161,6 +214,7 @@ def combine_players_data(pdata_c, date, players_list):
         else:
             for col in nogk.columns:
                 if col != 'PlayerUrl':
+                    # todo extinguigh % col
                     nogk[col] += df[col]
 
         counter += 1
@@ -173,8 +227,16 @@ def combine_players_data(pdata_c, date, players_list):
                      .format(json.dumps({'date': date, 'player list': players_list}, indent=4)))
         raise ValueError('nogk is empty')
 
-    nogk = nogk.drop(['PlayerUrl'], axis=1)
+    if gk is None:
+        logger.error("gk is empty, {}"
+                     .format(json.dumps({'date': date, 'player list': players_list}, indent=4)))
+        raise ValueError('gk is empty')
 
+    nogk = nogk.drop(['PlayerUrl'], axis=1)
+    # merge keeper data with other players' data
+    nogk = nogk.join(gk)
+
+    # todo extinguigh % col
     return nogk.sum(axis=0)
 
     # frames = []
@@ -271,6 +333,7 @@ if __name__ == "__main__":
     mdata = matches_data(leagues, seasons)
     mpdata = match_players(leagues, seasons)
     pdata = players_data()
+    kpdata = keeper_data()
 
     # check match links, they should be the same
     assert sorted(mdata['match_link'].values) == sorted(list(
@@ -278,7 +341,7 @@ if __name__ == "__main__":
 
     sdata = mdata[['league', 'match_link', 'Season', 'date']].copy(deep=True)
 
-    sdata['score'] = mdata['score'].str.split('–')  # .copy(deep=True)
+    sdata['score'] = mdata['score'].str.split('–')
 
     sdata = sdata.reset_index(drop=True)
 
