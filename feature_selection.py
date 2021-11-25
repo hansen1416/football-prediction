@@ -86,7 +86,7 @@ if __name__ == "__main__":
                 'score', 'label', 'spread'], axis=1)
     y = df['label']
 
-    n_features = 70
+    n_features = 80
 
     scaler = MinMaxScaler(feature_range=(0, 1))
 
@@ -98,12 +98,12 @@ if __name__ == "__main__":
     print("After selecting best {} features: {}, reduced from origin {}".format(
         n_features, x_selected.shape, X.shape))
 
-    # filter = select.get_support()
-    # features = X.columns
+    filter = select.get_support()
+    features = X.columns
     # print("All features:")
     # print(features)
-    # print("Selected best {}:".format(n_features))
-    # print(features[filter])
+    print("Selected best {}:".format(n_features))
+    print(features[filter])
     # print(x_selected)
 
     names = [
