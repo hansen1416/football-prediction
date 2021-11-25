@@ -5,6 +5,7 @@ from queue import Queue
 import string
 import sys
 from threading import Thread
+from typing import final
 
 import numpy as np
 import pandas as pd
@@ -255,7 +256,8 @@ class Worker(Thread):
                                 summary_data, ignore_index=True)
 
                             with open(log_file_name, 'a') as f:
-                                summary_data.to_csv(f, header=False)
+                                summary_data.to_csv(
+                                    f, header=False, index=False)
 
                             logger.info("add player {} {}, season {} summary data to {}".format(
                                 url, name, season, log_file_name))
@@ -272,7 +274,7 @@ class Worker(Thread):
                                 [summary_data] + advanced_data, axis=1)
 
                             with open(log_file_name, 'a') as f:
-                                full_data.to_csv(f, header=False)
+                                full_data.to_csv(f, header=False, index=False)
 
                             logger.info("add player {} {}, season {} full data to {}".format(
                                 url, name, season, log_file_name))
@@ -323,7 +325,10 @@ if __name__ == "__main__":
             with open(fn, 'w') as f:
                 empty_data.to_csv(f, index=False)
 
-        ep_df = pd.read_csv(fn)
+        try:
+            ep_df = pd.read_csv(fn)
+        finally:
+            print("file {} wrong".format(fn))
 
         ep_df = ep_df[['PlayerUrl', 'Season']]
 
