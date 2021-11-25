@@ -168,7 +168,7 @@ def combine_players_data(pdata_c, date, players_list):
     # goal keeper's history
     for p in players_list:
 
-        if p[2] != 'GK':
+        if 'GK' not in p[2]:
             continue
         # only include players played more than 45 minutes
         if p[1] == '' or p[2] == '':
@@ -189,7 +189,7 @@ def combine_players_data(pdata_c, date, players_list):
     for p in players_list:
 
         # goal keeper's data is different
-        if p[2] == 'GK':
+        if 'GK' in p[2]:
             continue
         # only include players played more than 45 minutes
         if p[1] == '' or p[2] == '':
@@ -328,7 +328,8 @@ if __name__ == "__main__":
 
     # seasons = ['2016-2017', '2017-2018', '2018-2019', '2019-2020', '2020-2021']
     leagues = ['EPL']
-    seasons = ['2018-2019', '2019-2020', '2020-2021']
+    # seasons = ['2018-2019', '2019-2020', '2020-2021']
+    seasons = ['2019-2020', '2020-2021']
 
     mdata = matches_data(leagues, seasons)
     mpdata = match_players(leagues, seasons)
