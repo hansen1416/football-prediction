@@ -325,10 +325,7 @@ if __name__ == "__main__":
             with open(fn, 'w') as f:
                 empty_data.to_csv(f, index=False)
 
-        try:
-            ep_df = pd.read_csv(fn)
-        finally:
-            print("file {} wrong".format(fn))
+        ep_df = pd.read_csv(fn)
 
         ep_df = ep_df[['PlayerUrl', 'Season']]
 
