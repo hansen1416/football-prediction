@@ -80,7 +80,9 @@ def strip_accents(text):
     try:
         text = unicode(text, 'utf-8')
     except NameError:  # unicode is a default on python 3
-        pass
+        if text == 'Ł':
+            text = 'l'
+        # pass
 
     text = unicodedata.normalize('NFD', text)\
         .encode('ascii', 'ignore')\
