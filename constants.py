@@ -37,6 +37,14 @@ DATASETS_DIR = os.path.join(PROJECT_DIR, 'datasets')
 
 PLAYER_LOG_PREFIX = os.path.join(PROJECT_DIR, 'datasets', 'player_log_')
 
+CLUBELO_URL = 'http://api.clubelo.com/'
+
+elomapping = {'ManchesterUtd': 'ManUnited', 'ManchesterCity': 'ManCity', 'SheffieldUtd': 'SheffieldUnited',
+              'NorwichCity': 'Norwich', 'Alavés': 'Alaves', 'AthleticClub': 'Bilbao', 'Leganés': 'Leganes',
+              'CeltaVigo': 'Celta', 'HellasVerona': 'Verona', 'NewcastleUtd': 'Newcastle',
+              'AtléticoMadrid': 'Atletico', 'Cádiz': 'Cadiz', 'LeedsUnited': 'Leeds',
+              'CardiffCity': 'Cardiff', 'LeicesterCity': 'Leicester'}
+
 columns_basic = ['PlayerUrl', 'PlayerName', 'Season', 'Date', 'Day', 'Comp', 'Round', 'Venue',
                  'Result', 'Squad', 'Opponent', 'Start', 'Pos', 'Min']
 
