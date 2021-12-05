@@ -277,9 +277,10 @@ def match_metrics(pdata_c, match_url, match_date):
     return df
 
 
-def build_season_data(pdata_c, sdata, season):
+def build_season_data(pdata_c, sdata, season, league):
 
-    data = sdata[sdata['Season'] == season].copy(deep=True)
+    data = sdata[(sdata['Season'] == season) & (
+        sdata['league'] == league)].copy(deep=True)
 
     metrics_df = None
 
@@ -389,7 +390,7 @@ if __name__ == "__main__":
 
     for l in leagues:
         for season in seasons:
-            data_season = build_season_data(pdata1821c, sdata, season)
+            data_season = build_season_data(pdata1821c, sdata, season, l)
 
             filename = season + l + '-' + str(HISTORY_LENGTH) + '.csv'
 
