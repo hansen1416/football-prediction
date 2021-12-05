@@ -43,7 +43,7 @@ elomapping = {'ManchesterUtd': 'ManUnited', 'ManchesterCity': 'ManCity', 'Sheffi
               'NorwichCity': 'Norwich', 'Alavés': 'Alaves', 'AthleticClub': 'Bilbao', 'Leganés': 'Leganes',
               'CeltaVigo': 'Celta', 'HellasVerona': 'Verona', 'NewcastleUtd': 'Newcastle',
               'AtléticoMadrid': 'Atletico', 'Cádiz': 'Cadiz', 'LeedsUnited': 'Leeds',
-              'CardiffCity': 'Cardiff', 'LeicesterCity': 'Leicester'}
+              'CardiffCity': 'Cardiff', 'LeicesterCity': 'Leicester', 'RealSociedad': 'Sociedad'}
 
 columns_basic = ['PlayerUrl', 'PlayerName', 'Season', 'Date', 'Day', 'Comp', 'Round', 'Venue',
                  'Result', 'Squad', 'Opponent', 'Start', 'Pos', 'Min']

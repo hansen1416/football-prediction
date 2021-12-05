@@ -1,0 +1,381 @@
+date,match_link,home,away,home_elo,away_elo
+2020-09-19,https://fbref.com/en/matches/34e95e35/Fiorentina-Torino-September-19-2020-Serie-A,Fiorentina,Torino,1639.34924316,1582.67346191
+2020-09-19,https://fbref.com/en/matches/e0a20cfe/Hellas-Verona-Roma-September-19-2020-Serie-A,Hellas Verona,Roma,1545.70458984,1744.70361328
+2020-09-20,https://fbref.com/en/matches/a3e10e13/Parma-Napoli-September-20-2020-Serie-A,Parma,Napoli,1579.25183105,1760.47473145
+2020-09-20,https://fbref.com/en/matches/640f64f3/Genoa-Crotone-September-20-2020-Serie-A,Genoa,Crotone,1548.00085449,1504.18908691
+2020-09-20,https://fbref.com/en/matches/e2711951/Sassuolo-Cagliari-September-20-2020-Serie-A,Sassuolo,Cagliari,1632.94018555,1579.47949219
+2020-09-20,https://fbref.com/en/matches/bd0688ef/Juventus-Sampdoria-September-20-2020-Serie-A,Juventus,Sampdoria,1835.20446777,1586.01220703
+2020-09-21,https://fbref.com/en/matches/3019a52b/Milan-Bologna-September-21-2020-Serie-A,Milan,Bologna,1763.88500977,1581.77075195
+2020-09-26,https://fbref.com/en/matches/63e992fa/Torino-Atalanta-September-26-2020-Serie-A,Torino,Atalanta,1577.51672363,1823.28552246
+2020-09-26,https://fbref.com/en/matches/68fb3c72/Cagliari-Lazio-September-26-2020-Serie-A,Cagliari,Lazio,1582.6340332,1726.50280762
+2020-09-26,https://fbref.com/en/matches/0505790f/Sampdoria-Benevento-September-26-2020-Serie-A,Sampdoria,Benevento,1582.70617676,1547.14794922
+2020-09-26,https://fbref.com/en/matches/87f435d8/Internazionale-Fiorentina-September-26-2020-Serie-A,Inter,Fiorentina,1838.96960449,1645.10644531
+2020-09-27,https://fbref.com/en/matches/f35a0315/Spezia-Sassuolo-September-27-2020-Serie-A,Spezia,Sassuolo,1454.57946777,1631.04846191
+2020-09-27,https://fbref.com/en/matches/671a6bea/Hellas-Verona-Udinese-September-27-2020-Serie-A,Hellas Verona,Udinese,1550.10070801,1592.90539551
+2020-09-27,https://fbref.com/en/matches/28218c1b/Napoli-Genoa-September-27-2020-Serie-A,Napoli,Genoa,1767.1784668,1558.15087891
+2020-09-27,https://fbref.com/en/matches/25339616/Crotone-Milan-September-27-2020-Serie-A,Crotone,Milan,1495.30187988,1770.58093262
+2020-09-27,https://fbref.com/en/matches/813850ed/Roma-Juventus-September-27-2020-Serie-A,Roma,Juventus,1741.57043457,1839.7734375
+2020-09-28,https://fbref.com/en/matches/ddc857bc/Bologna-Parma-September-28-2020-Serie-A,Bologna,Parma,1577.84790039,1572.8482666
+2020-09-30,https://fbref.com/en/matches/5ca8fe51/Udinese-Spezia-September-30-2020-Serie-A,Udinese,Spezia,1593.56774902,1454.57946777
+2020-09-30,https://fbref.com/en/matches/1d2d65d6/Benevento-Internazionale-September-30-2020-Serie-A,Benevento,Inter,1547.14794922,1839.63208008
+2020-09-30,https://fbref.com/en/matches/895c84f1/Lazio-Atalanta-September-30-2020-Serie-A,Lazio,Atalanta,1734.99291992,1823.94787598
+2020-10-02,https://fbref.com/en/matches/853ed5b4/Fiorentina-Sampdoria-October-2-2020-Serie-A,Fiorentina,Sampdoria,1642.95117188,1573.22888184
+2020-10-03,https://fbref.com/en/matches/4898e655/Sassuolo-Crotone-October-3-2020-Serie-A,Sassuolo,Crotone,1637.51672363,1491.10119629
+2020-10-03,https://fbref.com/en/matches/2652d66f/Udinese-Roma-October-3-2020-Serie-A,Udinese,Roma,1567.41491699,1743.04980469
+2020-10-04,https://fbref.com/en/matches/27a44970/Atalanta-Cagliari-October-4-2020-Serie-A,Atalanta,Cagliari,1840.01171875,1575.46887207
+2020-10-04,https://fbref.com/en/matches/f89e07c4/Lazio-Internazionale-October-4-2020-Serie-A,Lazio,Inter,1723.68554688,1847.28015137
+2020-10-04,https://fbref.com/en/matches/0ef09e99/Parma-Hellas-Verona-October-4-2020-Serie-A,Parma,Hellas Verona,1561.96337891,1558.93847656
+2020-10-04,https://fbref.com/en/matches/04102e2d/Benevento-Bologna-October-4-2020-Serie-A,Benevento,Bologna,1552.45715332,1590.05773926
+2020-10-04,https://fbref.com/en/matches/a812c1ea/Milan-Spezia-October-4-2020-Serie-A,Milan,Spezia,1774.78161621,1464.35046387
+2020-10-17,https://fbref.com/en/matches/804e3527/Napoli-Atalanta-October-17-2020-Serie-A,Napoli,Atalanta,1772.50610352,1838.27355957
+2020-10-17,https://fbref.com/en/matches/2f58ef6d/Sampdoria-Lazio-October-17-2020-Serie-A,Sampdoria,Lazio,1571.49072266,1721.9473877
+2020-10-17,https://fbref.com/en/matches/c51b8075/Derby-della-Madonnina-Internazionale-Milan-October-17-2020-Serie-A,Inter,Milan,1845.54211426,1768.29345703
+2020-10-17,https://fbref.com/en/matches/fe73c95f/Crotone-Juventus-October-17-2020-Serie-A,Crotone,Juventus,1489.36303711,1836.5559082
+2020-10-18,https://fbref.com/en/matches/fb7f9915/Bologna-Sassuolo-October-18-2020-Serie-A,Bologna,Sassuolo,1588.31958008,1643.72973633
+2020-10-18,https://fbref.com/en/matches/86fc57b5/Torino-Cagliari-October-18-2020-Serie-A,Torino,Cagliari,1573.42260742,1573.73071289
+2020-10-18,https://fbref.com/en/matches/b6c6dd04/Spezia-Fiorentina-October-18-2020-Serie-A,Spezia,Fiorentina,1462.61230469,1630.3326416
+2020-10-18,https://fbref.com/en/matches/3f8a8da5/Udinese-Parma-October-18-2020-Serie-A,Udinese,Parma,1565.67675781,1560.22521973
+2020-10-18,https://fbref.com/en/matches/8c70e4d2/Roma-Benevento-October-18-2020-Serie-A,Roma,Benevento,1741.31164551,1550.71899414
+2020-10-19,https://fbref.com/en/matches/0390eade/Hellas-Verona-Genoa-October-19-2020-Serie-A,Hellas Verona,Genoa,1557.20031738,1552.40991211
+2020-10-23,https://fbref.com/en/matches/efe8db7d/Sassuolo-Torino-October-23-2020-Serie-A,Sassuolo,Torino,1659.76672363,1571.11669922
+2020-10-24,https://fbref.com/en/matches/ed9e30e7/Atalanta-Sampdoria-October-24-2020-Serie-A,Atalanta,Sampdoria,1842.69702148,1608.85449219
+2020-10-24,https://fbref.com/en/matches/66c85475/Genoa-Internazionale-October-24-2020-Serie-A,Genoa,Inter,1560.68359375,1836.7019043
+2020-10-24,https://fbref.com/en/matches/4a784435/Lazio-Bologna-October-24-2020-Serie-A,Lazio,Bologna,1728.67102051,1581.67626953
+2020-10-25,https://fbref.com/en/matches/c04496c5/Cagliari-Crotone-October-25-2020-Serie-A,Cagliari,Crotone,1588.29736328,1499.07592773
+2020-10-25,https://fbref.com/en/matches/d2315e70/Benevento-Napoli-October-25-2020-Serie-A,Benevento,Napoli,1562.37438965,1787.00769043
+2020-10-25,https://fbref.com/en/matches/537f2b44/Parma-Spezia-October-25-2020-Serie-A,Parma,Spezia,1568.77685547,1471.90698242
+2020-10-25,https://fbref.com/en/matches/64b18020/Fiorentina-Udinese-October-25-2020-Serie-A,Fiorentina,Udinese,1635.69104004,1576.61560059
+2020-10-25,https://fbref.com/en/matches/55ef3ddd/Juventus-Hellas-Verona-October-25-2020-Serie-A,Juventus,Hellas Verona,1854.36633301,1557.6673584
+2020-10-26,https://fbref.com/en/matches/ccde29ed/Milan-Roma-October-26-2020-Serie-A,Milan,Roma,1790.70043945,1766.02050781
+2020-10-31,https://fbref.com/en/matches/6093ca64/Crotone-Atalanta-October-31-2020-Serie-A,Crotone,Atalanta,1487.6628418,1814.58764648
+2020-10-31,https://fbref.com/en/matches/6e9788e7/Internazionale-Parma-October-31-2020-Serie-A,Inter,Parma,1835.97570801,1560.12817383
+2020-10-31,https://fbref.com/en/matches/e2a5c42a/Bologna-Cagliari-October-31-2020-Serie-A,Bologna,Cagliari,1573.47399902,1590.25256348
+2020-11-01,https://fbref.com/en/matches/e6ef7801/Udinese-Milan-November-1-2020-Serie-A,Udinese,Milan,1566.37353516,1791.68859863
+2020-11-01,https://fbref.com/en/matches/59f00a82/Torino-Lazio-November-1-2020-Serie-A,Torino,Lazio,1570.15209961,1727.60571289
+2020-11-01,https://fbref.com/en/matches/8314abe6/Spezia-Juventus-November-1-2020-Serie-A,Spezia,Juventus,1471.09802246,1833.41845703
+2020-11-01,https://fbref.com/en/matches/be251e3d/Roma-Fiorentina-November-1-2020-Serie-A,Roma,Fiorentina,1763.45092773,1638.09375
+2020-11-01,https://fbref.com/en/matches/57755213/Napoli-Sassuolo-November-1-2020-Serie-A,Napoli,Sassuolo,1784.00561523,1651.27355957
+2020-11-01,https://fbref.com/en/matches/3efc9351/Sampdoria-Genoa-November-1-2020-Serie-A,Sampdoria,Genoa,1624.29284668,1551.78808594
+2020-11-02,https://fbref.com/en/matches/0889467c/Hellas-Verona-Benevento-November-2-2020-Serie-A,Hellas Verona,Benevento,1560.50793457,1553.56518555
+2020-11-04,https://fbref.com/en/matches/8f049744/Genoa-Torino-November-4-2020-Serie-A,Genoa,Torino,1556.78637695,1566.79577637
+2020-11-06,https://fbref.com/en/matches/05327d94/Sassuolo-Udinese-November-6-2020-Serie-A,Sassuolo,Udinese,1666.70751953,1560.80236816
+2020-11-07,https://fbref.com/en/matches/fd391825/Cagliari-Sampdoria-November-7-2020-Serie-A,Cagliari,Sampdoria,1581.31396484,1619.23999023
+2020-11-07,https://fbref.com/en/matches/297456f4/Benevento-Spezia-November-7-2020-Serie-A,Benevento,Spezia,1542.3170166,1466.02294922
+2020-11-07,https://fbref.com/en/matches/1d982a6b/Parma-Fiorentina-November-7-2020-Serie-A,Parma,Fiorentina,1565.66186523,1628.86108398
+2020-11-08,https://fbref.com/en/matches/d9fa0ada/Lazio-Juventus-November-8-2020-Serie-A,Lazio,Juventus,1731.3581543,1838.74475098
+2020-11-08,https://fbref.com/en/matches/f34a17fc/Atalanta-Internazionale-November-8-2020-Serie-A,Atalanta,Inter,1803.78747559,1822.36743164
+2020-11-08,https://fbref.com/en/matches/da88eb92/Genoa-Roma-November-8-2020-Serie-A,Genoa,Roma,1544.57568359,1762.96813965
+2020-11-08,https://fbref.com/en/matches/1342ef74/Torino-Crotone-November-8-2020-Serie-A,Torino,Crotone,1572.06091309,1483.74438477
+2020-11-08,https://fbref.com/en/matches/fe4a67f1/Bologna-Napoli-November-8-2020-Serie-A,Bologna,Napoli,1578.88537598,1762.66259766
+2020-11-08,https://fbref.com/en/matches/713a05a0/Milan-Hellas-Verona-November-8-2020-Serie-A,Milan,Hellas Verona,1796.49133301,1568.22888184
+2020-11-21,https://fbref.com/en/matches/50294529/Crotone-Lazio-November-21-2020-Serie-A,Crotone,Lazio,1479.9744873,1727.58825684
+2020-11-21,https://fbref.com/en/matches/34d0c3c5/Spezia-Atalanta-November-21-2020-Serie-A,Spezia,Atalanta,1462.25305176,1800.01757812
+2020-11-21,https://fbref.com/en/matches/5f84e7d6/Juventus-Cagliari-November-21-2020-Serie-A,Juventus,Cagliari,1834.97497559,1577.54406738
+2020-11-22,https://fbref.com/en/matches/91f4fc0c/Fiorentina-Benevento-November-22-2020-Serie-A,Fiorentina,Benevento,1624.54321289,1538.54711914
+2020-11-22,https://fbref.com/en/matches/6f88f246/Hellas-Verona-Sassuolo-November-22-2020-Serie-A,Hellas Verona,Sassuolo,1564.45898438,1658.87731934
+2020-11-22,https://fbref.com/en/matches/1e1de965/Internazionale-Torino-November-22-2020-Serie-A,Inter,Torino,1818.59753418,1568.29101562
+2020-11-22,https://fbref.com/en/matches/1fd43ae7/Roma-Parma-November-22-2020-Serie-A,Roma,Parma,1768.2791748,1561.89208984
+2020-11-22,https://fbref.com/en/matches/c0cdd5ef/Sampdoria-Bologna-November-22-2020-Serie-A,Sampdoria,Bologna,1604.34655762,1575.11547852
+2020-11-22,https://fbref.com/en/matches/bab2a928/Udinese-Genoa-November-22-2020-Serie-A,Udinese,Genoa,1557.0324707,1540.80578613
+2020-11-22,https://fbref.com/en/matches/91e79ece/Napoli-Milan-November-22-2020-Serie-A,Napoli,Milan,1767.17590332,1765.56848145
+2020-11-28,https://fbref.com/en/matches/a1946d0e/Sassuolo-Internazionale-November-28-2020-Serie-A,Sassuolo,Inter,1674.96643066,1818.21496582
+2020-11-28,https://fbref.com/en/matches/6fe2a910/Benevento-Juventus-November-28-2020-Serie-A,Benevento,Juventus,1537.84606934,1844.48413086
+2020-11-28,https://fbref.com/en/matches/bdbd3cea/Atalanta-Hellas-Verona-November-28-2020-Serie-A,Atalanta,Hellas Verona,1819.36364746,1567.57006836
+2020-11-29,https://fbref.com/en/matches/4b30dfa6/Lazio-Udinese-November-29-2020-Serie-A,Lazio,Udinese,1750.80175781,1573.92895508
+2020-11-29,https://fbref.com/en/matches/dac00d76/Milan-Fiorentina-November-29-2020-Serie-A,Milan,Fiorentina,1785.02185059,1619.2668457
+2020-11-29,https://fbref.com/en/matches/529dc319/Bologna-Crotone-November-29-2020-Serie-A,Bologna,Crotone,1586.9777832,1485.42919922
+2020-11-29,https://fbref.com/en/matches/7ef8ee8f/Cagliari-Spezia-November-29-2020-Serie-A,Cagliari,Spezia,1592.00891113,1494.37780762
+2020-11-29,https://fbref.com/en/matches/2813d64e/Napoli-Roma-November-29-2020-Serie-A,Napoli,Roma,1760.73754883,1779.35522461
+2020-11-30,https://fbref.com/en/matches/52feedf3/Torino-Sampdoria-November-30-2020-Serie-A,Torino,Sampdoria,1568.27709961,1603.84082031
+2020-11-30,https://fbref.com/en/matches/d930fb08/Genoa-Parma-November-30-2020-Serie-A,Genoa,Parma,1535.67358398,1564.37890625
+2020-12-05,https://fbref.com/en/matches/3dbc3efe/Spezia-Lazio-December-5-2020-Serie-A,Spezia,Lazio,1504.71447754,1740.859375
+2020-12-05,https://fbref.com/en/matches/bbc484d9/Juventus-Torino-December-5-2020-Serie-A,Juventus,Torino,1848.82836914,1574.88659668
+2020-12-05,https://fbref.com/en/matches/f124eb7b/Internazionale-Bologna-December-5-2020-Serie-A,Inter,Bologna,1842.87658691,1598.3380127
+2020-12-06,https://fbref.com/en/matches/93ef5099/Hellas-Verona-Cagliari-December-6-2020-Serie-A,Hellas Verona,Cagliari,1596.88061523,1597.06787109
+2020-12-06,https://fbref.com/en/matches/7b689c67/Parma-Benevento-December-6-2020-Serie-A,Parma,Benevento,1579.25952148,1550.9901123
+2020-12-06,https://fbref.com/en/matches/930b2d30/Roma-Sassuolo-December-6-2020-Serie-A,Roma,Sassuolo,1784.25476074,1674.67419434
+2020-12-06,https://fbref.com/en/matches/325e496e/Crotone-Napoli-December-6-2020-Serie-A,Crotone,Napoli,1487.42773438,1784.63427734
+2020-12-06,https://fbref.com/en/matches/a4e5ebed/Sampdoria-Milan-December-6-2020-Serie-A,Sampdoria,Milan,1607.73486328,1796.21118164
+2020-12-07,https://fbref.com/en/matches/50ad79b4/Fiorentina-Genoa-December-7-2020-Serie-A,Fiorentina,Genoa,1623.06103516,1534.15161133
+2020-12-11,https://fbref.com/en/matches/d5c7938e/Sassuolo-Benevento-December-11-2020-Serie-A,Sassuolo,Benevento,1685.31970215,1561.54052734
+2020-12-12,https://fbref.com/en/matches/08beb229/Crotone-Spezia-December-12-2020-Serie-A,Crotone,Spezia,1490.9855957,1510.09228516
+2020-12-12,https://fbref.com/en/matches/b51058d7/Torino-Udinese-December-12-2020-Serie-A,Torino,Udinese,1581.62878418,1607.84094238
+2020-12-12,https://fbref.com/en/matches/44411178/Lazio-Hellas-Verona-December-12-2020-Serie-A,Lazio,Hellas Verona,1749.22705078,1602.53991699
+2020-12-13,https://fbref.com/en/matches/7201e4de/Cagliari-Internazionale-December-13-2020-Serie-A,Cagliari,Inter,1598.37231445,1844.50732422
+2020-12-13,https://fbref.com/en/matches/f015f974/Atalanta-Fiorentina-December-13-2020-Serie-A,Atalanta,Fiorentina,1815.71398926,1626.35546875
+2020-12-13,https://fbref.com/en/matches/8b07dcf5/Bologna-Roma-December-13-2020-Serie-A,Bologna,Roma,1597.43286133,1786.97998047
+2020-12-13,https://fbref.com/en/matches/851607c8/Napoli-Sampdoria-December-13-2020-Serie-A,Napoli,Sampdoria,1796.48413086,1605.87658691
+2020-12-13,https://fbref.com/en/matches/7b0d0f68/Genoa-Juventus-December-13-2020-Serie-A,Genoa,Juventus,1546.26501465,1872.3581543
+2020-12-13,https://fbref.com/en/matches/2bb01afd/Milan-Parma-December-13-2020-Serie-A,Milan,Parma,1812.46166992,1586.15393066
+2020-12-15,https://fbref.com/en/matches/c3cb40d3/Udinese-Crotone-December-15-2020-Serie-A,Udinese,Crotone,1609.77124023,1484.57861328
+2020-12-15,https://fbref.com/en/matches/2266b847/Benevento-Lazio-December-15-2020-Serie-A,Benevento,Lazio,1555.13354492,1730.4263916
+2020-12-16,https://fbref.com/en/matches/b021ae83/Juventus-Atalanta-December-16-2020-Serie-A,Juventus,Atalanta,1872.3581543,1809.30700684
+2020-12-16,https://fbref.com/en/matches/df0a6d79/Fiorentina-Sassuolo-December-16-2020-Serie-A,Fiorentina,Sassuolo,1619.94836426,1683.07739258
+2020-12-16,https://fbref.com/en/matches/4cdf47d4/Genoa-Milan-December-16-2020-Serie-A,Genoa,Milan,1539.85791016,1808.91638184
+2020-12-16,https://fbref.com/en/matches/e4e6e1f4/Spezia-Bologna-December-16-2020-Serie-A,Spezia,Bologna,1503.68518066,1597.43286133
+2020-12-16,https://fbref.com/en/matches/842b86b0/Hellas-Verona-Sampdoria-December-16-2020-Serie-A,Hellas Verona,Sampdoria,1608.52648926,1602.70910645
+2020-12-16,https://fbref.com/en/matches/b5f73bdc/Internazionale-Napoli-December-16-2020-Serie-A,Inter,Napoli,1844.50732422,1788.01013184
+2020-12-16,https://fbref.com/en/matches/2dd73236/Parma-Cagliari-December-16-2020-Serie-A,Parma,Cagliari,1579.74682617,1598.37231445
+2020-12-17,https://fbref.com/en/matches/1dab0587/Roma-Torino-December-17-2020-Serie-A,Roma,Torino,1769.97973633,1575.22167969
+2020-12-19,https://fbref.com/en/matches/c2e0d138/Fiorentina-Hellas-Verona-December-19-2020-Serie-A,Fiorentina,Hellas Verona,1614.68334961,1608.52648926
+2020-12-19,https://fbref.com/en/matches/a69937eb/Sampdoria-Crotone-December-19-2020-Serie-A,Sampdoria,Crotone,1602.70910645,1497.82641602
+2020-12-19,https://fbref.com/en/matches/0d8fbf46/Parma-Juventus-December-19-2020-Serie-A,Parma,Juventus,1586.16296387,1875.30700684
+2020-12-20,https://fbref.com/en/matches/7d1527e6/Torino-Bologna-December-20-2020-Serie-A,Torino,Bologna,1566.88439941,1587.99865723
+2020-12-20,https://fbref.com/en/matches/5bac0634/Benevento-Genoa-December-20-2020-Serie-A,Benevento,Genoa,1550.96875,1536.90917969
+2020-12-20,https://fbref.com/en/matches/45ea2eb0/Internazionale-Spezia-December-20-2020-Serie-A,Inter,Spezia,1849.04956055,1490.4375
+2020-12-20,https://fbref.com/en/matches/91d5a777/Cagliari-Udinese-December-20-2020-Serie-A,Cagliari,Udinese,1594.58300781,1605.81359863
+2020-12-20,https://fbref.com/en/matches/dde07477/Sassuolo-Milan-December-20-2020-Serie-A,Sassuolo,Milan,1682.08728027,1802.50036621
+2020-12-20,https://fbref.com/en/matches/c46eb263/Atalanta-Roma-December-20-2020-Serie-A,Atalanta,Roma,1814.57202148,1773.90368652
+2020-12-20,https://fbref.com/en/matches/7ca08670/Lazio-Napoli-December-20-2020-Serie-A,Lazio,Napoli,1726.45617676,1785.50415039
+2020-12-22,https://fbref.com/en/matches/fe3251cd/Crotone-Parma-December-22-2020-Serie-A,Crotone,Parma,1501.78405762,1585.40991211
+2020-12-22,https://fbref.com/en/matches/89bf4a35/Juventus-Fiorentina-December-22-2020-Serie-A,Juventus,Fiorentina,1872.64904785,1614.24902344
+2020-12-23,https://fbref.com/en/matches/56d99aa2/Hellas-Verona-Internazionale-December-23-2020-Serie-A,Hellas Verona,Inter,1600.93017578,1855.91088867
+2020-12-23,https://fbref.com/en/matches/1cacbabc/Sampdoria-Sassuolo-December-23-2020-Serie-A,Sampdoria,Sassuolo,1618.14978027,1682.08728027
+2020-12-23,https://fbref.com/en/matches/93d98765/Udinese-Benevento-December-23-2020-Serie-A,Udinese,Benevento,1605.81359863,1554.93896484
+2020-12-23,https://fbref.com/en/matches/83e1c7a4/Napoli-Torino-December-23-2020-Serie-A,Napoli,Torino,1773.35217285,1562.96032715
+2020-12-23,https://fbref.com/en/matches/568d1b20/Roma-Cagliari-December-23-2020-Serie-A,Roma,Cagliari,1773.90368652,1594.58300781
+2020-12-23,https://fbref.com/en/matches/6eecf6a6/Bologna-Atalanta-December-23-2020-Serie-A,Bologna,Atalanta,1586.18603516,1817.2298584
+2020-12-23,https://fbref.com/en/matches/b53612b6/Milan-Lazio-December-23-2020-Serie-A,Milan,Lazio,1796.67089844,1738.6081543
+2020-12-23,https://fbref.com/en/matches/3315da73/Spezia-Genoa-December-23-2020-Serie-A,Spezia,Genoa,1492.25012207,1542.73864746
+2021-01-03,https://fbref.com/en/matches/fd0874c0/Internazionale-Crotone-January-3-2021-Serie-A,Inter,Crotone,1859.05249023,1495.36425781
+2021-01-03,https://fbref.com/en/matches/50c9b56a/Fiorentina-Bologna-January-3-2021-Serie-A,Fiorentina,Bologna,1639.94213867,1591.7980957
+2021-01-03,https://fbref.com/en/matches/2d1025ac/Atalanta-Sassuolo-January-3-2021-Serie-A,Atalanta,Sassuolo,1827.328125,1683.51159668
+2021-01-03,https://fbref.com/en/matches/e856730d/Parma-Torino-January-3-2021-Serie-A,Parma,Torino,1580.08837891,1562.65698242
+2021-01-03,https://fbref.com/en/matches/49700a7d/Roma-Sampdoria-January-3-2021-Serie-A,Roma,Sampdoria,1767.12097168,1610.93359375
+2021-01-03,https://fbref.com/en/matches/54b2dc2b/Genoa-Lazio-January-3-2021-Serie-A,Genoa,Lazio,1533.16247559,1733.16186523
+2021-01-03,https://fbref.com/en/matches/999f6c1e/Cagliari-Napoli-January-3-2021-Serie-A,Cagliari,Napoli,1593.93518066,1767.25634766
+2021-01-03,https://fbref.com/en/matches/df01ce1a/Spezia-Hellas-Verona-January-3-2021-Serie-A,Spezia,Hellas Verona,1491.06225586,1600.93017578
+2021-01-03,https://fbref.com/en/matches/147553a0/Benevento-Milan-January-3-2021-Serie-A,Benevento,Milan,1564.51513672,1802.46276855
+2021-01-03,https://fbref.com/en/matches/658bd9df/Juventus-Udinese-January-3-2021-Serie-A,Juventus,Udinese,1852.27746582,1592.16394043
+2021-01-06,https://fbref.com/en/matches/1ed9b04f/Cagliari-Benevento-January-6-2021-Serie-A,Cagliari,Benevento,1590.61975098,1578.81262207
+2021-01-06,https://fbref.com/en/matches/9e79367d/Bologna-Udinese-January-6-2021-Serie-A,Bologna,Udinese,1591.7980957,1592.16394043
+2021-01-06,https://fbref.com/en/matches/e5caed3a/Sampdoria-Internazionale-January-6-2021-Serie-A,Sampdoria,Inter,1610.93359375,1859.05249023
+2021-01-06,https://fbref.com/en/matches/17d4228c/Atalanta-Parma-January-6-2021-Serie-A,Atalanta,Parma,1822.01940918,1570.72424316
+2021-01-06,https://fbref.com/en/matches/f4dedbff/Lazio-Fiorentina-January-6-2021-Serie-A,Lazio,Fiorentina,1728.87963867,1639.94213867
+2021-01-06,https://fbref.com/en/matches/43c9cc75/Sassuolo-Genoa-January-6-2021-Serie-A,Sassuolo,Genoa,1683.51159668,1540.91418457
+2021-01-06,https://fbref.com/en/matches/eb671bf1/Torino-Hellas-Verona-January-6-2021-Serie-A,Torino,Hellas Verona,1568.75280762,1597.78845215
+2021-01-06,https://fbref.com/en/matches/74933162/Crotone-Roma-January-6-2021-Serie-A,Crotone,Roma,1504.72839355,1770.65197754
+2021-01-06,https://fbref.com/en/matches/b5800971/Napoli-Spezia-January-6-2021-Serie-A,Napoli,Spezia,1767.25634766,1483.31054688
+2021-01-06,https://fbref.com/en/matches/1c0d714a/Milan-Juventus-January-6-2021-Serie-A,Milan,Juventus,1807.90905762,1852.27746582
+2021-01-09,https://fbref.com/en/matches/6fd79a80/Benevento-Atalanta-January-9-2021-Serie-A,Benevento,Atalanta,1573.88464355,1829.66223145
+2021-01-09,https://fbref.com/en/matches/1d4dd956/Genoa-Bologna-January-9-2021-Serie-A,Genoa,Bologna,1545.19641113,1594.09814453
+2021-01-09,https://fbref.com/en/matches/20cfca5c/Milan-Torino-January-9-2021-Serie-A,Milan,Torino,1802.13391113,1583.93701172
+2021-01-10,https://fbref.com/en/matches/fca08d02/Roma-Internazionale-January-10-2021-Serie-A,Roma,Inter,1770.65197754,1861.5657959
+2021-01-10,https://fbref.com/en/matches/3ecf5600/Udinese-Napoli-January-10-2021-Serie-A,Udinese,Napoli,1589.32189941,1775.16687012
+2021-01-10,https://fbref.com/en/matches/ffaf26ec/Parma-Lazio-January-10-2021-Serie-A,Parma,Lazio,1555.53991699,1733.9732666
+2021-01-10,https://fbref.com/en/matches/aadbce2e/Hellas-Verona-Crotone-January-10-2021-Serie-A,Hellas Verona,Crotone,1603.74780273,1502.21520996
+2021-01-10,https://fbref.com/en/matches/c0ff856b/Fiorentina-Cagliari-January-10-2021-Serie-A,Fiorentina,Cagliari,1637.64208984,1582.70922852
+2021-01-10,https://fbref.com/en/matches/44801875/Juventus-Sassuolo-January-10-2021-Serie-A,Juventus,Sassuolo,1856.09399414,1680.07800293
+2021-01-11,https://fbref.com/en/matches/98db05a7/Spezia-Sampdoria-January-11-2021-Serie-A,Spezia,Sampdoria,1477.35119629,1607.40258789
+2021-01-15,https://fbref.com/en/matches/88aa48fa/Lazio-Roma-January-15-2021-Serie-A,Lazio,Roma,1733.9732666,1774.51550293
+2021-01-16,https://fbref.com/en/matches/e958f63e/Bologna-Hellas-Verona-January-16-2021-Serie-A,Bologna,Hellas Verona,1593.12365723,1608.85388184
+2021-01-16,https://fbref.com/en/matches/b1cc62a1/Torino-Spezia-January-16-2021-Serie-A,Torino,Spezia,1583.6953125,1492.67468262
+2021-01-16,https://fbref.com/en/matches/03eb2f20/Sampdoria-Udinese-January-16-2021-Serie-A,Sampdoria,Udinese,1610.29980469,1589.32189941
+2021-01-17,https://fbref.com/en/matches/fed096cc/Napoli-Fiorentina-January-17-2021-Serie-A,Napoli,Fiorentina,1764.47607422,1638.39892578
+2021-01-17,https://fbref.com/en/matches/e0f2e6fa/Crotone-Benevento-January-17-2021-Serie-A,Crotone,Benevento,1498.35168457,1582.78796387
+2021-01-17,https://fbref.com/en/matches/1abc7190/Sassuolo-Parma-January-17-2021-Serie-A,Sassuolo,Parma,1675.54992676,1552.13757324
+2021-01-17,https://fbref.com/en/matches/0c2829db/Atalanta-Genoa-January-17-2021-Serie-A,Atalanta,Genoa,1838.20593262,1540.98718262
+2021-01-17,https://fbref.com/en/matches/9f1e76e2/Derby-dItalia-Internazionale-Juventus-January-17-2021-Serie-A,Inter,Juventus,1846.85693359,1866.79711914
+2021-01-18,https://fbref.com/en/matches/7e73b874/Cagliari-Milan-January-18-2021-Serie-A,Cagliari,Milan,1573.8059082,1805.93969727
+2021-01-20,https://fbref.com/en/matches/73e858c4/Udinese-Atalanta-January-20-2021-Serie-A,Udinese,Atalanta,1584.68920898,1830.98388672
+2021-01-22,https://fbref.com/en/matches/899e3324/Benevento-Torino-January-22-2021-Serie-A,Benevento,Torino,1577.64660645,1579.88952637
+2021-01-23,https://fbref.com/en/matches/620ad368/Roma-Spezia-January-23-2021-Serie-A,Roma,Spezia,1775.84033203,1503.16137695
+2021-01-23,https://fbref.com/en/matches/a9bddb47/Milan-Atalanta-January-23-2021-Serie-A,Milan,Atalanta,1810.65698242,1825.40551758
+2021-01-23,https://fbref.com/en/matches/611d29c5/Udinese-Internazionale-January-23-2021-Serie-A,Udinese,Inter,1578.10095215,1846.85693359
+2021-01-23,https://fbref.com/en/matches/3b4e31e1/Fiorentina-Crotone-January-23-2021-Serie-A,Fiorentina,Crotone,1627.67797852,1493.48730469
+2021-01-24,https://fbref.com/en/matches/b352906f/Juventus-Bologna-January-24-2021-Serie-A,Juventus,Bologna,1860.09436035,1580.96618652
+2021-01-24,https://fbref.com/en/matches/b36d3fe6/Genoa-Cagliari-January-24-2021-Serie-A,Genoa,Cagliari,1553.14465332,1567.95544434
+2021-01-24,https://fbref.com/en/matches/3f3078ab/Hellas-Verona-Napoli-January-24-2021-Serie-A,Hellas Verona,Napoli,1600.72668457,1764.47607422
+2021-01-24,https://fbref.com/en/matches/63557942/Lazio-Sassuolo-January-24-2021-Serie-A,Lazio,Sassuolo,1753.95581055,1671.21520996
+2021-01-24,https://fbref.com/en/matches/08f034fc/Parma-Sampdoria-January-24-2021-Serie-A,Parma,Sampdoria,1546.16271973,1616.88806152
+2021-01-29,https://fbref.com/en/matches/8fcafae1/Torino-Fiorentina-January-29-2021-Serie-A,Torino,Fiorentina,1576.91040039,1632.10253906
+2021-01-30,https://fbref.com/en/matches/d5a77034/Bologna-Milan-January-30-2021-Serie-A,Bologna,Milan,1589.09326172,1810.65698242
+2021-01-30,https://fbref.com/en/matches/d934636d/Sampdoria-Juventus-January-30-2021-Serie-A,Sampdoria,Juventus,1627.03540039,1860.09436035
+2021-01-30,https://fbref.com/en/matches/f68d48b6/Internazionale-Benevento-January-30-2021-Serie-A,Inter,Benevento,1858.08764648,1561.34375
+2021-01-31,https://fbref.com/en/matches/396901a3/Spezia-Udinese-January-31-2021-Serie-A,Spezia,Udinese,1506.14050293,1583.67932129
+2021-01-31,https://fbref.com/en/matches/28af631e/Atalanta-Lazio-January-31-2021-Serie-A,Atalanta,Lazio,1839.85766602,1758.88708496
+2021-01-31,https://fbref.com/en/matches/70b79e1d/Crotone-Genoa-January-31-2021-Serie-A,Crotone,Genoa,1509.79016113,1560.36682129
+2021-01-31,https://fbref.com/en/matches/1fca8ac2/Cagliari-Sassuolo-January-31-2021-Serie-A,Cagliari,Sassuolo,1563.23815918,1666.28393555
+2021-01-31,https://fbref.com/en/matches/2c868a79/Napoli-Parma-January-31-2021-Serie-A,Napoli,Parma,1758.82727051,1550.49755859
+2021-01-31,https://fbref.com/en/matches/60801f11/Roma-Hellas-Verona-January-31-2021-Serie-A,Roma,Hellas Verona,1763.95300293,1617.09643555
+2021-02-05,https://fbref.com/en/matches/54e27908/Fiorentina-Internazionale-February-5-2021-Serie-A,Fiorentina,Inter,1631.63757324,1855.60351562
+2021-02-06,https://fbref.com/en/matches/8e965bce/Sassuolo-Spezia-February-6-2021-Serie-A,Sassuolo,Spezia,1664.26782227,1504.0201416
+2021-02-06,https://fbref.com/en/matches/3eb9b409/Atalanta-Torino-February-6-2021-Serie-A,Atalanta,Torino,1824.63659668,1577.45556641
+2021-02-06,https://fbref.com/en/matches/a35c9150/Juventus-Roma-February-6-2021-Serie-A,Juventus,Roma,1867.78479004,1763.95300293
+2021-02-06,https://fbref.com/en/matches/9d98d56a/Genoa-Napoli-February-6-2021-Serie-A,Genoa,Napoli,1567.48303223,1762.48376465
+2021-02-07,https://fbref.com/en/matches/853c68d3/Benevento-Sampdoria-February-7-2021-Serie-A,Benevento,Sampdoria,1560.79870605,1622.140625
+2021-02-07,https://fbref.com/en/matches/32d2f8ec/Milan-Crotone-February-7-2021-Serie-A,Milan,Crotone,1800.13549805,1505.36560059
+2021-02-07,https://fbref.com/en/matches/440aefd4/Udinese-Hellas-Verona-February-7-2021-Serie-A,Udinese,Hellas Verona,1596.5715332,1617.09643555
+2021-02-07,https://fbref.com/en/matches/41af7da5/Parma-Bologna-February-7-2021-Serie-A,Parma,Bologna,1540.35021973,1586.29760742
+2021-02-07,https://fbref.com/en/matches/5a88c8e6/Lazio-Cagliari-February-7-2021-Serie-A,Lazio,Cagliari,1758.88708496,1556.12182617
+2021-02-12,https://fbref.com/en/matches/1480cba5/Bologna-Benevento-February-12-2021-Serie-A,Bologna,Benevento,1582.36694336,1557.31225586
+2021-02-13,https://fbref.com/en/matches/23417b4f/Torino-Genoa-February-13-2021-Serie-A,Torino,Genoa,1577.92041016,1592.01928711
+2021-02-13,https://fbref.com/en/matches/bcbcda2a/Napoli-Juventus-February-13-2021-Serie-A,Napoli,Juventus,1750.76855469,1867.78479004
+2021-02-13,https://fbref.com/en/matches/6a8f8283/Spezia-Milan-February-13-2021-Serie-A,Spezia,Milan,1497.09851074,1800.13549805
+2021-02-14,https://fbref.com/en/matches/a4ae010f/Roma-Udinese-February-14-2021-Serie-A,Roma,Udinese,1769.21582031,1596.5715332
+2021-02-14,https://fbref.com/en/matches/32b6852d/Sampdoria-Fiorentina-February-14-2021-Serie-A,Sampdoria,Fiorentina,1621.26831055,1626.42150879
+2021-02-14,https://fbref.com/en/matches/ee2d76d2/Cagliari-Atalanta-February-14-2021-Serie-A,Cagliari,Atalanta,1558.13806152,1817.91955566
+2021-02-14,https://fbref.com/en/matches/7ad2759a/Crotone-Sassuolo-February-14-2021-Serie-A,Crotone,Sassuolo,1492.54455566,1651.38439941
+2021-02-14,https://fbref.com/en/matches/41e36d40/Internazionale-Lazio-February-14-2021-Serie-A,Inter,Lazio,1860.81970215,1774.10803223
+2021-02-15,https://fbref.com/en/matches/56c143c0/Hellas-Verona-Parma-February-15-2021-Serie-A,Hellas Verona,Parma,1600.9432373,1536.69372559
+2021-02-19,https://fbref.com/en/matches/04a08854/Fiorentina-Spezia-February-19-2021-Serie-A,Fiorentina,Spezia,1617.21569824,1527.84191895
+2021-02-19,https://fbref.com/en/matches/9cf96502/Cagliari-Torino-February-19-2021-Serie-A,Cagliari,Torino,1550.66784668,1581.96081543
+2021-02-20,https://fbref.com/en/matches/931a8279/Lazio-Sampdoria-February-20-2021-Serie-A,Lazio,Sampdoria,1766.01708984,1626.59729004
+2021-02-20,https://fbref.com/en/matches/03561585/Genoa-Hellas-Verona-February-20-2021-Serie-A,Genoa,Hellas Verona,1590.8190918,1602.65808105
+2021-02-20,https://fbref.com/en/matches/41043f0c/Sassuolo-Bologna-February-20-2021-Serie-A,Sassuolo,Bologna,1654.15405273,1591.61303711
+2021-02-21,https://fbref.com/en/matches/507ed629/Parma-Udinese-February-21-2021-Serie-A,Parma,Udinese,1516.22875977,1597.47558594
+2021-02-21,https://fbref.com/en/matches/46bba2c0/Derby-della-Madonnina-Milan-Internazionale-February-21-2021-Serie-A,Milan,Inter,1781.64709473,1866.02868652
+2021-02-21,https://fbref.com/en/matches/544ba273/Atalanta-Napoli-February-21-2021-Serie-A,Atalanta,Napoli,1818.8651123,1743.65942383
+2021-02-21,https://fbref.com/en/matches/5e0dc1b3/Benevento-Roma-February-21-2021-Serie-A,Benevento,Roma,1558.28198242,1767.04345703
+2021-02-22,https://fbref.com/en/matches/75abc6dd/Juventus-Crotone-February-22-2021-Serie-A,Juventus,Crotone,1856.5065918,1482.6496582
+2021-02-27,https://fbref.com/en/matches/142b1316/Spezia-Parma-February-27-2021-Serie-A,Spezia,Parma,1514.39428711,1512.96618652
+2021-02-27,https://fbref.com/en/matches/140d5b2f/Bologna-Lazio-February-27-2021-Serie-A,Bologna,Lazio,1591.91442871,1763.30529785
+2021-02-27,https://fbref.com/en/matches/fc6cf212/Hellas-Verona-Juventus-February-27-2021-Serie-A,Hellas Verona,Juventus,1600.21826172,1853.7454834
+2021-02-28,https://fbref.com/en/matches/a66d936c/Sampdoria-Atalanta-February-28-2021-Serie-A,Sampdoria,Atalanta,1620.3338623,1816.09753418
+2021-02-28,https://fbref.com/en/matches/ea288496/Udinese-Fiorentina-February-28-2021-Serie-A,Udinese,Fiorentina,1592.95629883,1623.50549316
+2021-02-28,https://fbref.com/en/matches/38ba7e12/Internazionale-Genoa-February-28-2021-Serie-A,Inter,Genoa,1872.79528809,1585.47705078
+2021-02-28,https://fbref.com/en/matches/2cc69894/Crotone-Cagliari-February-28-2021-Serie-A,Crotone,Cagliari,1475.97583008,1537.81542969
+2021-02-28,https://fbref.com/en/matches/bd99d043/Napoli-Benevento-February-28-2021-Serie-A,Napoli,Benevento,1733.10705566,1558.44482422
+2021-02-28,https://fbref.com/en/matches/456108e4/Roma-Milan-February-28-2021-Serie-A,Roma,Milan,1766.01745605,1765.8684082
+2021-03-02,https://fbref.com/en/matches/962a1ed5/Juventus-Spezia-March-2-2021-Serie-A,Juventus,Spezia,1856.02270508,1516.67138672
+2021-03-03,https://fbref.com/en/matches/351e076d/Sassuolo-Napoli-March-3-2021-Serie-A,Sassuolo,Napoli,1648.97192383,1735.59667969
+2021-03-03,https://fbref.com/en/matches/431a5a5f/Atalanta-Crotone-March-3-2021-Serie-A,Atalanta,Crotone,1818.37463379,1478.25292969
+2021-03-03,https://fbref.com/en/matches/a82caaff/Benevento-Hellas-Verona-March-3-2021-Serie-A,Benevento,Hellas Verona,1560.72192383,1602.49536133
+2021-03-03,https://fbref.com/en/matches/a8319b9b/Genoa-Sampdoria-March-3-2021-Serie-A,Genoa,Sampdoria,1587.75427246,1620.3338623
+2021-03-03,https://fbref.com/en/matches/c3faaff0/Milan-Udinese-March-3-2021-Serie-A,Milan,Udinese,1770.40869141,1595.23339844
+2021-03-03,https://fbref.com/en/matches/c8c9dbcd/Cagliari-Bologna-March-3-2021-Serie-A,Cagliari,Bologna,1540.0925293,1591.91442871
+2021-03-03,https://fbref.com/en/matches/a956b338/Fiorentina-Roma-March-3-2021-Serie-A,Fiorentina,Roma,1623.50549316,1763.75830078
+2021-03-04,https://fbref.com/en/matches/6f5d661c/Parma-Internazionale-March-4-2021-Serie-A,Parma,Inter,1515.24328613,1875.0723877
+2021-03-06,https://fbref.com/en/matches/04a644e1/Spezia-Benevento-March-6-2021-Serie-A,Spezia,Benevento,1515.67370605,1556.02246094
+2021-03-06,https://fbref.com/en/matches/d358078b/Udinese-Sassuolo-March-6-2021-Serie-A,Udinese,Sassuolo,1603.32678223,1648.97192383
+2021-03-06,https://fbref.com/en/matches/10f3a5fa/Juventus-Lazio-March-6-2021-Serie-A,Juventus,Lazio,1850.41650391,1765.58239746
+2021-03-07,https://fbref.com/en/matches/906b9ce4/Roma-Genoa-March-7-2021-Serie-A,Roma,Genoa,1768.85229492,1584.58520508
+2021-03-07,https://fbref.com/en/matches/3caf9523/Fiorentina-Parma-March-7-2021-Serie-A,Fiorentina,Parma,1610.31811523,1516.2409668
+2021-03-07,https://fbref.com/en/matches/7b1a7e36/Crotone-Torino-March-7-2021-Serie-A,Crotone,Torino,1467.86743164,1585.3782959
+2021-03-07,https://fbref.com/en/matches/e521d168/Hellas-Verona-Milan-March-7-2021-Serie-A,Hellas Verona,Milan,1621.2689209,1773.80664062
+2021-03-07,https://fbref.com/en/matches/67a2edc6/Sampdoria-Cagliari-March-7-2021-Serie-A,Sampdoria,Cagliari,1614.81738281,1550.47790527
+2021-03-07,https://fbref.com/en/matches/c4ab7ddf/Napoli-Bologna-March-7-2021-Serie-A,Napoli,Bologna,1740.29614258,1599.44812012
+2021-03-08,https://fbref.com/en/matches/69a9970e/Internazionale-Atalanta-March-8-2021-Serie-A,Inter,Atalanta,1878.24133301,1824.02856445
+2021-03-12,https://fbref.com/en/matches/c5e9737f/Lazio-Crotone-March-12-2021-Serie-A,Lazio,Crotone,1741.43237305,1478.54040527
+2021-03-12,https://fbref.com/en/matches/e1e63737/Atalanta-Spezia-March-12-2021-Serie-A,Atalanta,Spezia,1819.34143066,1511.71289062
+2021-03-13,https://fbref.com/en/matches/1e46b9b1/Sassuolo-Hellas-Verona-March-13-2021-Serie-A,Sassuolo,Hellas Verona,1637.52734375,1612.79138184
+2021-03-13,https://fbref.com/en/matches/f8a1df03/Benevento-Fiorentina-March-13-2021-Serie-A,Benevento,Fiorentina,1541.60949707,1611.28527832
+2021-03-13,https://fbref.com/en/matches/e002d4e8/Genoa-Udinese-March-13-2021-Serie-A,Genoa,Udinese,1579.91552734,1624.94921875
+2021-03-14,https://fbref.com/en/matches/e9f38abe/Bologna-Sampdoria-March-14-2021-Serie-A,Bologna,Sampdoria,1598.3326416,1610.94543457
+2021-03-14,https://fbref.com/en/matches/6e12ea76/Torino-Internazionale-March-14-2021-Serie-A,Torino,Inter,1571.86315918,1884.29211426
+2021-03-14,https://fbref.com/en/matches/e05a120e/Parma-Roma-March-14-2021-Serie-A,Parma,Roma,1516.70837402,1770.64916992
+2021-03-14,https://fbref.com/en/matches/194fd887/Cagliari-Juventus-March-14-2021-Serie-A,Cagliari,Juventus,1560.22058105,1854.11779785
+2021-03-14,https://fbref.com/en/matches/5b0eaf99/Milan-Napoli-March-14-2021-Serie-A,Milan,Napoli,1779.54870605,1748.83544922
+2021-03-17,https://fbref.com/en/matches/29a9edb0/Torino-Sassuolo-March-17-2021-Serie-A,Torino,Sassuolo,1575.49975586,1649.95385742
+2021-03-19,https://fbref.com/en/matches/d6a89f1a/Parma-Genoa-March-19-2021-Serie-A,Parma,Genoa,1539.39343262,1583.51538086
+2021-03-20,https://fbref.com/en/matches/d9940b97/Crotone-Bologna-March-20-2021-Serie-A,Crotone,Bologna,1479.9029541,1606.66113281
+2021-03-20,https://fbref.com/en/matches/fd31055b/Spezia-Cagliari-March-20-2021-Serie-A,Spezia,Cagliari,1512.8404541,1560.00268555
+2021-03-21,https://fbref.com/en/matches/89228264/Hellas-Verona-Atalanta-March-21-2021-Serie-A,Hellas Verona,Atalanta,1608.52978516,1817.79943848
+2021-03-21,https://fbref.com/en/matches/a25c580b/Sampdoria-Torino-March-21-2021-Serie-A,Sampdoria,Torino,1603.58691406,1582.06542969
+2021-03-21,https://fbref.com/en/matches/5220e231/Juventus-Benevento-March-21-2021-Serie-A,Juventus,Benevento,1861.1907959,1532.37597656
+2021-03-21,https://fbref.com/en/matches/8b57f864/Udinese-Lazio-March-21-2021-Serie-A,Udinese,Lazio,1621.17175293,1746.89025879
+2021-03-21,https://fbref.com/en/matches/07624790/Fiorentina-Milan-March-21-2021-Serie-A,Fiorentina,Milan,1620.34130859,1775.75964355
+2021-03-21,https://fbref.com/en/matches/dd3d3041/Roma-Napoli-March-21-2021-Serie-A,Roma,Napoli,1773.19616699,1756.30834961
+2021-04-03,https://fbref.com/en/matches/b442d9c8/Milan-Sampdoria-April-3-2021-Serie-A,Milan,Sampdoria,1766.42175293,1602.43933105
+2021-04-03,https://fbref.com/en/matches/66cfafa8/Sassuolo-Roma-April-3-2021-Serie-A,Sassuolo,Roma,1637.32568359,1773.19616699
+2021-04-03,https://fbref.com/en/matches/5f760f9f/Cagliari-Hellas-Verona-April-3-2021-Serie-A,Cagliari,Hellas Verona,1558.85498047,1603.05688477
+2021-04-03,https://fbref.com/en/matches/622f917c/Atalanta-Udinese-April-3-2021-Serie-A,Atalanta,Udinese,1816.65185547,1615.46520996
+2021-04-03,https://fbref.com/en/matches/e6c8d095/Benevento-Parma-April-3-2021-Serie-A,Benevento,Parma,1531.22827148,1538.24584961
+2021-04-03,https://fbref.com/en/matches/c5ac8b28/Lazio-Spezia-April-3-2021-Serie-A,Lazio,Spezia,1745.74267578,1511.69287109
+2021-04-03,https://fbref.com/en/matches/5e7b3f36/Napoli-Crotone-April-3-2021-Serie-A,Napoli,Crotone,1755.16064453,1478.75537109
+2021-04-03,https://fbref.com/en/matches/b0dede3e/Genoa-Fiorentina-April-3-2021-Serie-A,Genoa,Fiorentina,1590.06896973,1615.14233398
+2021-04-03,https://fbref.com/en/matches/6b976e12/Torino-Juventus-April-3-2021-Serie-A,Torino,Juventus,1580.91784668,1860.04309082
+2021-04-03,https://fbref.com/en/matches/36ce86ac/Bologna-Internazionale-April-3-2021-Serie-A,Bologna,Inter,1611.08618164,1889.96801758
+2021-04-07,https://fbref.com/en/matches/07109d8f/Juventus-Napoli-April-7-2021-Serie-A,Juventus,Napoli,1838.38293457,1768.33251953
+2021-04-07,https://fbref.com/en/matches/c697420f/Internazionale-Sassuolo-April-7-2021-Serie-A,Inter,Sassuolo,1888.8203125,1639.82629395
+2021-04-10,https://fbref.com/en/matches/69ea8c1b/Spezia-Crotone-April-10-2021-Serie-A,Spezia,Crotone,1517.6307373,1471.43981934
+2021-04-10,https://fbref.com/en/matches/d524d212/Parma-Milan-April-10-2021-Serie-A,Parma,Milan,1531.98425293,1766.49780273
+2021-04-10,https://fbref.com/en/matches/35941dd3/Udinese-Torino-April-10-2021-Serie-A,Udinese,Torino,1615.84362793,1580.30981445
+2021-04-11,https://fbref.com/en/matches/c50a199d/Internazionale-Cagliari-April-11-2021-Serie-A,Inter,Cagliari,1893.71386719,1539.73937988
+2021-04-11,https://fbref.com/en/matches/73a99fba/Juventus-Genoa-April-11-2021-Serie-A,Juventus,Genoa,1847.07751465,1589.81396484
+2021-04-11,https://fbref.com/en/matches/0e507824/Sampdoria-Napoli-April-11-2021-Serie-A,Sampdoria,Napoli,1617.3059082,1764.60668945
+2021-04-11,https://fbref.com/en/matches/7230fd32/Hellas-Verona-Lazio-April-11-2021-Serie-A,Hellas Verona,Lazio,1616.99938965,1757.13635254
+2021-04-11,https://fbref.com/en/matches/cd82b9fa/Roma-Bologna-April-11-2021-Serie-A,Roma,Bologna,1770.33496094,1611.57751465
+2021-04-11,https://fbref.com/en/matches/a3bcdb71/Fiorentina-Atalanta-April-11-2021-Serie-A,Fiorentina,Atalanta,1618.62316895,1824.97216797
+2021-04-12,https://fbref.com/en/matches/39d2406b/Benevento-Sassuolo-April-12-2021-Serie-A,Benevento,Sassuolo,1545.53930664,1637.66748047
+2021-04-17,https://fbref.com/en/matches/074cc08b/Sampdoria-Hellas-Verona-April-17-2021-Serie-A,Sampdoria,Hellas Verona,1610.26123047,1611.69897461
+2021-04-17,https://fbref.com/en/matches/bf71bd8a/Crotone-Udinese-April-17-2021-Serie-A,Crotone,Udinese,1468.7767334,1607.03540039
+2021-04-17,https://fbref.com/en/matches/dec7a70c/Sassuolo-Fiorentina-April-17-2021-Serie-A,Sassuolo,Fiorentina,1647.29882812,1614.82763672
+2021-04-17,https://fbref.com/en/matches/a6e56289/Cagliari-Parma-April-17-2021-Serie-A,Cagliari,Parma,1541.69067383,1530.3815918
+2021-04-18,https://fbref.com/en/matches/ab91fa34/Milan-Genoa-April-18-2021-Serie-A,Milan,Genoa,1775.58618164,1589.86242676
+2021-04-18,https://fbref.com/en/matches/3868521e/Bologna-Spezia-April-18-2021-Serie-A,Bologna,Spezia,1609.02978516,1526.74572754
+2021-04-18,https://fbref.com/en/matches/1d15b3c8/Atalanta-Juventus-April-18-2021-Serie-A,Atalanta,Juventus,1831.99377441,1850.25512695
+2021-04-18,https://fbref.com/en/matches/776cb976/Lazio-Benevento-April-18-2021-Serie-A,Lazio,Benevento,1763.47070312,1542.35986328
+2021-04-18,https://fbref.com/en/matches/d2f68b73/Torino-Roma-April-18-2021-Serie-A,Torino,Roma,1593.37792969,1778.02050781
+2021-04-18,https://fbref.com/en/matches/3cb0281b/Napoli-Internazionale-April-18-2021-Serie-A,Napoli,Inter,1775.91125488,1898.21472168
+2021-04-20,https://fbref.com/en/matches/8af95a26/Hellas-Verona-Fiorentina-April-20-2021-Serie-A,Hellas Verona,Fiorentina,1602.53430176,1615.86157227
+2021-04-21,https://fbref.com/en/matches/24bbd9bb/Milan-Sassuolo-April-21-2021-Serie-A,Milan,Sassuolo,1775.58618164,1657.24108887
+2021-04-21,https://fbref.com/en/matches/f27d2f16/Juventus-Parma-April-21-2021-Serie-A,Juventus,Parma,1851.2890625,1531.41540527
+2021-04-21,https://fbref.com/en/matches/b146d7f8/Spezia-Internazionale-April-21-2021-Serie-A,Spezia,Inter,1527.77966309,1899.24853516
+2021-04-21,https://fbref.com/en/matches/6d56961f/Genoa-Benevento-April-21-2021-Serie-A,Genoa,Benevento,1590.89624023,1543.39367676
+2021-04-21,https://fbref.com/en/matches/daf10d8f/Udinese-Cagliari-April-21-2021-Serie-A,Udinese,Cagliari,1612.43615723,1542.7244873
+2021-04-21,https://fbref.com/en/matches/0332b891/Bologna-Torino-April-21-2021-Serie-A,Bologna,Torino,1617.82434082,1610.66333008
+2021-04-21,https://fbref.com/en/matches/274dac9a/Crotone-Sampdoria-April-21-2021-Serie-A,Crotone,Sampdoria,1469.81054688,1621.49365234
+2021-04-22,https://fbref.com/en/matches/f57c8510/Roma-Atalanta-April-22-2021-Serie-A,Roma,Atalanta,1778.02050781,1840.40112305
+2021-04-22,https://fbref.com/en/matches/754b4ecd/Napoli-Lazio-April-22-2021-Serie-A,Napoli,Lazio,1778.29296875,1767.08154297
+2021-04-24,https://fbref.com/en/matches/a7c2b8b7/Genoa-Spezia-April-24-2021-Serie-A,Genoa,Spezia,1587.76184082,1518.98510742
+2021-04-24,https://fbref.com/en/matches/03fe0915/Parma-Crotone-April-24-2021-Serie-A,Parma,Crotone,1524.56286621,1464.40991211
+2021-04-24,https://fbref.com/en/matches/6c97d0e1/Sassuolo-Sampdoria-April-24-2021-Serie-A,Sassuolo,Sampdoria,1669.1192627,1626.45581055
+2021-04-25,https://fbref.com/en/matches/a67b34df/Benevento-Udinese-April-25-2021-Serie-A,Benevento,Udinese,1539.78283691,1601.51928711
+2021-04-25,https://fbref.com/en/matches/75688c51/Fiorentina-Juventus-April-25-2021-Serie-A,Fiorentina,Juventus,1616.03942871,1843.91552734
+2021-04-25,https://fbref.com/en/matches/584c1b77/Internazionale-Hellas-Verona-April-25-2021-Serie-A,Inter,Hellas Verona,1896.86682129,1602.53430176
+2021-04-25,https://fbref.com/en/matches/71d115c5/Cagliari-Roma-April-25-2021-Serie-A,Cagliari,Roma,1549.57702637,1761.7689209
+2021-04-25,https://fbref.com/en/matches/33b047f3/Atalanta-Bologna-April-25-2021-Serie-A,Atalanta,Bologna,1839.28649902,1616.43554688
+2021-04-26,https://fbref.com/en/matches/ab8e85cc/Torino-Napoli-April-26-2021-Serie-A,Torino,Napoli,1612.05212402,1789.80725098
+2021-04-26,https://fbref.com/en/matches/f4eeb9e2/Lazio-Milan-April-26-2021-Serie-A,Lazio,Milan,1755.56726074,1766.8425293
+2021-05-01,https://fbref.com/en/matches/bfd0dbc7/Hellas-Verona-Spezia-May-1-2021-Serie-A,Hellas Verona,Spezia,1591.72485352,1518.63061523
+2021-05-01,https://fbref.com/en/matches/c5109aaf/Crotone-Internazionale-May-1-2021-Serie-A,Crotone,Inter,1470.06982422,1891.10961914
+2021-05-01,https://fbref.com/en/matches/fcac8b3f/Milan-Benevento-May-1-2021-Serie-A,Milan,Benevento,1754.49084473,1531.55749512
+2021-05-02,https://fbref.com/en/matches/c96763e8/Lazio-Genoa-May-2-2021-Serie-A,Lazio,Genoa,1767.91882324,1593.07922363
+2021-05-02,https://fbref.com/en/matches/3c83d756/Napoli-Cagliari-May-2-2021-Serie-A,Napoli,Cagliari,1796.35437012,1572.53881836
+2021-05-02,https://fbref.com/en/matches/f4ecba60/Sassuolo-Atalanta-May-2-2021-Serie-A,Sassuolo,Atalanta,1672.69348145,1844.74060059
+2021-05-02,https://fbref.com/en/matches/8ecfe8f3/Bologna-Fiorentina-May-2-2021-Serie-A,Bologna,Fiorentina,1608.78637695,1618.80639648
+2021-05-02,https://fbref.com/en/matches/674a4f75/Udinese-Juventus-May-2-2021-Serie-A,Udinese,Juventus,1610.06677246,1841.03649902
+2021-05-02,https://fbref.com/en/matches/2205a4f9/Sampdoria-Roma-May-2-2021-Serie-A,Sampdoria,Roma,1618.49133301,1750.83862305
+2021-05-03,https://fbref.com/en/matches/6c10dfd1/Torino-Parma-May-3-2021-Serie-A,Torino,Parma,1603.30981445,1511.85754395
+2021-05-08,https://fbref.com/en/matches/d5d0d3e2/Spezia-Napoli-May-8-2021-Serie-A,Spezia,Napoli,1519.62841797,1787.68530273
+2021-05-08,https://fbref.com/en/matches/d3941f3c/Udinese-Bologna-May-8-2021-Serie-A,Udinese,Bologna,1606.26000977,1607.81176758
+2021-05-08,https://fbref.com/en/matches/03d222bf/Internazionale-Sampdoria-May-8-2021-Serie-A,Inter,Sampdoria,1890.69799805,1632.61816406
+2021-05-08,https://fbref.com/en/matches/9d555da5/Fiorentina-Lazio-May-8-2021-Serie-A,Fiorentina,Lazio,1619.78100586,1768.87438965
+2021-05-09,https://fbref.com/en/matches/42ece542/Genoa-Sassuolo-May-9-2021-Serie-A,Genoa,Sassuolo,1587.73327637,1676.62902832
+2021-05-09,https://fbref.com/en/matches/363c8411/Parma-Atalanta-May-9-2021-Serie-A,Parma,Atalanta,1505.08459473,1839.07336426
+2021-05-09,https://fbref.com/en/matches/d95da5d0/Benevento-Cagliari-May-9-2021-Serie-A,Benevento,Cagliari,1525.87841797,1576.81762695
+2021-05-09,https://fbref.com/en/matches/228a8ec0/Hellas-Verona-Torino-May-9-2021-Serie-A,Hellas Verona,Torino,1586.33679199,1607.88769531
+2021-05-09,https://fbref.com/en/matches/4d002860/Roma-Crotone-May-9-2021-Serie-A,Roma,Crotone,1728.02526855,1466.09118652
+2021-05-09,https://fbref.com/en/matches/923a5d9c/Juventus-Milan-May-9-2021-Serie-A,Juventus,Milan,1842.64819336,1756.24316406
+2021-05-11,https://fbref.com/en/matches/e138b3d4/Napoli-Udinese-May-11-2021-Serie-A,Napoli,Udinese,1788.14880371,1605.49157715
+2021-05-12,https://fbref.com/en/matches/cab29e98/Cagliari-Fiorentina-May-12-2021-Serie-A,Cagliari,Fiorentina,1577.28112793,1635.27783203
+2021-05-12,https://fbref.com/en/matches/0e1a60ab/Internazionale-Roma-May-12-2021-Serie-A,Inter,Roma,1891.16149902,1734.06945801
+2021-05-12,https://fbref.com/en/matches/030a58e3/Atalanta-Benevento-May-12-2021-Serie-A,Atalanta,Benevento,1839.53686523,1526.34179688
+2021-05-12,https://fbref.com/en/matches/0d1eeeb7/Sampdoria-Spezia-May-12-2021-Serie-A,Sampdoria,Spezia,1628.99633789,1520.09191895
+2021-05-12,https://fbref.com/en/matches/5e3779b5/Torino-Milan-May-12-2021-Serie-A,Torino,Milan,1609.03979492,1756.24316406
+2021-05-12,https://fbref.com/en/matches/d0d89fa8/Lazio-Parma-May-12-2021-Serie-A,Lazio,Parma,1754.30456543,1505.5480957
+2021-05-12,https://fbref.com/en/matches/1c41e914/Sassuolo-Juventus-May-12-2021-Serie-A,Sassuolo,Juventus,1676.62902832,1843.11169434
+2021-05-12,https://fbref.com/en/matches/a70859d6/Bologna-Genoa-May-12-2021-Serie-A,Bologna,Genoa,1609.50708008,1588.19677734
+2021-05-13,https://fbref.com/en/matches/873ae989/Crotone-Hellas-Verona-May-13-2021-Serie-A,Crotone,Hellas Verona,1466.55456543,1586.8001709
+2021-05-15,https://fbref.com/en/matches/ac8da305/Genoa-Atalanta-May-15-2021-Serie-A,Genoa,Atalanta,1581.34057617,1843.09375
+2021-05-15,https://fbref.com/en/matches/76a3787a/Spezia-Torino-May-15-2021-Serie-A,Spezia,Torino,1514.82202148,1609.03979492
+2021-05-15,https://fbref.com/en/matches/dd907cde/Derby-dItalia-Juventus-Internazionale-May-15-2021-Serie-A,Juventus,Inter,1823.2800293,1895.2467041
+2021-05-15,https://fbref.com/en/matches/4af9058b/Roma-Lazio-May-15-2021-Serie-A,Roma,Lazio,1734.06945801,1754.30456543
+2021-05-16,https://fbref.com/en/matches/f86ee343/Fiorentina-Napoli-May-16-2021-Serie-A,Fiorentina,Napoli,1635.27783203,1799.51757812
+2021-05-16,https://fbref.com/en/matches/d49635a8/Udinese-Sampdoria-May-16-2021-Serie-A,Udinese,Sampdoria,1599.3927002,1628.99633789
+2021-05-16,https://fbref.com/en/matches/4c7bbd5a/Benevento-Crotone-May-16-2021-Serie-A,Benevento,Crotone,1515.34631348,1462.34362793
+2021-05-16,https://fbref.com/en/matches/bf0d6bef/Parma-Sassuolo-May-16-2021-Serie-A,Parma,Sassuolo,1501.99121094,1675.76220703
+2021-05-16,https://fbref.com/en/matches/8f871841/Milan-Cagliari-May-16-2021-Serie-A,Milan,Cagliari,1776.0748291,1588.2767334
+2021-05-17,https://fbref.com/en/matches/33b33786/Hellas-Verona-Bologna-May-17-2021-Serie-A,Hellas Verona,Bologna,1586.11157227,1595.4921875
+2021-05-18,https://fbref.com/en/matches/1634303e/Lazio-Torino-May-18-2021-Serie-A,Lazio,Torino,1745.7869873,1596.18310547
+2021-05-22,https://fbref.com/en/matches/b6d19eaa/Crotone-Fiorentina-May-22-2021-Serie-A,Crotone,Fiorentina,1472.48840332,1628.16674805
+2021-05-22,https://fbref.com/en/matches/123c0a84/Cagliari-Genoa-May-22-2021-Serie-A,Cagliari,Genoa,1594.47875977,1592.09545898
+2021-05-22,https://fbref.com/en/matches/b78a19bf/Sampdoria-Parma-May-22-2021-Serie-A,Sampdoria,Parma,1633.39001465,1499.96630859
+2021-05-23,https://fbref.com/en/matches/ba1cf5be/Internazionale-Udinese-May-23-2021-Serie-A,Inter,Udinese,1891.28112793,1590.76171875
+2021-05-23,https://fbref.com/en/matches/ba16ed7b/Sassuolo-Lazio-May-23-2021-Serie-A,Sassuolo,Lazio,1675.76220703,1740.3963623
+2021-05-23,https://fbref.com/en/matches/20b4611e/Napoli-Hellas-Verona-May-23-2021-Serie-A,Napoli,Hellas Verona,1799.51757812,1575.96679688
+2021-05-23,https://fbref.com/en/matches/55d41615/Torino-Benevento-May-23-2021-Serie-A,Torino,Benevento,1580.6887207,1513.45483398
+2021-05-23,https://fbref.com/en/matches/b5678aec/Atalanta-Milan-May-23-2021-Serie-A,Atalanta,Milan,1848.24511719,1788.93139648
+2021-05-23,https://fbref.com/en/matches/aae48f2c/Spezia-Roma-May-23-2021-Serie-A,Spezia,Roma,1519.0592041,1739.86401367
+2021-05-23,https://fbref.com/en/matches/566b33ff/Bologna-Juventus-May-23-2021-Serie-A,Bologna,Juventus,1596.15698242,1831.00305176

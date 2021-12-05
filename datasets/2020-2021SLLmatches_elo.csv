@@ -1,0 +1,381 @@
+date,match_link,home,away,home_elo,away_elo
+2020-09-12,https://fbref.com/en/matches/056f7848/Eibar-Celta-Vigo-September-12-2020-La-Liga,Eibar,Celta Vigo,1681.35180664,1668.20031738
+2020-09-12,https://fbref.com/en/matches/083135b8/Granada-Athletic-Club-September-12-2020-La-Liga,Granada,Athletic Club,1711.28503418,1719.87097168
+2020-09-12,https://fbref.com/en/matches/15d5602e/Cadiz-Osasuna-September-12-2020-La-Liga,Cádiz,Osasuna,1550.32092285,1695.10229492
+2020-09-13,https://fbref.com/en/matches/8c3b5490/Alaves-Real-Betis-September-13-2020-La-Liga,Alavés,Betis,1641.5892334,1665.88330078
+2020-09-13,https://fbref.com/en/matches/36e547b6/Valladolid-Real-Sociedad-September-13-2020-La-Liga,Valladolid,Real Sociedad,1653.14660645,1736.91162109
+2020-09-13,https://fbref.com/en/matches/b9a5d357/Villarreal-Huesca-September-13-2020-La-Liga,Villarreal,Huesca,1768.0670166,1592.69689941
+2020-09-13,https://fbref.com/en/matches/49d3b582/Valencia-Levante-September-13-2020-La-Liga,Valencia,Levante,1732.92138672,1697.91516113
+2020-09-19,https://fbref.com/en/matches/c9880239/Villarreal-Eibar-September-19-2020-La-Liga,Villarreal,Eibar,1764.59680176,1681.63635254
+2020-09-19,https://fbref.com/en/matches/55e47b9d/Getafe-Osasuna-September-19-2020-La-Liga,Getafe,Osasuna,1735.0916748,1703.85754395
+2020-09-19,https://fbref.com/en/matches/a63e9783/Celta-Vigo-Valencia-September-19-2020-La-Liga,Celta Vigo,Valencia,1670.50292969,1740.6652832
+2020-09-20,https://fbref.com/en/matches/8598db55/Huesca-Cadiz-September-20-2020-La-Liga,Huesca,Cádiz,1599.32946777,1544.15283203
+2020-09-20,https://fbref.com/en/matches/98b24ea3/Granada-Alaves-September-20-2020-La-Liga,Granada,Alavés,1725.62121582,1633.06103516
+2020-09-20,https://fbref.com/en/matches/c6a6db36/Real-Betis-Valladolid-September-20-2020-La-Liga,Betis,Valladolid,1675.56213379,1654.30725098
+2020-09-20,https://fbref.com/en/matches/9ff705c3/Real-Sociedad-Real-Madrid-September-20-2020-La-Liga,Real Sociedad,Real Madrid,1738.91345215,1917.1427002
+2020-09-26,https://fbref.com/en/matches/0e2e2ec9/Alaves-Getafe-September-26-2020-La-Liga,Alavés,Getafe,1628.70715332,1741.41516113
+2020-09-26,https://fbref.com/en/matches/fecf3cbd/Valencia-Huesca-September-26-2020-La-Liga,Valencia,Huesca,1733.04333496,1583.32861328
+2020-09-26,https://fbref.com/en/matches/970ca4d6/Elche-Real-Sociedad-September-26-2020-La-Liga,Elche,Real Sociedad,1560.58850098,1742.57531738
+2020-09-26,https://fbref.com/en/matches/eca849a3/Real-Betis-Real-Madrid-September-26-2020-La-Liga,Betis,Real Madrid,1683.80847168,1914.63146973
+2020-09-27,https://fbref.com/en/matches/3e106d0a/Osasuna-Levante-September-27-2020-La-Liga,Osasuna,Levante,1698.92163086,1690.98352051
+2020-09-27,https://fbref.com/en/matches/beb62b3e/Eibar-Athletic-Club-September-27-2020-La-Liga,Eibar,Athletic Club,1677.71411133,1711.29760742
+2020-09-27,https://fbref.com/en/matches/5ad39ebe/Atletico-Madrid-Granada-September-27-2020-La-Liga,Atlético Madrid,Granada,1888.10461426,1730.94763184
+2020-09-27,https://fbref.com/en/matches/45e6c785/Valladolid-Celta-Vigo-September-27-2020-La-Liga,Valladolid,Celta Vigo,1646.29785156,1679.27563477
+2020-09-27,https://fbref.com/en/matches/d3862248/Cadiz-Sevilla-September-27-2020-La-Liga,Cádiz,Sevilla,1560.72900391,1860.4185791
+2020-09-27,https://fbref.com/en/matches/67e47686/Barcelona-Villarreal-September-27-2020-La-Liga,Barcelona,Villarreal,1952.26696777,1769.90649414
+2020-09-29,https://fbref.com/en/matches/543c20ca/Real-Sociedad-Valencia-September-29-2020-La-Liga,Real Sociedad,Valencia,1751.70043945,1727.7611084
+2020-09-29,https://fbref.com/en/matches/3134d731/Getafe-Real-Betis-September-29-2020-La-Liga,Getafe,Betis,1740.3182373,1679.95861816
+2020-09-30,https://fbref.com/en/matches/0a2446dc/Villarreal-Alaves-September-30-2020-La-Liga,Villarreal,Alavés,1769.90649414,1630.27783203
+2020-09-30,https://fbref.com/en/matches/82839575/Huesca-Atletico-Madrid-September-30-2020-La-Liga,Huesca,Atlético Madrid,1583.56555176,1888.34143066
+2020-09-30,https://fbref.com/en/matches/85fa82a1/Eibar-Elche-September-30-2020-La-Liga,Eibar,Elche,1677.9510498,1560.82543945
+2020-09-30,https://fbref.com/en/matches/9d7e2859/Real-Madrid-Valladolid-September-30-2020-La-Liga,Real Madrid,Valladolid,1914.86828613,1646.29785156
+2020-10-01,https://fbref.com/en/matches/3dcf270b/Sevilla-Levante-October-1-2020-La-Liga,Sevilla,Levante,1860.65551758,1690.98352051
+2020-10-01,https://fbref.com/en/matches/f85d48a3/Athletic-Club-Cadiz-October-1-2020-La-Liga,Athletic Club,Cádiz,1711.29760742,1560.96594238
+2020-10-01,https://fbref.com/en/matches/9b6cefe1/Celta-Vigo-Barcelona-October-1-2020-La-Liga,Celta Vigo,Barcelona,1680.45959473,1952.50378418
+2020-10-03,https://fbref.com/en/matches/e50b93e5/Valladolid-Eibar-October-3-2020-La-Liga,Valladolid,Eibar,1643.62207031,1656.42260742
+2020-10-03,https://fbref.com/en/matches/a86b36da/Atletico-Madrid-Villarreal-October-3-2020-La-Liga,Atlético Madrid,Villarreal,1889.55029297,1769.63562012
+2020-10-03,https://fbref.com/en/matches/eaf3fb90/Elche-Huesca-October-3-2020-La-Liga,Elche,Huesca,1564.5078125,1597.79748535
+2020-10-03,https://fbref.com/en/matches/913d2329/Real-Sociedad-Getafe-October-3-2020-La-Liga,Real Sociedad,Getafe,1741.43054199,1749.19567871
+2020-10-03,https://fbref.com/en/matches/456c15cf/Valencia-Real-Betis-October-3-2020-La-Liga,Valencia,Betis,1738.03100586,1671.08117676
+2020-10-04,https://fbref.com/en/matches/ed786021/Osasuna-Celta-Vigo-October-4-2020-La-Liga,Osasuna,Celta Vigo,1684.89160156,1677.61328125
+2020-10-04,https://fbref.com/en/matches/02286a68/Alaves-Athletic-Club-October-4-2020-La-Liga,Alavés,Athletic Club,1627.94836426,1709.34301758
+2020-10-04,https://fbref.com/en/matches/9364ca86/Levante-Real-Madrid-October-4-2020-La-Liga,Levante,Real Madrid,1705.01342773,1920.68371582
+2020-10-04,https://fbref.com/en/matches/7da57e66/Cadiz-Granada-October-4-2020-La-Liga,Cádiz,Granada,1556.71801758,1734.72277832
+2020-10-04,https://fbref.com/en/matches/3c20c9a2/Barcelona-Sevilla-October-4-2020-La-Liga,Barcelona,Sevilla,1957.78857422,1864.90332031
+2020-10-17,https://fbref.com/en/matches/9d291faa/Granada-Sevilla-October-17-2020-La-Liga,Granada,Sevilla,1734.72277832,1870.6595459
+2020-10-17,https://fbref.com/en/matches/2a78c932/Celta-Vigo-Atletico-Madrid-October-17-2020-La-Liga,Celta Vigo,Atlético Madrid,1677.61328125,1892.23461914
+2020-10-17,https://fbref.com/en/matches/edd4d083/Real-Madrid-Cadiz-October-17-2020-La-Liga,Real Madrid,Cádiz,1923.36804199,1572.99914551
+2020-10-17,https://fbref.com/en/matches/ffc25afd/Getafe-Barcelona-October-17-2020-La-Liga,Getafe,Barcelona,1751.88000488,1966.00354004
+2020-10-18,https://fbref.com/en/matches/647c55ca/Eibar-Osasuna-October-18-2020-La-Liga,Eibar,Osasuna,1668.64099121,1696.33789062
+2020-10-18,https://fbref.com/en/matches/0793d671/Athletic-Club-Levante-October-18-2020-La-Liga,Athletic Club,Levante,1709.34301758,1698.67077637
+2020-10-18,https://fbref.com/en/matches/4aa7eefd/Villarreal-Valencia-October-18-2020-La-Liga,Villarreal,Valencia,1777.14526367,1724.84692383
+2020-10-18,https://fbref.com/en/matches/d32a8736/Alaves-Elche-October-18-2020-La-Liga,Alavés,Elche,1636.54589844,1567.19213867
+2020-10-18,https://fbref.com/en/matches/315c4b8e/Huesca-Valladolid-October-18-2020-La-Liga,Huesca,Valladolid,1598.72521973,1636.77246094
+2020-10-18,https://fbref.com/en/matches/4794b1a6/Real-Betis-Real-Sociedad-October-18-2020-La-Liga,Betis,Real Sociedad,1689.63391113,1744.11486816
+2020-10-23,https://fbref.com/en/matches/7403c103/Elche-Valencia-October-23-2020-La-Liga,Elche,Valencia,1576.67102051,1713.68835449
+2020-10-24,https://fbref.com/en/matches/9b07dcbc/El-Clasico-Barcelona-Real-Madrid-October-24-2020-La-Liga,Barcelona,Real Madrid,1945.22851562,1893.91467285
+2020-10-24,https://fbref.com/en/matches/a536a648/Sevilla-Eibar-October-24-2020-La-Liga,Sevilla,Eibar,1859.24108887,1665.97302246
+2020-10-24,https://fbref.com/en/matches/38da970e/Osasuna-Athletic-Club-October-24-2020-La-Liga,Osasuna,Athletic Club,1691.35852051,1708.16821289
+2020-10-24,https://fbref.com/en/matches/52870eeb/Atletico-Madrid-Real-Betis-October-24-2020-La-Liga,Atlético Madrid,Betis,1880.07849121,1674.41442871
+2020-10-25,https://fbref.com/en/matches/606d1bce/Valladolid-Alaves-October-25-2020-La-Liga,Valladolid,Alavés,1635.77978516,1618.49194336
+2020-10-25,https://fbref.com/en/matches/f1089c9f/Cadiz-Villarreal-October-25-2020-La-Liga,Cádiz,Villarreal,1586.23327637,1782.36853027
+2020-10-25,https://fbref.com/en/matches/0b5c2b39/Getafe-Granada-October-25-2020-La-Liga,Getafe,Granada,1746.39367676,1736.1427002
+2020-10-25,https://fbref.com/en/matches/ded16731/Real-Sociedad-Huesca-October-25-2020-La-Liga,Real Sociedad,Huesca,1763.38769531,1596.35302734
+2020-10-26,https://fbref.com/en/matches/a3eca3e6/Levante-Celta-Vigo-October-26-2020-La-Liga,Levante,Celta Vigo,1687.88317871,1660.95556641
+2020-10-30,https://fbref.com/en/matches/d9287a79/Eibar-Cadiz-October-30-2020-La-Liga,Eibar,Cádiz,1684.86975098,1598.67578125
+2020-10-31,https://fbref.com/en/matches/93673585/Real-Madrid-Huesca-October-31-2020-La-Liga,Real Madrid,Huesca,1915.72583008,1595.95422363
+2020-10-31,https://fbref.com/en/matches/9ac1528e/Athletic-Club-Sevilla-October-31-2020-La-Liga,Athletic Club,Sevilla,1705.98254395,1856.64001465
+2020-10-31,https://fbref.com/en/matches/649ad5eb/Osasuna-Atletico-Madrid-October-31-2020-La-Liga,Osasuna,Atlético Madrid,1707.07568359,1896.49194336
+2020-10-31,https://fbref.com/en/matches/87d962cb/Alaves-Barcelona-October-31-2020-La-Liga,Alavés,Barcelona,1637.66577148,1948.96142578
+2020-11-01,https://fbref.com/en/matches/61ffbad2/Real-Betis-Elche-November-1-2020-La-Liga,Betis,Elche,1671.83166504,1595.62011719
+2020-11-01,https://fbref.com/en/matches/9532015b/Celta-Vigo-Real-Sociedad-November-1-2020-La-Liga,Celta Vigo,Real Sociedad,1664.35522461,1767.5189209
+2020-11-01,https://fbref.com/en/matches/1da39788/Granada-Levante-November-1-2020-La-Liga,Granada,Levante,1753.14575195,1689.97094727
+2020-11-01,https://fbref.com/en/matches/627831a7/Valencia-Getafe-November-1-2020-La-Liga,Valencia,Getafe,1712.55297852,1741.58581543
+2020-11-02,https://fbref.com/en/matches/965ae0ee/Villarreal-Valladolid-November-2-2020-La-Liga,Villarreal,Valladolid,1783.57580566,1625.85498047
+2020-11-06,https://fbref.com/en/matches/53c05fc6/Elche-Celta-Vigo-November-6-2020-La-Liga,Elche,Celta Vigo,1585.66833496,1652.57897949
+2020-11-07,https://fbref.com/en/matches/52688e00/Huesca-Eibar-November-7-2020-La-Liga,Huesca,Eibar,1590.2779541,1664.3458252
+2020-11-07,https://fbref.com/en/matches/1c5be3e6/Barcelona-Real-Betis-November-7-2020-La-Liga,Barcelona,Betis,1940.79296875,1678.76843262
+2020-11-07,https://fbref.com/en/matches/3e030894/Sevilla-Osasuna-November-7-2020-La-Liga,Sevilla,Osasuna,1844.49975586,1696.60754395
+2020-11-07,https://fbref.com/en/matches/69ba62d3/Atletico-Madrid-Cadiz-November-7-2020-La-Liga,Atlético Madrid,Cádiz,1893.75231934,1612.4230957
+2020-11-08,https://fbref.com/en/matches/593d9bb2/Getafe-Villarreal-November-8-2020-La-Liga,Getafe,Villarreal,1746.58166504,1788.41650391
+2020-11-08,https://fbref.com/en/matches/910d9fc9/Real-Sociedad-Granada-November-8-2020-La-Liga,Real Sociedad,Granada,1780.04199219,1758.12792969
+2020-11-08,https://fbref.com/en/matches/f0416d1e/Levante-Alaves-November-8-2020-La-Liga,Levante,Alavés,1690.14929199,1640.43469238
+2020-11-08,https://fbref.com/en/matches/707d9a5a/Valladolid-Athletic-Club-November-8-2020-La-Liga,Valladolid,Athletic Club,1617.99938965,1713.05334473
+2020-11-08,https://fbref.com/en/matches/67626947/Valencia-Real-Madrid-November-8-2020-La-Liga,Valencia,Real Madrid,1708.30651855,1919.17272949
+2020-11-20,https://fbref.com/en/matches/052141c9/Osasuna-Huesca-November-20-2020-La-Liga,Osasuna,Huesca,1696.96228027,1594.04223633
+2020-11-21,https://fbref.com/en/matches/e89ce534/Levante-Elche-November-21-2020-La-Liga,Levante,Elche,1693.91357422,1589.43261719
+2020-11-21,https://fbref.com/en/matches/3428445b/Villarreal-Real-Madrid-November-21-2020-La-Liga,Villarreal,Real Madrid,1796.72424316,1922.93701172
+2020-11-21,https://fbref.com/en/matches/4383501b/Sevilla-Celta-Vigo-November-21-2020-La-Liga,Sevilla,Celta Vigo,1848.26403809,1656.15197754
+2020-11-21,https://fbref.com/en/matches/43512e62/Atletico-Madrid-Barcelona-November-21-2020-La-Liga,Atlético Madrid,Barcelona,1897.51660156,1944.55725098
+2020-11-22,https://fbref.com/en/matches/23b72004/Eibar-Getafe-November-22-2020-La-Liga,Eibar,Getafe,1667.71875,1734.56530762
+2020-11-22,https://fbref.com/en/matches/4758cb68/Cadiz-Real-Sociedad-November-22-2020-La-Liga,Cádiz,Real Sociedad,1612.67944336,1795.09460449
+2020-11-22,https://fbref.com/en/matches/0a7b748e/Granada-Valladolid-November-22-2020-La-Liga,Granada,Valladolid,1749.98657227,1621.76367188
+2020-11-22,https://fbref.com/en/matches/de351e12/Alaves-Valencia-November-22-2020-La-Liga,Alavés,Valencia,1647.29064941,1732.45031738
+2020-11-23,https://fbref.com/en/matches/3663111f/Athletic-Club-Real-Betis-November-23-2020-La-Liga,Athletic Club,Betis,1716.81762695,1682.53271484
+2020-11-27,https://fbref.com/en/matches/a6739bc2/Valladolid-Levante-November-27-2020-La-Liga,Valladolid,Levante,1651.8269043,1689.48852539
+2020-11-28,https://fbref.com/en/matches/ec140ab3/Elche-Cadiz-November-28-2020-La-Liga,Elche,Cádiz,1597.08117676,1610.60534668
+2020-11-28,https://fbref.com/en/matches/a9d485ac/Valencia-Atletico-Madrid-November-28-2020-La-Liga,Valencia,Atlético Madrid,1734.89025879,1903.50817871
+2020-11-28,https://fbref.com/en/matches/48c2c10e/Huesca-Sevilla-November-28-2020-La-Liga,Huesca,Sevilla,1599.89294434,1861.24682617
+2020-11-28,https://fbref.com/en/matches/8514945b/Real-Madrid-Alaves-November-28-2020-La-Liga,Real Madrid,Alavés,1915.23205566,1650.97473145
+2020-11-29,https://fbref.com/en/matches/10b5cb6c/Barcelona-Osasuna-November-29-2020-La-Liga,Barcelona,Osasuna,1947.80285645,1693.53967285
+2020-11-29,https://fbref.com/en/matches/add782a1/Getafe-Athletic-Club-November-29-2020-La-Liga,Getafe,Athletic Club,1735.48803711,1722.23754883
+2020-11-29,https://fbref.com/en/matches/80baa2ab/Celta-Vigo-Granada-November-29-2020-La-Liga,Celta Vigo,Granada,1655.50402832,1734.94421387
+2020-11-29,https://fbref.com/en/matches/26b79011/Real-Sociedad-Villarreal-November-29-2020-La-Liga,Real Sociedad,Villarreal,1803.29260254,1805.51013184
+2020-11-30,https://fbref.com/en/matches/043ceb52/Real-Betis-Eibar-November-30-2020-La-Liga,Betis,Eibar,1668.92370605,1668.83276367
+2020-12-04,https://fbref.com/en/matches/d078209c/Athletic-Club-Celta-Vigo-December-4-2020-La-Liga,Athletic Club,Celta Vigo,1713.69226074,1657.04943848
+2020-12-05,https://fbref.com/en/matches/7ba04d2d/Levante-Getafe-December-5-2020-La-Liga,Levante,Getafe,1674.44055176,1724.8248291
+2020-12-05,https://fbref.com/en/matches/6b44d551/Sevilla-Real-Madrid-December-5-2020-La-Liga,Sevilla,Real Madrid,1836.16015625,1873.77416992
+2020-12-05,https://fbref.com/en/matches/03ba0ca6/Atletico-Madrid-Valladolid-December-5-2020-La-Liga,Atlético Madrid,Valladolid,1901.06286621,1635.44519043
+2020-12-05,https://fbref.com/en/matches/b0c1990b/Cadiz-Barcelona-December-5-2020-La-Liga,Cádiz,Barcelona,1601.34484863,1943.86303711
+2020-12-06,https://fbref.com/en/matches/9bfc09f8/Granada-Huesca-December-6-2020-La-Liga,Granada,Huesca,1698.25939941,1587.77990723
+2020-12-06,https://fbref.com/en/matches/fd627a61/Osasuna-Real-Betis-December-6-2020-La-Liga,Osasuna,Betis,1675.96240234,1641.6619873
+2020-12-06,https://fbref.com/en/matches/0f578146/Villarreal-Elche-December-6-2020-La-Liga,Villarreal,Elche,1798.37280273,1585.08972168
+2020-12-06,https://fbref.com/en/matches/16108fee/Alaves-Real-Sociedad-December-6-2020-La-Liga,Alavés,Real Sociedad,1650.62255859,1775.1965332
+2020-12-07,https://fbref.com/en/matches/93444131/Eibar-Valencia-December-7-2020-La-Liga,Eibar,Valencia,1668.7520752,1713.77661133
+2020-12-11,https://fbref.com/en/matches/0d074d58/Valladolid-Osasuna-December-11-2020-La-Liga,Valladolid,Osasuna,1632.98291016,1661.64489746
+2020-12-12,https://fbref.com/en/matches/de3c803f/Valencia-Athletic-Club-December-12-2020-La-Liga,Valencia,Athletic Club,1714.38623047,1693.40002441
+2020-12-12,https://fbref.com/en/matches/8d1dc7f5/Getafe-Sevilla-December-12-2020-La-Liga,Getafe,Sevilla,1706.23095703,1828.88623047
+2020-12-12,https://fbref.com/en/matches/bf384210/Huesca-Alaves-December-12-2020-La-Liga,Huesca,Alavés,1587.63366699,1653.06762695
+2020-12-12,https://fbref.com/en/matches/2d8a4ddd/El-Derbi-Madrileno-Real-Madrid-Atletico-Madrid-December-12-2020-La-Liga,Real Madrid,Atlético Madrid,1884.72265625,1906.65563965
+2020-12-13,https://fbref.com/en/matches/515bf2be/Real-Sociedad-Eibar-December-13-2020-La-Liga,Real Sociedad,Eibar,1775.7845459,1669.0065918
+2020-12-13,https://fbref.com/en/matches/8c7f5044/Real-Betis-Villarreal-December-13-2020-La-Liga,Betis,Villarreal,1656.84375,1788.9942627
+2020-12-13,https://fbref.com/en/matches/5b711c37/Elche-Granada-December-13-2020-La-Liga,Elche,Granada,1586.90332031,1694.0793457
+2020-12-13,https://fbref.com/en/matches/5ef7c398/Barcelona-Levante-December-13-2020-La-Liga,Barcelona,Levante,1905.43151855,1688.80981445
+2020-12-14,https://fbref.com/en/matches/d1ed8d84/Celta-Vigo-Cadiz-December-14-2020-La-Liga,Celta Vigo,Cádiz,1668.02832031,1611.33056641
+2020-12-15,https://fbref.com/en/matches/ad50de94/Real-Madrid-Athletic-Club-December-15-2020-La-Liga,Real Madrid,Athletic Club,1884.82446289,1695.67822266
+2020-12-16,https://fbref.com/en/matches/be0928c2/Barcelona-Real-Sociedad-December-16-2020-La-Liga,Barcelona,Real Sociedad,1905.43151855,1771.41101074
+2020-12-18,https://fbref.com/en/matches/fe536378/Athletic-Club-Huesca-December-18-2020-La-Liga,Athletic Club,Huesca,1691.90808105,1596.14611816
+2020-12-19,https://fbref.com/en/matches/ce479171/Atletico-Madrid-Elche-December-19-2020-La-Liga,Atlético Madrid,Elche,1896.48059082,1587.00512695
+2020-12-19,https://fbref.com/en/matches/29e2c236/Barcelona-Valencia-December-19-2020-La-Liga,Barcelona,Valencia,1907.75305176,1714.48815918
+2020-12-19,https://fbref.com/en/matches/f6b2a2a6/Levante-Real-Sociedad-December-19-2020-La-Liga,Levante,Real Sociedad,1688.80981445,1771.41101074
+2020-12-19,https://fbref.com/en/matches/3575a467/Osasuna-Villarreal-December-19-2020-La-Liga,Osasuna,Villarreal,1654.25720215,1786.94018555
+2020-12-19,https://fbref.com/en/matches/2d7c6aaa/Sevilla-Valladolid-December-19-2020-La-Liga,Sevilla,Valladolid,1835.51245117,1640.57434082
+2020-12-20,https://fbref.com/en/matches/025d63df/Celta-Vigo-Alaves-December-20-2020-La-Liga,Celta Vigo,Alavés,1678.82275391,1644.65698242
+2020-12-20,https://fbref.com/en/matches/393d3a24/Granada-Real-Betis-December-20-2020-La-Liga,Granada,Betis,1699.35021973,1658.99963379
+2020-12-20,https://fbref.com/en/matches/c77f2423/Cadiz-Getafe-December-20-2020-La-Liga,Cádiz,Getafe,1600.53613281,1699.80847168
+2020-12-20,https://fbref.com/en/matches/1946dc03/Eibar-Real-Madrid-December-20-2020-La-Liga,Eibar,Real Madrid,1673.38012695,1895.10131836
+2020-12-22,https://fbref.com/en/matches/692ed77c/Elche-Osasuna-December-22-2020-La-Liga,Elche,Osasuna,1580.10644531,1654.25720215
+2020-12-22,https://fbref.com/en/matches/0a9cce7b/Valencia-Sevilla-December-22-2020-La-Liga,Valencia,Sevilla,1712.31176758,1835.51245117
+2020-12-22,https://fbref.com/en/matches/731e8449/Real-Sociedad-Atletico-Madrid-December-22-2020-La-Liga,Real Sociedad,Atlético Madrid,1759.19104004,1896.48059082
+2020-12-22,https://fbref.com/en/matches/259ecaa0/Huesca-Levante-December-22-2020-La-Liga,Huesca,Levante,1589.77575684,1695.08947754
+2020-12-22,https://fbref.com/en/matches/086be9c6/Valladolid-Barcelona-December-22-2020-La-Liga,Valladolid,Barcelona,1640.57434082,1911.37194824
+2020-12-22,https://fbref.com/en/matches/351e60c3/Villarreal-Athletic-Club-December-22-2020-La-Liga,Villarreal,Athletic Club,1795.52050781,1698.27844238
+2020-12-23,https://fbref.com/en/matches/e3b2ae55/Getafe-Celta-Vigo-December-23-2020-La-Liga,Getafe,Celta Vigo,1710.02404785,1678.82275391
+2020-12-23,https://fbref.com/en/matches/d98e1eba/Real-Madrid-Granada-December-23-2020-La-Liga,Real Madrid,Granada,1904.64550781,1707.26269531
+2020-12-23,https://fbref.com/en/matches/f281b31b/Alaves-Eibar-December-23-2020-La-Liga,Alavés,Eibar,1636.44799805,1667.60620117
+2020-12-23,https://fbref.com/en/matches/f4e53914/Real-Betis-Cadiz-December-23-2020-La-Liga,Betis,Cádiz,1658.99963379,1600.53613281
+2020-12-29,https://fbref.com/en/matches/70db94fc/Sevilla-Villarreal-December-29-2020-La-Liga,Sevilla,Villarreal,1829.30529785,1795.52050781
+2020-12-29,https://fbref.com/en/matches/d3f9d764/Barcelona-Eibar-December-29-2020-La-Liga,Barcelona,Eibar,1905.09240723,1660.03295898
+2020-12-29,https://fbref.com/en/matches/01b9957b/Cadiz-Valladolid-December-29-2020-La-Liga,Cádiz,Valladolid,1590.32055664,1640.83007812
+2020-12-29,https://fbref.com/en/matches/d66ce142/Levante-Real-Betis-December-29-2020-La-Liga,Levante,Betis,1695.08947754,1651.0871582
+2020-12-30,https://fbref.com/en/matches/a0d46fea/Granada-Valencia-December-30-2020-La-Liga,Granada,Valencia,1703.47802734,1711.90197754
+2020-12-30,https://fbref.com/en/matches/33dd6d9f/Celta-Vigo-Huesca-December-30-2020-La-Liga,Celta Vigo,Huesca,1689.24255371,1589.77575684
+2020-12-30,https://fbref.com/en/matches/841373ab/Atletico-Madrid-Getafe-December-30-2020-La-Liga,Atlético Madrid,Getafe,1907.07873535,1707.81323242
+2020-12-30,https://fbref.com/en/matches/7ae82df2/Elche-Real-Madrid-December-30-2020-La-Liga,Elche,Real Madrid,1578.04248047,1908.43017578
+2020-12-31,https://fbref.com/en/matches/1f0ac7ba/Athletic-Club-Real-Sociedad-December-31-2020-La-Liga,Athletic Club,Real Sociedad,1702.44470215,1759.19104004
+2020-12-31,https://fbref.com/en/matches/6af627e0/Osasuna-Alaves-December-31-2020-La-Liga,Osasuna,Alavés,1645.67687988,1636.44799805
+2021-01-02,https://fbref.com/en/matches/de88aaef/Villarreal-Levante-January-2-2021-La-Liga,Villarreal,Levante,1791.35424805,1699.3182373
+2021-01-02,https://fbref.com/en/matches/d296206a/Real-Betis-Sevilla-January-2-2021-La-Liga,Betis,Sevilla,1656.34777832,1835.99462891
+2021-01-02,https://fbref.com/en/matches/bcc7eb41/Getafe-Valladolid-January-2-2021-La-Liga,Getafe,Valladolid,1707.81323242,1640.83007812
+2021-01-02,https://fbref.com/en/matches/db92bd0a/Real-Madrid-Celta-Vigo-January-2-2021-La-Liga,Real Madrid,Celta Vigo,1908.43017578,1689.24255371
+2021-01-03,https://fbref.com/en/matches/22b8a289/Athletic-Club-Elche-January-3-2021-La-Liga,Athletic Club,Elche,1702.44470215,1578.35180664
+2021-01-03,https://fbref.com/en/matches/425deb4c/Alaves-Atletico-Madrid-January-3-2021-La-Liga,Alavés,Atlético Madrid,1644.02124023,1907.07873535
+2021-01-03,https://fbref.com/en/matches/e0d1b5e4/Real-Sociedad-Osasuna-January-3-2021-La-Liga,Real Sociedad,Osasuna,1759.12255859,1643.67016602
+2021-01-03,https://fbref.com/en/matches/0f6e9976/Eibar-Granada-January-3-2021-La-Liga,Eibar,Granada,1660.03295898,1703.47802734
+2021-01-03,https://fbref.com/en/matches/200fff0a/Huesca-Barcelona-January-3-2021-La-Liga,Huesca,Barcelona,1591.16064453,1903.95861816
+2021-01-04,https://fbref.com/en/matches/50010d24/Valencia-Cadiz-January-4-2021-La-Liga,Valencia,Cádiz,1705.14611816,1585.06005859
+2021-01-06,https://fbref.com/en/matches/31a74d4f/Athletic-Club-Barcelona-January-6-2021-La-Liga,Athletic Club,Barcelona,1693.97900391,1903.95861816
+2021-01-08,https://fbref.com/en/matches/5934210b/Celta-Vigo-Villarreal-January-8-2021-La-Liga,Celta Vigo,Villarreal,1693.63525391,1783.52111816
+2021-01-09,https://fbref.com/en/matches/17d685e9/Sevilla-Real-Sociedad-January-9-2021-La-Liga,Sevilla,Real Sociedad,1840.11035156,1759.12255859
+2021-01-09,https://fbref.com/en/matches/820f8ab3/Granada-Barcelona-January-9-2021-La-Liga,Granada,Barcelona,1710.23388672,1906.50256348
+2021-01-09,https://fbref.com/en/matches/ba67824f/Osasuna-Real-Madrid-January-9-2021-La-Liga,Osasuna,Real Madrid,1643.67016602,1905.34790039
+2021-01-10,https://fbref.com/en/matches/da826608/Levante-Eibar-January-10-2021-La-Liga,Levante,Eibar,1694.75158691,1678.16796875
+2021-01-10,https://fbref.com/en/matches/ed892048/Cadiz-Alaves-January-10-2021-La-Liga,Cádiz,Alavés,1589.80566406,1645.71862793
+2021-01-10,https://fbref.com/en/matches/f0d90ea0/Valladolid-Valencia-January-10-2021-La-Liga,Valladolid,Valencia,1652.2512207,1705.14611816
+2021-01-11,https://fbref.com/en/matches/598a0118/Elche-Getafe-January-11-2021-La-Liga,Elche,Getafe,1584.9185791,1693.63000488
+2021-01-11,https://fbref.com/en/matches/2ddfb4cd/Huesca-Real-Betis-January-11-2021-La-Liga,Huesca,Betis,1586.76806641,1654.45129395
+2021-01-12,https://fbref.com/en/matches/5dbb4172/Granada-Osasuna-January-12-2021-La-Liga,Granada,Osasuna,1699.18408203,1648.29638672
+2021-01-12,https://fbref.com/en/matches/365c041c/Atletico-Madrid-Sevilla-January-12-2021-La-Liga,Atlético Madrid,Sevilla,1913.38085938,1840.11035156
+2021-01-19,https://fbref.com/en/matches/431297ad/Valladolid-Elche-January-19-2021-La-Liga,Valladolid,Elche,1643.82629395,1580.70629883
+2021-01-19,https://fbref.com/en/matches/d1dbb92c/Cadiz-Levante-January-19-2021-La-Liga,Cádiz,Levante,1601.47143555,1700.88244629
+2021-01-19,https://fbref.com/en/matches/4ed0d230/Alaves-Sevilla-January-19-2021-La-Liga,Alavés,Sevilla,1630.52478027,1837.5501709
+2021-01-20,https://fbref.com/en/matches/8abb68ff/Getafe-Huesca-January-20-2021-La-Liga,Getafe,Huesca,1703.39868164,1584.22412109
+2021-01-20,https://fbref.com/en/matches/3a0332a1/Real-Betis-Celta-Vigo-January-20-2021-La-Liga,Betis,Celta Vigo,1665.26135254,1676.171875
+2021-01-20,https://fbref.com/en/matches/1a0ee7c0/Villarreal-Granada-January-20-2021-La-Liga,Villarreal,Granada,1802.06677246,1698.62023926
+2021-01-21,https://fbref.com/en/matches/c6a385f0/Valencia-Osasuna-January-21-2021-La-Liga,Valencia,Osasuna,1708.81335449,1645.39807129
+2021-01-21,https://fbref.com/en/matches/3e304abe/Eibar-Atletico-Madrid-January-21-2021-La-Liga,Eibar,Atlético Madrid,1672.03710938,1913.38085938
+2021-01-22,https://fbref.com/en/matches/9477759f/Levante-Valladolid-January-22-2021-La-Liga,Levante,Valladolid,1699.72241211,1640.20458984
+2021-01-23,https://fbref.com/en/matches/33ea6205/Huesca-Villarreal-January-23-2021-La-Liga,Huesca,Villarreal,1573.41418457,1802.06677246
+2021-01-23,https://fbref.com/en/matches/0ae5bca4/Sevilla-Cadiz-January-23-2021-La-Liga,Sevilla,Cádiz,1837.5501709,1601.47143555
+2021-01-23,https://fbref.com/en/matches/9deba325/Real-Sociedad-Real-Betis-January-23-2021-La-Liga,Real Sociedad,Betis,1749.81628418,1671.97290039
+2021-01-23,https://fbref.com/en/matches/7b89e161/Alaves-Real-Madrid-January-23-2021-La-Liga,Alavés,Real Madrid,1625.97558594,1905.34790039
+2021-01-24,https://fbref.com/en/matches/1323ca2e/Osasuna-Granada-January-24-2021-La-Liga,Osasuna,Granada,1648.75891113,1702.9498291
+2021-01-24,https://fbref.com/en/matches/582338aa/Elche-Barcelona-January-24-2021-La-Liga,Elche,Barcelona,1570.93762207,1919.5904541
+2021-01-24,https://fbref.com/en/matches/95f9e23e/Celta-Vigo-Eibar-January-24-2021-La-Liga,Celta Vigo,Eibar,1669.46032715,1668.2623291
+2021-01-24,https://fbref.com/en/matches/3bdd8d1f/Atletico-Madrid-Valencia-January-24-2021-La-Liga,Atlético Madrid,Valencia,1920.62109375,1708.81335449
+2021-01-25,https://fbref.com/en/matches/777d8a4e/Athletic-Club-Getafe-January-25-2021-La-Liga,Athletic Club,Getafe,1693.73535156,1703.39868164
+2021-01-29,https://fbref.com/en/matches/0eee1cd8/Valladolid-Huesca-January-29-2021-La-Liga,Valladolid,Huesca,1643.45166016,1569.55041504
+2021-01-30,https://fbref.com/en/matches/6310e0ff/Eibar-Sevilla-January-30-2021-La-Liga,Eibar,Sevilla,1669.92114258,1842.09936523
+2021-01-30,https://fbref.com/en/matches/884d8817/Real-Madrid-Levante-January-30-2021-La-Liga,Real Madrid,Levante,1900.17785645,1696.47521973
+2021-01-30,https://fbref.com/en/matches/86e36962/Valencia-Elche-January-30-2021-La-Liga,Valencia,Elche,1705.45263672,1574.55932617
+2021-01-30,https://fbref.com/en/matches/afa0c4f7/Villarreal-Real-Sociedad-January-30-2021-La-Liga,Villarreal,Real Sociedad,1797.73718262,1749.81628418
+2021-01-31,https://fbref.com/en/matches/f6d3dacd/Getafe-Alaves-January-31-2021-La-Liga,Getafe,Alavés,1693.2253418,1620.37719727
+2021-01-31,https://fbref.com/en/matches/202304b0/Cadiz-Atletico-Madrid-January-31-2021-La-Liga,Cádiz,Atlético Madrid,1598.84875488,1924.39575195
+2021-01-31,https://fbref.com/en/matches/68c94daa/Granada-Celta-Vigo-January-31-2021-La-Liga,Granada,Celta Vigo,1691.42419434,1667.80151367
+2021-01-31,https://fbref.com/en/matches/cdbd8802/Barcelona-Athletic-Club-January-31-2021-La-Liga,Barcelona,Athletic Club,1919.5904541,1707.77246094
+2021-02-01,https://fbref.com/en/matches/25c60357/Real-Betis-Osasuna-February-1-2021-La-Liga,Betis,Osasuna,1675.68640137,1660.28442383
+2021-02-05,https://fbref.com/en/matches/d46ac253/Alaves-Valladolid-February-5-2021-La-Liga,Alavés,Valladolid,1623.9140625,1627.26062012
+2021-02-06,https://fbref.com/en/matches/76f3532f/Levante-Granada-February-6-2021-La-Liga,Levante,Granada,1710.63354492,1689.18322754
+2021-02-06,https://fbref.com/en/matches/9f400de4/Huesca-Real-Madrid-February-6-2021-La-Liga,Huesca,Real Madrid,1574.09924316,1905.77624512
+2021-02-06,https://fbref.com/en/matches/8de98099/Elche-Villarreal-February-6-2021-La-Liga,Elche,Villarreal,1571.4909668,1793.18835449
+2021-02-06,https://fbref.com/en/matches/4ac7cf9a/Sevilla-Getafe-February-6-2021-La-Liga,Sevilla,Getafe,1845.88208008,1689.68847656
+2021-02-07,https://fbref.com/en/matches/549f6b8b/Real-Sociedad-Cadiz-February-7-2021-La-Liga,Real Sociedad,Cádiz,1749.03649902,1595.29052734
+2021-02-07,https://fbref.com/en/matches/96b77de7/Athletic-Club-Valencia-February-7-2021-La-Liga,Athletic Club,Valencia,1707.77246094,1705.78564453
+2021-02-07,https://fbref.com/en/matches/0a12e31b/Osasuna-Eibar-February-7-2021-La-Liga,Osasuna,Eibar,1654.06335449,1662.64172363
+2021-02-07,https://fbref.com/en/matches/36d21ebb/Real-Betis-Barcelona-February-7-2021-La-Liga,Betis,Barcelona,1681.9074707,1922.65893555
+2021-02-08,https://fbref.com/en/matches/138e1a45/Atletico-Madrid-Celta-Vigo-February-8-2021-La-Liga,Atlético Madrid,Celta Vigo,1931.36584473,1670.04248047
+2021-02-09,https://fbref.com/en/matches/58b3121d/Real-Madrid-Getafe-February-9-2021-La-Liga,Real Madrid,Getafe,1891.61804199,1689.68847656
+2021-02-12,https://fbref.com/en/matches/df7e45e0/Celta-Vigo-Elche-February-12-2021-La-Liga,Celta Vigo,Elche,1670.04248047,1567.74597168
+2021-02-13,https://fbref.com/en/matches/aa128ba1/Granada-Atletico-Madrid-February-13-2021-La-Liga,Granada,Atlético Madrid,1691.359375,1931.36584473
+2021-02-13,https://fbref.com/en/matches/05a53679/Sevilla-Huesca-February-13-2021-La-Liga,Sevilla,Huesca,1858.90527344,1590.29040527
+2021-02-13,https://fbref.com/en/matches/9d85a6cf/Eibar-Valladolid-February-13-2021-La-Liga,Eibar,Valladolid,1662.64172363,1620.47241211
+2021-02-13,https://fbref.com/en/matches/e1aa194a/Barcelona-Alaves-February-13-2021-La-Liga,Barcelona,Alavés,1928.65075684,1630.70227051
+2021-02-14,https://fbref.com/en/matches/4e1141ae/Getafe-Real-Sociedad-February-14-2021-La-Liga,Getafe,Real Sociedad,1680.2689209,1754.97241211
+2021-02-14,https://fbref.com/en/matches/89c0562c/Real-Madrid-Valencia-February-14-2021-La-Liga,Real Madrid,Valencia,1894.38989258,1705.78564453
+2021-02-14,https://fbref.com/en/matches/5b5a254c/Levante-Osasuna-February-14-2021-La-Liga,Levante,Osasuna,1708.45739746,1660.9498291
+2021-02-14,https://fbref.com/en/matches/e1fab963/Villarreal-Real-Betis-February-14-2021-La-Liga,Villarreal,Betis,1785.78405762,1678.32543945
+2021-02-15,https://fbref.com/en/matches/2bfe195a/Cadiz-Athletic-Club-February-15-2021-La-Liga,Cádiz,Athletic Club,1595.29052734,1703.78601074
+2021-02-17,https://fbref.com/en/matches/2769bc44/Levante-Atletico-Madrid-February-17-2021-La-Liga,Levante,Atlético Madrid,1697.8338623,1928.10339355
+2021-02-19,https://fbref.com/en/matches/18fe26a4/Real-Betis-Getafe-February-19-2021-La-Liga,Betis,Getafe,1680.45690918,1662.84350586
+2021-02-20,https://fbref.com/en/matches/b276ffce/Elche-Eibar-February-20-2021-La-Liga,Elche,Eibar,1556.23730469,1643.44372559
+2021-02-20,https://fbref.com/en/matches/8048386f/Atletico-Madrid-Levante-February-20-2021-La-Liga,Atlético Madrid,Levante,1913.56140137,1697.08203125
+2021-02-20,https://fbref.com/en/matches/beb69245/Valencia-Celta-Vigo-February-20-2021-La-Liga,Valencia,Celta Vigo,1697.94921875,1673.5612793
+2021-02-20,https://fbref.com/en/matches/b811b635/Valladolid-Real-Madrid-February-20-2021-La-Liga,Valladolid,Real Madrid,1617.48999023,1892.18518066
+2021-02-21,https://fbref.com/en/matches/6d9fe2eb/Barcelona-Cadiz-February-21-2021-La-Liga,Barcelona,Cádiz,1905.43945312,1566.3026123
+2021-02-21,https://fbref.com/en/matches/84043bf9/Real-Sociedad-Alaves-February-21-2021-La-Liga,Real Sociedad,Alavés,1752.76196289,1622.08459473
+2021-02-21,https://fbref.com/en/matches/c1c0323d/Huesca-Granada-February-21-2021-La-Liga,Huesca,Granada,1575.8449707,1695.81555176
+2021-02-21,https://fbref.com/en/matches/fa09afb6/Athletic-Club-Villarreal-February-21-2021-La-Liga,Athletic Club,Villarreal,1711.54406738,1764.01647949
+2021-02-22,https://fbref.com/en/matches/6f2528d7/Osasuna-Sevilla-February-22-2021-La-Liga,Osasuna,Sevilla,1666.09741211,1840.27441406
+2021-02-24,https://fbref.com/en/matches/f613c734/Barcelona-Elche-February-24-2021-La-Liga,Barcelona,Elche,1897.3717041,1569.67590332
+2021-02-26,https://fbref.com/en/matches/2d83edc5/Levante-Athletic-Club-February-26-2021-La-Liga,Levante,Athletic Club,1716.62023926,1711.01647949
+2021-02-27,https://fbref.com/en/matches/c81df398/Eibar-Huesca-February-27-2021-La-Liga,Eibar,Huesca,1637.73486328,1590.17541504
+2021-02-27,https://fbref.com/en/matches/cf4341cf/Sevilla-Barcelona-February-27-2021-La-Liga,Sevilla,Barcelona,1850.73449707,1898.66918945
+2021-02-27,https://fbref.com/en/matches/48d81092/Alaves-Osasuna-February-27-2021-La-Liga,Alavés,Osasuna,1613.19836426,1658.07067871
+2021-02-27,https://fbref.com/en/matches/5b2658c3/Getafe-Valencia-February-27-2021-La-Liga,Getafe,Valencia,1659.89489746,1705.66455078
+2021-02-28,https://fbref.com/en/matches/3ebeb0f5/Celta-Vigo-Valladolid-February-28-2021-La-Liga,Celta Vigo,Valladolid,1669.48681641,1613.44421387
+2021-02-28,https://fbref.com/en/matches/a66b2c9c/Cadiz-Real-Betis-February-28-2021-La-Liga,Cádiz,Betis,1577.75805664,1690.1809082
+2021-02-28,https://fbref.com/en/matches/04a14d12/Granada-Elche-February-28-2021-La-Liga,Granada,Elche,1686.12109375,1566.46960449
+2021-02-28,https://fbref.com/en/matches/70933a6b/Villarreal-Atletico-Madrid-February-28-2021-La-Liga,Villarreal,Atlético Madrid,1783.30847168,1887.8380127
+2021-03-01,https://fbref.com/en/matches/b07e158b/Real-Madrid-Real-Sociedad-March-1-2021-La-Liga,Real Madrid,Real Sociedad,1905.40991211,1754.53918457
+2021-03-05,https://fbref.com/en/matches/349ceefc/Valencia-Villarreal-March-5-2021-La-Liga,Valencia,Villarreal,1692.91552734,1773.57568359
+2021-03-06,https://fbref.com/en/matches/6f2e694b/Valladolid-Getafe-March-6-2021-La-Liga,Valladolid,Getafe,1617.74707031,1661.10241699
+2021-03-06,https://fbref.com/en/matches/05a1dc64/Elche-Sevilla-March-6-2021-La-Liga,Elche,Sevilla,1567.67712402,1851.94189453
+2021-03-06,https://fbref.com/en/matches/6685c17a/Cadiz-Eibar-March-6-2021-La-Liga,Cádiz,Eibar,1578.96557617,1636.02612305
+2021-03-06,https://fbref.com/en/matches/5c84db99/Osasuna-Barcelona-March-6-2021-La-Liga,Osasuna,Barcelona,1667.74890137,1911.55090332
+2021-03-07,https://fbref.com/en/matches/0cc70a2b/Huesca-Celta-Vigo-March-7-2021-La-Liga,Huesca,Celta Vigo,1593.0916748,1666.39135742
+2021-03-07,https://fbref.com/en/matches/5011dc24/El-Derbi-Madrileno-Atletico-Madrid-Real-Madrid-March-7-2021-La-Liga,Atlético Madrid,Real Madrid,1889.04553223,1905.40991211
+2021-03-07,https://fbref.com/en/matches/1bca69e9/Real-Sociedad-Levante-March-7-2021-La-Liga,Real Sociedad,Levante,1759.8815918,1716.10437012
+2021-03-07,https://fbref.com/en/matches/79d0df70/Athletic-Club-Granada-March-7-2021-La-Liga,Athletic Club,Granada,1713.94726562,1690.13305664
+2021-03-08,https://fbref.com/en/matches/54ba655a/Real-Betis-Alaves-March-8-2021-La-Liga,Betis,Alavés,1698.03479004,1605.93518066
+2021-03-10,https://fbref.com/en/matches/ad5516fe/Atletico-Madrid-Athletic-Club-March-10-2021-La-Liga,Atlético Madrid,Athletic Club,1897.1463623,1719.91662598
+2021-03-12,https://fbref.com/en/matches/1ae33774/Levante-Valencia-March-12-2021-La-Liga,Levante,Valencia,1709.50927734,1700.39611816
+2021-03-13,https://fbref.com/en/matches/831d1a26/Alaves-Cadiz-March-13-2021-La-Liga,Alavés,Cádiz,1605.1973877,1579.59033203
+2021-03-13,https://fbref.com/en/matches/50375aac/Real-Madrid-Elche-March-13-2021-La-Liga,Real Madrid,Elche,1900.54968262,1576.08068848
+2021-03-13,https://fbref.com/en/matches/b7c714cb/Osasuna-Valladolid-March-13-2021-La-Liga,Osasuna,Valladolid,1661.43115234,1624.95471191
+2021-03-13,https://fbref.com/en/matches/eb711323/Getafe-Atletico-Madrid-March-13-2021-La-Liga,Getafe,Atlético Madrid,1665.55224609,1898.99438477
+2021-03-14,https://fbref.com/en/matches/93bb4d16/Celta-Vigo-Athletic-Club-March-14-2021-La-Liga,Celta Vigo,Athletic Club,1677.73852539,1720.65515137
+2021-03-14,https://fbref.com/en/matches/2ec46088/Granada-Real-Sociedad-March-14-2021-La-Liga,Granada,Real Sociedad,1695.50549316,1769.06298828
+2021-03-14,https://fbref.com/en/matches/700380cc/Eibar-Villarreal-March-14-2021-La-Liga,Eibar,Villarreal,1631.34143066,1763.79614258
+2021-03-14,https://fbref.com/en/matches/d72acae8/Sevilla-Real-Betis-March-14-2021-La-Liga,Sevilla,Betis,1823.92407227,1701.35900879
+2021-03-15,https://fbref.com/en/matches/f1c35bb5/Barcelona-Huesca-March-15-2021-La-Liga,Barcelona,Huesca,1913.45397949,1589.21630859
+2021-03-17,https://fbref.com/en/matches/cb8c2158/Sevilla-Elche-March-17-2021-La-Liga,Sevilla,Elche,1832.60375977,1579.65539551
+2021-03-19,https://fbref.com/en/matches/5dc3a9bc/Real-Betis-Levante-March-19-2021-La-Liga,Betis,Levante,1700.74621582,1718.92102051
+2021-03-20,https://fbref.com/en/matches/5e16abad/Athletic-Club-Eibar-March-20-2021-La-Liga,Athletic Club,Eibar,1719.47094727,1621.29333496
+2021-03-20,https://fbref.com/en/matches/5c9d44ac/Celta-Vigo-Real-Madrid-March-20-2021-La-Liga,Celta Vigo,Real Madrid,1675.51489258,1912.3112793
+2021-03-20,https://fbref.com/en/matches/26aeac47/Huesca-Osasuna-March-20-2021-La-Liga,Huesca,Osasuna,1585.38525391,1662.33752441
+2021-03-20,https://fbref.com/en/matches/ebb77a41/Valladolid-Sevilla-March-20-2021-La-Liga,Valladolid,Sevilla,1630.87805176,1833.68041992
+2021-03-21,https://fbref.com/en/matches/488033d7/Getafe-Elche-March-21-2021-La-Liga,Getafe,Elche,1673.78613281,1575.17089844
+2021-03-21,https://fbref.com/en/matches/2bf1a5f7/Valencia-Granada-March-21-2021-La-Liga,Valencia,Granada,1697.34741211,1701.06762695
+2021-03-21,https://fbref.com/en/matches/7ad6bd49/Villarreal-Cadiz-March-21-2021-La-Liga,Villarreal,Cádiz,1783.7097168,1585.08935547
+2021-03-21,https://fbref.com/en/matches/710aeaff/Atletico-Madrid-Alaves-March-21-2021-La-Liga,Atlético Madrid,Alavés,1884.7199707,1601.17602539
+2021-03-21,https://fbref.com/en/matches/2073a485/Real-Sociedad-Barcelona-March-21-2021-La-Liga,Real Sociedad,Barcelona,1758.95080566,1918.76269531
+2021-04-02,https://fbref.com/en/matches/43956890/Levante-Huesca-April-2-2021-La-Liga,Levante,Huesca,1709.7434082,1585.85192871
+2021-04-03,https://fbref.com/en/matches/8b6e4700/Granada-Villarreal-April-3-2021-La-Liga,Granada,Villarreal,1694.44873047,1787.32177734
+2021-04-03,https://fbref.com/en/matches/68ed92e2/Real-Madrid-Eibar-April-3-2021-La-Liga,Real Madrid,Eibar,1912.7779541,1626.05822754
+2021-04-03,https://fbref.com/en/matches/299f4bad/Osasuna-Getafe-April-3-2021-La-Liga,Osasuna,Getafe,1661.90734863,1673.78613281
+2021-04-04,https://fbref.com/en/matches/a6ab818d/Alaves-Celta-Vigo-April-4-2021-La-Liga,Alavés,Celta Vigo,1599.93835449,1670.45959473
+2021-04-04,https://fbref.com/en/matches/5f1526ca/Elche-Real-Betis-April-4-2021-La-Liga,Elche,Betis,1575.63757324,1710.85717773
+2021-04-04,https://fbref.com/en/matches/336b43a9/Cadiz-Valencia-April-4-2021-La-Liga,Cádiz,Valencia,1585.5559082,1704.4329834
+2021-04-04,https://fbref.com/en/matches/7ea0a13f/Sevilla-Atletico-Madrid-April-4-2021-La-Liga,Sevilla,Atlético Madrid,1830.2911377,1886.89099121
+2021-04-05,https://fbref.com/en/matches/e7c2cb0b/Barcelona-Valladolid-April-5-2021-La-Liga,Barcelona,Valladolid,1919.22924805,1635.20056152
+2021-04-07,https://fbref.com/en/matches/2a897231/Real-Sociedad-Athletic-Club-April-7-2021-La-Liga,Real Sociedad,Athletic Club,1747.27197266,1715.6394043
+2021-04-09,https://fbref.com/en/matches/abc54c91/Huesca-Elche-April-9-2021-La-Liga,Huesca,Elche,1607.03051758,1585.17529297
+2021-04-10,https://fbref.com/en/matches/8269f603/Getafe-Cadiz-April-10-2021-La-Liga,Getafe,Cádiz,1674.59436035,1595.96972656
+2021-04-10,https://fbref.com/en/matches/614590ff/Athletic-Club-Alaves-April-10-2021-La-Liga,Athletic Club,Alavés,1721.3326416,1592.32507324
+2021-04-10,https://fbref.com/en/matches/35c79ec9/Eibar-Levante-April-10-2021-La-Liga,Eibar,Levante,1626.96118164,1695.40515137
+2021-04-10,https://fbref.com/en/matches/80b7ff24/El-Clasico-Real-Madrid-Barcelona-April-10-2021-La-Liga,Real Madrid,Barcelona,1934.28588867,1936.13427734
+2021-04-11,https://fbref.com/en/matches/417cab0e/Villarreal-Osasuna-April-11-2021-La-Liga,Villarreal,Osasuna,1805.35107422,1664.1652832
+2021-04-11,https://fbref.com/en/matches/4d40ca2b/Valencia-Real-Sociedad-April-11-2021-La-Liga,Valencia,Real Sociedad,1697.84692383,1747.98901367
+2021-04-11,https://fbref.com/en/matches/873281ad/Valladolid-Granada-April-11-2021-La-Liga,Valladolid,Granada,1636.85131836,1685.41223145
+2021-04-11,https://fbref.com/en/matches/42dc1b0a/Real-Betis-Atletico-Madrid-April-11-2021-La-Liga,Betis,Atlético Madrid,1712.44604492,1882.296875
+2021-04-12,https://fbref.com/en/matches/fe809328/Celta-Vigo-Sevilla-April-12-2021-La-Liga,Celta Vigo,Sevilla,1684.94055176,1842.21020508
+2021-04-18,https://fbref.com/en/matches/bf05a9de/Real-Sociedad-Sevilla-April-18-2021-La-Liga,Real Sociedad,Sevilla,1750.72692871,1848.76599121
+2021-04-18,https://fbref.com/en/matches/ffa4c963/Osasuna-Elche-April-18-2021-La-Liga,Osasuna,Elche,1679.35253906,1578.13867188
+2021-04-18,https://fbref.com/en/matches/d31d60fb/Alaves-Huesca-April-18-2021-La-Liga,Alavés,Huesca,1598.78833008,1618.17028809
+2021-04-18,https://fbref.com/en/matches/00649977/Atletico-Madrid-Eibar-April-18-2021-La-Liga,Atlético Madrid,Eibar,1880.24438477,1621.78173828
+2021-04-18,https://fbref.com/en/matches/b054a854/Cadiz-Celta-Vigo-April-18-2021-La-Liga,Cádiz,Celta Vigo,1609.36120605,1681.57312012
+2021-04-18,https://fbref.com/en/matches/f1bf5108/Real-Betis-Valencia-April-18-2021-La-Liga,Betis,Valencia,1717.68701172,1699.2121582
+2021-04-18,https://fbref.com/en/matches/2e396300/Levante-Villarreal-April-18-2021-La-Liga,Levante,Villarreal,1705.68603516,1804.59448242
+2021-04-18,https://fbref.com/en/matches/e883d14a/Getafe-Real-Madrid-April-18-2021-La-Liga,Getafe,Real Madrid,1664.84875488,1945.99121094
+2021-04-21,https://fbref.com/en/matches/031c9c8a/Osasuna-Valencia-April-21-2021-La-Liga,Osasuna,Valencia,1679.35253906,1702.26220703
+2021-04-21,https://fbref.com/en/matches/5e49a403/Levante-Sevilla-April-21-2021-La-Liga,Levante,Sevilla,1705.68603516,1849.76428223
+2021-04-21,https://fbref.com/en/matches/9458b697/Real-Betis-Athletic-Club-April-21-2021-La-Liga,Betis,Athletic Club,1717.68701172,1718.97253418
+2021-04-21,https://fbref.com/en/matches/c9c7b3e1/Alaves-Villarreal-April-21-2021-La-Liga,Alavés,Villarreal,1599.78649902,1804.59448242
+2021-04-21,https://fbref.com/en/matches/d7d6f9c2/Elche-Valladolid-April-21-2021-La-Liga,Elche,Valladolid,1579.13684082,1629.859375
+2021-04-21,https://fbref.com/en/matches/5f335e5c/Cadiz-Real-Madrid-April-21-2021-La-Liga,Cádiz,Real Madrid,1610.83044434,1946.98937988
+2021-04-22,https://fbref.com/en/matches/e4a16c37/Atletico-Madrid-Huesca-April-22-2021-La-Liga,Atlético Madrid,Huesca,1885.76489258,1611.02380371
+2021-04-22,https://fbref.com/en/matches/b56ba4bd/Granada-Eibar-April-22-2021-La-Liga,Granada,Eibar,1691.50830078,1617.25952148
+2021-04-22,https://fbref.com/en/matches/176de276/Real-Sociedad-Celta-Vigo-April-22-2021-La-Liga,Real Sociedad,Celta Vigo,1750.72692871,1681.10217285
+2021-04-22,https://fbref.com/en/matches/cfa56fb6/Barcelona-Getafe-April-22-2021-La-Liga,Barcelona,Getafe,1931.12487793,1664.84875488
+2021-04-24,https://fbref.com/en/matches/9eb9d2a8/Elche-Levante-April-24-2021-La-Liga,Elche,Levante,1572.80078125,1691.95983887
+2021-04-24,https://fbref.com/en/matches/d8ca515c/Valladolid-Cadiz-April-24-2021-La-Liga,Valladolid,Cádiz,1630.78552246,1610.83044434
+2021-04-24,https://fbref.com/en/matches/ed691114/Valencia-Alaves-April-24-2021-La-Liga,Valencia,Alavés,1692.25854492,1606.9329834
+2021-04-24,https://fbref.com/en/matches/5088847f/Real-Madrid-Real-Betis-April-24-2021-La-Liga,Real Madrid,Betis,1941.2442627,1714.14355469
+2021-04-25,https://fbref.com/en/matches/3ee5bdac/Huesca-Getafe-April-25-2021-La-Liga,Huesca,Getafe,1608.45336914,1667.24523926
+2021-04-25,https://fbref.com/en/matches/bcc4bf4f/Villarreal-Barcelona-April-25-2021-La-Liga,Villarreal,Barcelona,1818.32055664,1932.12304688
+2021-04-25,https://fbref.com/en/matches/ba155b0e/Sevilla-Granada-April-25-2021-La-Liga,Sevilla,Granada,1856.71716309,1700.05004883
+2021-04-25,https://fbref.com/en/matches/211cab8a/Celta-Vigo-Osasuna-April-25-2021-La-Liga,Celta Vigo,Osasuna,1676.03015137,1695.69238281
+2021-04-25,https://fbref.com/en/matches/aded6dc3/Athletic-Club-Atletico-Madrid-April-25-2021-La-Liga,Athletic Club,Atlético Madrid,1720.4642334,1885.76489258
+2021-04-26,https://fbref.com/en/matches/9a4212bc/Eibar-Real-Sociedad-April-26-2021-La-Liga,Eibar,Real Sociedad,1608.71765137,1743.77404785
+2021-04-28,https://fbref.com/en/matches/838826de/Athletic-Club-Valladolid-April-28-2021-La-Liga,Athletic Club,Valladolid,1731.60498047,1628.46875
+2021-04-29,https://fbref.com/en/matches/6f566040/Barcelona-Granada-April-29-2021-La-Liga,Barcelona,Granada,1940.74084473,1696.10070801
+2021-04-30,https://fbref.com/en/matches/bd012499/Celta-Vigo-Levante-April-30-2021-La-Liga,Celta Vigo,Levante,1682.37353516,1676.39697266
+2021-05-01,https://fbref.com/en/matches/6a7247a2/Eibar-Alaves-May-1-2021-La-Liga,Eibar,Alavés,1602.08666992,1621.8828125
+2021-05-01,https://fbref.com/en/matches/22ed83e0/Elche-Atletico-Madrid-May-1-2021-La-Liga,Elche,Atlético Madrid,1581.71350098,1876.46350098
+2021-05-01,https://fbref.com/en/matches/ab7a4f88/Huesca-Real-Sociedad-May-1-2021-La-Liga,Huesca,Real Sociedad,1596.16442871,1754.01501465
+2021-05-01,https://fbref.com/en/matches/2fb94125/Real-Madrid-Osasuna-May-1-2021-La-Liga,Real Madrid,Osasuna,1935.53125,1689.59106445
+2021-05-02,https://fbref.com/en/matches/ef8d1266/Valladolid-Real-Betis-May-2-2021-La-Liga,Valladolid,Betis,1632.02514648,1721.93322754
+2021-05-02,https://fbref.com/en/matches/9bc3d478/Villarreal-Getafe-May-2-2021-La-Liga,Villarreal,Getafe,1799.51098633,1678.07214355
+2021-05-02,https://fbref.com/en/matches/f7175d31/Granada-Cadiz-May-2-2021-La-Liga,Granada,Cádiz,1696.10070801,1609.88793945
+2021-05-02,https://fbref.com/en/matches/ce4cd915/Valencia-Barcelona-May-2-2021-La-Liga,Valencia,Barcelona,1689.62939453,1940.74084473
+2021-05-03,https://fbref.com/en/matches/6cffc26b/Sevilla-Athletic-Club-May-3-2021-La-Liga,Sevilla,Athletic Club,1864.46472168,1728.29089355
+2021-05-07,https://fbref.com/en/matches/2af7604d/Real-Sociedad-Elche-May-7-2021-La-Liga,Real Sociedad,Elche,1740.17529297,1575.64794922
+2021-05-08,https://fbref.com/en/matches/791f3004/Alaves-Levante-May-8-2021-La-Liga,Alavés,Levante,1606.27978516,1664.12670898
+2021-05-08,https://fbref.com/en/matches/820b4053/Barcelona-Atletico-Madrid-May-8-2021-La-Liga,Barcelona,Atlético Madrid,1926.63049316,1876.29699707
+2021-05-08,https://fbref.com/en/matches/7ba3c536/Cadiz-Huesca-May-8-2021-La-Liga,Cádiz,Huesca,1617.20141602,1603.77197266
+2021-05-08,https://fbref.com/en/matches/471d89ca/Athletic-Club-Osasuna-May-8-2021-La-Liga,Athletic Club,Osasuna,1736.40991211,1681.80065918
+2021-05-09,https://fbref.com/en/matches/e375625a/Getafe-Eibar-May-9-2021-La-Liga,Getafe,Eibar,1673.19299316,1611.4576416
+2021-05-09,https://fbref.com/en/matches/faf78ebc/Valencia-Valladolid-May-9-2021-La-Liga,Valencia,Valladolid,1681.10388184,1629.78796387
+2021-05-09,https://fbref.com/en/matches/d05f0a0e/Villarreal-Celta-Vigo-May-9-2021-La-Liga,Villarreal,Celta Vigo,1814.93481445,1688.41174316
+2021-05-09,https://fbref.com/en/matches/991dad04/Real-Madrid-Sevilla-May-9-2021-La-Liga,Real Madrid,Sevilla,1921.67504883,1848.40942383
+2021-05-10,https://fbref.com/en/matches/ef46e4d9/Real-Betis-Granada-May-10-2021-La-Liga,Betis,Granada,1716.23413086,1697.66394043
+2021-05-11,https://fbref.com/en/matches/77a47d2f/Osasuna-Cadiz-May-11-2021-La-Liga,Osasuna,Cádiz,1683.91418457,1625.67199707
+2021-05-11,https://fbref.com/en/matches/ab567ead/Elche-Alaves-May-11-2021-La-Liga,Elche,Alavés,1577.76147461,1608.4197998
+2021-05-11,https://fbref.com/en/matches/69a3efe4/Levante-Barcelona-May-11-2021-La-Liga,Levante,Barcelona,1666.21386719,1928.74401855
+2021-05-12,https://fbref.com/en/matches/3b41eded/Sevilla-Valencia-May-12-2021-La-Liga,Sevilla,Valencia,1850.52307129,1692.53979492
+2021-05-12,https://fbref.com/en/matches/90eb1c30/Huesca-Athletic-Club-May-12-2021-La-Liga,Huesca,Athletic Club,1599.52868652,1735.41906738
+2021-05-12,https://fbref.com/en/matches/92f705d2/Celta-Vigo-Getafe-May-12-2021-La-Liga,Celta Vigo,Getafe,1707.95275879,1673.19299316
+2021-05-12,https://fbref.com/en/matches/84359d83/Atletico-Madrid-Real-Sociedad-May-12-2021-La-Liga,Atlético Madrid,Real Sociedad,1878.41052246,1746.8269043
+2021-05-13,https://fbref.com/en/matches/fbd8b774/Valladolid-Villarreal-May-13-2021-La-Liga,Valladolid,Villarreal,1622.57922363,1797.50744629
+2021-05-13,https://fbref.com/en/matches/cb63801a/Eibar-Real-Betis-May-13-2021-La-Liga,Eibar,Betis,1624.90063477,1724.39758301
+2021-05-13,https://fbref.com/en/matches/b3c94637/Granada-Real-Madrid-May-13-2021-La-Liga,Granada,Real Madrid,1691.61401367,1918.15991211
+2021-05-16,https://fbref.com/en/matches/3a0b5ced/Real-Sociedad-Valladolid-May-16-2021-La-Liga,Real Sociedad,Valladolid,1743.03723145,1622.57922363
+2021-05-16,https://fbref.com/en/matches/da47580f/Barcelona-Celta-Vigo-May-16-2021-La-Liga,Barcelona,Celta Vigo,1920.48669434,1707.95275879
+2021-05-16,https://fbref.com/en/matches/86f0be96/Alaves-Granada-May-16-2021-La-Liga,Alavés,Granada,1620.85839844,1691.61401367
+2021-05-16,https://fbref.com/en/matches/2388c6bb/Real-Betis-Huesca-May-16-2021-La-Liga,Betis,Huesca,1724.39758301,1599.52868652
+2021-05-16,https://fbref.com/en/matches/a3256b9c/Atletico-Madrid-Osasuna-May-16-2021-La-Liga,Atlético Madrid,Osasuna,1881.40332031,1692.30627441
+2021-05-16,https://fbref.com/en/matches/a899ad92/Athletic-Club-Real-Madrid-May-16-2021-La-Liga,Athletic Club,Real Madrid,1725.19165039,1918.15991211
+2021-05-16,https://fbref.com/en/matches/3854ef52/Villarreal-Sevilla-May-16-2021-La-Liga,Villarreal,Sevilla,1797.50744629,1854.03808594
+2021-05-16,https://fbref.com/en/matches/35e35bc8/Cadiz-Elche-May-16-2021-La-Liga,Cádiz,Elche,1620.38427734,1573.22351074
+2021-05-16,https://fbref.com/en/matches/7957c27b/Valencia-Eibar-May-16-2021-La-Liga,Valencia,Eibar,1689.3326416,1624.90063477
+2021-05-16,https://fbref.com/en/matches/e57234f2/Getafe-Levante-May-16-2021-La-Liga,Getafe,Levante,1656.28637695,1671.47839355
+2021-05-21,https://fbref.com/en/matches/0e1c936b/Levante-Cadiz-May-21-2021-La-Liga,Levante,Cádiz,1671.47839355,1620.38427734
+2021-05-22,https://fbref.com/en/matches/241c5eb5/Osasuna-Real-Sociedad-May-22-2021-La-Liga,Osasuna,Real Sociedad,1692.30627441,1743.03723145
+2021-05-22,https://fbref.com/en/matches/21e51080/Huesca-Valencia-May-22-2021-La-Liga,Huesca,Valencia,1605.61755371,1698.33410645
+2021-05-22,https://fbref.com/en/matches/87ecc4f1/Eibar-Barcelona-May-22-2021-La-Liga,Eibar,Barcelona,1617.09423828,1920.48669434
+2021-05-22,https://fbref.com/en/matches/174afca1/Real-Madrid-Villarreal-May-22-2021-La-Liga,Real Madrid,Villarreal,1929.76953125,1820.94970703
+2021-05-22,https://fbref.com/en/matches/7550edb7/Valladolid-Atletico-Madrid-May-22-2021-La-Liga,Valladolid,Atlético Madrid,1615.35791016,1885.19299316
+2021-05-22,https://fbref.com/en/matches/657068b1/Celta-Vigo-Real-Betis-May-22-2021-La-Liga,Celta Vigo,Betis,1727.43322754,1727.34106445
+2021-05-22,https://fbref.com/en/matches/4d8f1764/Elche-Athletic-Club-May-22-2021-La-Liga,Elche,Athletic Club,1560.78491211,1720.63366699
+2021-05-23,https://fbref.com/en/matches/f7b3d2ce/Granada-Getafe-May-23-2021-La-Liga,Granada,Getafe,1684.5625,1663.4395752
+2021-05-23,https://fbref.com/en/matches/c36a1062/Sevilla-Alaves-May-23-2021-La-Liga,Sevilla,Alavés,1857.24523926,1632.67858887
