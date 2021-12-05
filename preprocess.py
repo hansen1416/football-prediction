@@ -16,8 +16,6 @@ from constants import *
 logging.basicConfig(stream=sys.stdout, level=logging.INFO)
 logger = logging.getLogger()
 
-HISTORY_LENGTH = 5
-
 
 def matches_data(leagues, seasons):
     matches_df = None

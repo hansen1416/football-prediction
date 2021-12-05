@@ -7,8 +7,12 @@ import numpy as np
 from constants import *
 
 
-a = 'Ł'
+if __name__ == "__main__":
 
-b = strip_accents(a)
+    leagues = ['ISA', 'SLL']
+    seasons = ['2018-2019', '2019-2020', '2020-2021']
 
-print(b)
+    for l in leagues:
+        for s in seasons:
+
+            pass
