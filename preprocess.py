@@ -71,12 +71,14 @@ def keeper_data():
 
     df = df.drop_duplicates(ignore_index=True, keep='first')
 
+    df = df[~df['Date'].isna()]
+
+    df['Date'] = pd.to_datetime(df['Date'])
+
     df = df.sort_values(by=['PlayerUrl', 'Date'], ascending=True,
                         na_position='first', ignore_index=True)
 
     df = df.fillna(0)
-
-    df['Date'] = pd.to_datetime(df['Date'])
 
     return df.reset_index(drop=True)
 
@@ -98,21 +100,13 @@ def score_spread(x):
 
 
 def get_player_history(df, date, player_link, player_name):
+    """
+    get players historical data, only numerical data
+    """
 
     player_link = clean_url(player_link)
 
-    # league = 'Premier League'
-
-    # hist = clean_player_data(df)
-
     dp = list(map(int, date.split('-')))
-
-    # hist = hist[(hist['Date'].dt.date < datetime.date(*dp)) \
-    #             & (hist['PlayerUrl'] == player_link) \
-    #             & (hist['Comp'] == league)]
-
-    # hist = hist[(hist['Date'].dt.date < datetime.date(*dp)) \
-    #             & (hist['PlayerUrl'] == player_link)]
 
     hist = df[(df['Date'].dt.date < datetime.date(*dp))
               & (df['PlayerUrl'] == player_link)]
@@ -235,19 +229,15 @@ def combine_players_data(pdata_c, date, players_list):
     nogk = nogk.join(gk)
 
     # todo extinguigh % col
-    return nogk.sum(axis=0)
-
-    # frames = []
-
-    # for i in range(nogk.shape[0]):
-    #     df = nogk.iloc[i]
-    #     df = df.add_suffix('_' + str(i))
-    #     frames.append(df)
-
-    # return pd.concat(frames, ignore_index=False)
+    return nogk
+    # return nogk.sum(axis=0)
 
 
 def match_metrics(pdata_c, match_url, match_date):
+    """
+    get home/away players historical data, 
+    in shape (HISTORY_LENGTH, features)
+    """
     home_players = mpdata[match_url]['home_players']
     away_players = mpdata[match_url]['away_players']
 
@@ -261,13 +251,24 @@ def match_metrics(pdata_c, match_url, match_date):
 
     away_df = combine_players_data(pdata_c, match_date, away_players)
 
-    home_df = pd.DataFrame([home_df]).add_prefix('home_')
-    away_df = pd.DataFrame([away_df]).add_prefix('away_')
+    # home_df = pd.DataFrame([home_df]).add_prefix('home_')
+    # away_df = pd.DataFrame([away_df]).add_prefix('away_')
 
-    home_df['match_link'] = match_url
-    away_df['match_link'] = match_url
+    home_df = home_df.add_prefix('home_')
+    away_df = away_df.add_prefix('away_')
 
-    df = home_df.merge(away_df, on='match_link')
+    # home_df['match_link'] = match_url
+    # away_df['match_link'] = match_url
+
+    # home_df.to_csv('tphome.csv')
+    # away_df.to_csv('tpaway.csv')
+    #
+    df = home_df.merge(away_df, left_index=True, right_index=True, how='inner')
+
+    df['match_link'] = match_url
+
+    # print(df.to_csv('tmp.csv', index=False))
+    # exit()
 
     logger.debug("got match data, url: {}, in shape {}, {}".format(
         match_url, df.shape[0], df.shape[1]))
@@ -285,6 +286,8 @@ def build_season_data(pdata_c, sdata, season, league):
     for _, row in data.iterrows():
 
         mdf = match_metrics(pdata_c, row['match_link'], row['date'])
+        # save history order
+        mdf['history_i'] = mdf.index
 
         if metrics_df is None:
             metrics_df = mdf
@@ -347,11 +350,11 @@ if __name__ == "__main__":
     sdata['label'] = sdata['score'].apply(score_label)
     sdata['spread'] = sdata['score'].apply(score_spread)
 
-    for season in seasons:
-        season_sdata = sdata[sdata['Season'] == season]
-        label_dis = season_sdata['label'].value_counts()  # 1,0,-1
-        print(season, label_dis[1] / label_dis.sum(),
-              label_dis[-1] / label_dis.sum())
+    # for season in seasons:
+    #     season_sdata = sdata[sdata['Season'] == season]
+    #     label_dis = season_sdata['label'].value_counts()  # 1,0,-1
+    #     print(season, label_dis[1] / label_dis.sum(),
+    #           label_dis[-1] / label_dis.sum())
 
     """
     Home advantage is about 45%-49% in seasons before the covid-19 pandemic, away win is between 28%-34%.
@@ -379,8 +382,9 @@ if __name__ == "__main__":
     pdata1821 = pdata1821[~pdata1821['Date'].isna()]
 
     pdata1821c = pdata1821[keep_cols].reset_index(drop=True).fillna(0)
-
-    print(pdata1821.shape, pdata1821c.shape)
+    # sort it again, we did it before when filering players data, just in case
+    pdata1821c = pdata1821c.sort_values(
+        by=['PlayerUrl', 'Date'], ascending=True, ignore_index=True)
 
     # test_player_history(mdata, mpdata, pdata)
 

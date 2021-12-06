@@ -39,7 +39,7 @@ PLAYER_LOG_PREFIX = os.path.join(PROJECT_DIR, 'datasets', 'player_log_')
 
 CLUBELO_URL = 'http://api.clubelo.com/'
 
-HISTORY_LENGTH = 5
+HISTORY_LENGTH = 10
 
 elomapping = {'ManchesterUtd': 'ManUnited', 'ManchesterCity': 'ManCity', 'SheffieldUtd': 'SheffieldUnited',
               'NorwichCity': 'Norwich', 'Alavés': 'Alaves', 'AthleticClub': 'Bilbao', 'Leganés': 'Leganes',
