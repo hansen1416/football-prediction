@@ -3,16 +3,19 @@ import os
 
 import pandas as pd
 import numpy as np
+from pandas.core import base
 
 from constants import *
 
 
 if __name__ == "__main__":
 
-    leagues = ['ISA', 'SLL']
-    seasons = ['2018-2019', '2019-2020', '2020-2021']
+    for league in ['EPL', 'ISA', 'SLL']:
+        for season in ['2018-2019', '2019-2020', '2020-2021']:
+            for i in range(3):
+                new_df_f = os.path.join(
+                    DATASETS_DIR, season + league + 'weighted' + str(i) + '.csv')
 
-    for l in leagues:
-        for s in seasons:
+                df = pd.read_csv(new_df_f)
 
-            pass
+                print(df.shape)

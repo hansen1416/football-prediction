@@ -328,8 +328,8 @@ def test_match_metrics(mdata, pdata_c, rand_n=100):
 
 if __name__ == "__main__":
 
-    # seasons = ['2016-2017', '2017-2018', '2018-2019', '2019-2020', '2020-2021']
-    leagues = ['ISA', 'SLL']
+    # leagues = ['EPL', 'ISA', 'SLL']
+    leagues = ['EPL']
     seasons = ['2018-2019', '2019-2020', '2020-2021']
 
     mdata = matches_data(leagues, seasons)
