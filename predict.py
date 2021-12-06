@@ -36,6 +36,9 @@ warnings.simplefilter(action='ignore', category=pd.errors.PerformanceWarning)
 CAT_COLS = ['league', 'match_link', 'Season', 'date',
             'score', 'label', 'spread', 'home', 'away', ]
 
+CAT_COLS = ['league', 'match_link', 'Season', 'date',
+            'score', 'label', 'spread', ]
+
 
 def sort_dict(x, reverse=False):
     sorted_x = sorted(x.items(), key=lambda kv: kv[1], reverse=reverse)
@@ -43,12 +46,12 @@ def sort_dict(x, reverse=False):
     return collections.OrderedDict(sorted_x)
 
 
-def read_match_metrics(weight_num=0, diff=True):
+def read_match_metrics(weight_num=0, diff=True, with_elo=True):
 
     data = None
 
     # for league in ['EPL', 'ISA', 'SLL']:
-    for league in ['EPL']:
+    for league in ['ISA']:
         for season in ['2018-2019', '2019-2020', '2020-2021']:
 
             metrics_file = season + league + \
@@ -82,10 +85,11 @@ def read_match_metrics(weight_num=0, diff=True):
                 # print(df)
                 # exit()
 
-            elo_file = season + league + 'matches_elo.csv'
-            elo = pd.read_csv(os.path.join(DATASETS_DIR, elo_file))
-            elo = elo.drop(['date'], axis=1)
-            df = df.merge(elo, on='match_link')
+            if with_elo:
+                elo_file = season + league + 'matches_elo.csv'
+                elo = pd.read_csv(os.path.join(DATASETS_DIR, elo_file))
+                elo = elo.drop(['date'], axis=1)
+                df = df.merge(elo, on='match_link')
 
             if data is None:
                 data = df.copy(deep=True)
@@ -201,9 +205,9 @@ def train(X_train_list, X_test_list, y_train, y_test, classifier, classifier_nam
 
 if __name__ == "__main__":
 
-    weight_num = 0
+    weight_num = 6
 
-    df = read_match_metrics(weight_num, diff=False)
+    df = read_match_metrics(weight_num, diff=False, with_elo=False)
 
     print("data shape {},{}, weight num {}".format(
         df.shape[0], df.shape[1], weight_num))
@@ -212,11 +216,12 @@ if __name__ == "__main__":
         df)
 
     classifiers = {
-        # "Neural_Net": MLPClassifier(hidden_layer_sizes=(100,), activation='relu', learning_rate_init=0.001, alpha=1, max_iter=1000),
-        # "RBF_SVM": SVC(kernel='rbf', C=1.5, gamma=0.15, random_state=46),
-        "Random_Forest": RandomForestClassifier(criterion='entropy', random_state=46),
-        # "LGBM": LGBMClassifier(max_depth=10, num_leaves=100, objective='multiclass', learning_rate=0.1,\
-        #                        num_class=3, n_estimators=60, device_type='cpu', random_state=46),
+        # activation='relu', learning_rate_init=0.001, alpha=1, max_iter=1000),
+        # "Neural_Net": MLPClassifier(hidden_layer_sizes=(100,), max_iter=100, random_state=46),
+        "RBF_SVM": SVC(kernel='rbf', C=1.5, gamma=0.15, random_state=46),
+        # "Random_Forest": RandomForestClassifier(criterion='entropy', random_state=46),
+        "LGBM": LGBMClassifier(max_depth=10, num_leaves=100, objective='multiclass', learning_rate=0.1,\
+                               num_class=3, n_estimators=60, device_type='cpu', random_state=46),
     }
 
     accuracies = {}
