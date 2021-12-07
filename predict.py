@@ -209,7 +209,7 @@ def train(X_train_list, X_test_list, y_train, y_test, classifier):
 
         y_pred = classifier.predict(X_test_list[i])
 
-        # print(y_pred)
+        # print(list(y_pred), list(y_test))
 
         accuracy = accuracy_score(y_test, y_pred)
         f1 = f1_score(y_test, y_pred, average='macro')
