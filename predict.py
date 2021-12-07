@@ -45,7 +45,11 @@ def sort_dict(x, reverse=False):
 
 def read_match_metrics(leagues, weight_num=0, diff=False, with_elo=True):
     """
-    generate a dataframe for 
+    generate a dataframe for
+
+    for how the data combined, 
+    refer to https://github.com/hansen1416/football-prediction/blob/master/preprocess.py
+    and https://github.com/hansen1416/football-prediction/blob/master/weighted.py
     """
 
     data = None
@@ -60,6 +64,7 @@ def read_match_metrics(leagues, weight_num=0, diff=False, with_elo=True):
                 DATASETS_DIR, 'weighted', metrics_file))
 
             # calcuate the differece between home and away team, drop home/away specificed columns
+            # this diff calculation turned out to be inefficient, think about why?
             if diff:
 
                 num_cols = list(set(df.columns).difference(set(CAT_COLS)))
@@ -87,6 +92,8 @@ def read_match_metrics(leagues, weight_num=0, diff=False, with_elo=True):
                 # exit()
 
             # join elo with players metrics data
+            # ELO collected from http://api.clubelo.com/'
+            # using the rating before match start
             if with_elo:
                 elo_file = season + league + 'matches_elo.csv'
                 elo = pd.read_csv(os.path.join(DATASETS_DIR, elo_file))
@@ -102,6 +109,9 @@ def read_match_metrics(leagues, weight_num=0, diff=False, with_elo=True):
 
 
 def select_n_features(x, y, n_features, features):
+    """
+    select features by chi2
+    """
 
     select = SelectKBest(score_func=chi2, k=n_features)
     x_selected = select.fit_transform(x, y)
@@ -123,13 +133,15 @@ def pca_reduction(x, n_dimension):
 
 
 def split_scale_data(df, print_feature_scores=True):
-    # print(df.dtypes)
-    # remove xA xG data for now, we want basic player metrics
-    # drop_cols = ['league', 'match_link', 'Season', 'date',
-    #              'score', 'label', 'spread', 'home', 'away', ]
-    # drop_cols = ['league', 'match_link', 'Season', 'date','score', 'label', 'spread',
-    #  'home_Summery-Expected-xG', 'home_Summery-Expected-npxG', 'home_Summery-Expected-xA', 'home_Passing-xA',
-    #  'away_Summery-Expected-xG', 'away_Summery-Expected-npxG', 'away_Summery-Expected-xA', 'away_Passing-xA']
+    """
+    split data to train and test,
+    apply MinMaxScaler, SelectKBest, to train
+    apply train scaler/mask to test
+    """
+
+    # drop_cols = ['home_Summery-Expected-xG', 'home_Summery-Expected-npxG', 'home_Summery-Expected-xA',
+    #              'home_Passing-xA', 'away_Summery-Expected-xG', 'away_Summery-Expected-npxG',
+    #              'away_Summery-Expected-xA', 'away_Passing-xA']
 
     X = df.drop(CAT_COLS, axis=1)
     y = df['label']
@@ -150,6 +162,7 @@ def split_scale_data(df, print_feature_scores=True):
     X_train_feature_selected = []
     X_test_feature_selected = []
 
+    # try different feature number
     # f_range = (30, 81)
 
     # for n in range(f_range[0], f_range[1]):
@@ -173,6 +186,7 @@ def split_scale_data(df, print_feature_scores=True):
                 break
 
     X_train_feature_selected.append(x_selected)
+    # apply the train mask to test data
     X_test_feature_selected.append(X_test_scaled[filetr])
 
     # print('features selected {}-{}'.format(f_range[0], f_range[1]))
@@ -181,7 +195,10 @@ def split_scale_data(df, print_feature_scores=True):
     return X_train_feature_selected, X_test_feature_selected, y_train, y_test
 
 
-def train(X_train_list, X_test_list, y_train, y_test, classifier, classifier_name):
+def train(X_train_list, X_test_list, y_train, y_test, classifier):
+    """
+    train and predict
+    """
 
     accuracies = []
     f1s = []
@@ -199,6 +216,7 @@ def train(X_train_list, X_test_list, y_train, y_test, classifier, classifier_nam
 
         accuracies.append(accuracy)
         f1s.append(f1)
+        # todo calculate precision, recall, f1 on different labels
 
     return accuracies, f1s
 
@@ -214,12 +232,12 @@ if __name__ == "__main__":
 
             df = read_match_metrics(league, weight_num, with_elo=has_elo)
 
-            print("data shape {},{}, weights {}, league".format(
+            print("data shape {},{}, weights {}".format(
                 df.shape[0], df.shape[1], str(MATCH_WEIGHTS[weight_num])))
 
             X_train_feature_selected, X_test_feature_selected, y_train, y_test = split_scale_data(
-
                 df, print_feature_scores=False)
+
             classifiers = {
                 # activation='relu', learning_rate_init=0.001, alpha=1, max_iter=1000),
                 # "Neural_Net": MLPClassifier(hidden_layer_sizes=(100,), max_iter=100, random_state=46),
@@ -235,7 +253,7 @@ if __name__ == "__main__":
             for name, clf in classifiers.items():
 
                 accuracy_scores, f1_scores = train(X_train_feature_selected, X_test_feature_selected,
-                                                   y_train, y_test, clf, name)
+                                                   y_train, y_test, clf)
 
                 accuracies[name] = accuracy_scores
                 f1s[name] = f1_scores
@@ -245,3 +263,4 @@ if __name__ == "__main__":
 
                 print("League: {}, With ELO: {}, Classifier: {}, Accuracy score: {}, F1 score: {}"
                       .format(str(league), str(has_elo), name, score, f1s[name]))
+            print("=====================================")
