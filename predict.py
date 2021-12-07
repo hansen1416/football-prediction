@@ -34,9 +34,6 @@ logger = logging.getLogger()
 warnings.simplefilter(action='ignore', category=pd.errors.PerformanceWarning)
 
 CAT_COLS = ['league', 'match_link', 'Season', 'date',
-            'score', 'label', 'spread', 'home', 'away', ]
-
-CAT_COLS = ['league', 'match_link', 'Season', 'date',
             'score', 'label', 'spread', ]
 
 
@@ -46,12 +43,14 @@ def sort_dict(x, reverse=False):
     return collections.OrderedDict(sorted_x)
 
 
-def read_match_metrics(weight_num=0, diff=True, with_elo=True):
+def read_match_metrics(leagues, weight_num=0, diff=False, with_elo=True):
+    """
+    generate a dataframe for 
+    """
 
     data = None
 
-    # for league in ['EPL', 'ISA', 'SLL']:
-    for league in ['ISA']:
+    for league in leagues:
         for season in ['2018-2019', '2019-2020', '2020-2021']:
 
             metrics_file = season + league + \
@@ -60,7 +59,9 @@ def read_match_metrics(weight_num=0, diff=True, with_elo=True):
             df = pd.read_csv(os.path.join(
                 DATASETS_DIR, 'weighted', metrics_file))
 
+            # calcuate the differece between home and away team, drop home/away specificed columns
             if diff:
+
                 num_cols = list(set(df.columns).difference(set(CAT_COLS)))
 
                 home_cols = []
@@ -85,10 +86,11 @@ def read_match_metrics(weight_num=0, diff=True, with_elo=True):
                 # print(df)
                 # exit()
 
+            # join elo with players metrics data
             if with_elo:
                 elo_file = season + league + 'matches_elo.csv'
                 elo = pd.read_csv(os.path.join(DATASETS_DIR, elo_file))
-                elo = elo.drop(['date'], axis=1)
+                elo = elo.drop(['date', 'home', 'away'], axis=1)
                 df = df.merge(elo, on='match_link')
 
             if data is None:
@@ -120,7 +122,7 @@ def pca_reduction(x, n_dimension):
     return pca.fit_transform(x)
 
 
-def split_scale_data(df):
+def split_scale_data(df, print_feature_scores=True):
     # print(df.dtypes)
     # remove xA xG data for now, we want basic player metrics
     # drop_cols = ['league', 'match_link', 'Season', 'date',
@@ -148,7 +150,7 @@ def split_scale_data(df):
     X_train_feature_selected = []
     X_test_feature_selected = []
 
-    # f_range = (80, 81)
+    # f_range = (30, 81)
 
     # for n in range(f_range[0], f_range[1]):
     #     x_selected, filetr, feature_scores = select_n_features(
@@ -162,12 +164,13 @@ def split_scale_data(df):
     x_selected, filetr, feature_scores = select_n_features(
         X_train_scaled, y_train, n_features, X.columns)
 
-    # count = 0
-    # for k, v in feature_scores.items():
-    #     print(k, v)
-    #     count += 1
-    #     if count > 20:
-    #         break
+    if print_feature_scores:
+        count = 0
+        for k, v in feature_scores.items():
+            print(k, v)
+            count += 1
+            if count > 20:
+                break
 
     X_train_feature_selected.append(x_selected)
     X_test_feature_selected.append(X_test_scaled[filetr])
@@ -194,9 +197,6 @@ def train(X_train_list, X_test_list, y_train, y_test, classifier, classifier_nam
         accuracy = accuracy_score(y_test, y_pred)
         f1 = f1_score(y_test, y_pred, average='macro')
 
-        print("classifier {}, {} features, accuracy score {}, f1 score {}"
-              .format(name, X_train_list[i].shape[1], accuracy, f1))
-
         accuracies.append(accuracy)
         f1s.append(f1)
 
@@ -205,32 +205,43 @@ def train(X_train_list, X_test_list, y_train, y_test, classifier, classifier_nam
 
 if __name__ == "__main__":
 
-    weight_num = 6
+    leagues = [['EPL'], ['ISA'], ['SLL']]
 
-    df = read_match_metrics(weight_num, diff=False, with_elo=False)
+    for league in leagues:
+        for has_elo in [True, False]:
 
-    print("data shape {},{}, weight num {}".format(
-        df.shape[0], df.shape[1], weight_num))
+            weight_num = 6
 
-    X_train_feature_selected, X_test_feature_selected, y_train, y_test = split_scale_data(
-        df)
+            df = read_match_metrics(league, weight_num, with_elo=has_elo)
 
-    classifiers = {
-        # activation='relu', learning_rate_init=0.001, alpha=1, max_iter=1000),
-        # "Neural_Net": MLPClassifier(hidden_layer_sizes=(100,), max_iter=100, random_state=46),
-        "RBF_SVM": SVC(kernel='rbf', C=1.5, gamma=0.15, random_state=46),
-        # "Random_Forest": RandomForestClassifier(criterion='entropy', random_state=46),
-        "LGBM": LGBMClassifier(max_depth=10, num_leaves=100, objective='multiclass', learning_rate=0.1,\
-                               num_class=3, n_estimators=60, device_type='cpu', random_state=46),
-    }
+            print("data shape {},{}, weights {}, league".format(
+                df.shape[0], df.shape[1], str(MATCH_WEIGHTS[weight_num])))
 
-    accuracies = {}
-    f1s = {}
+            X_train_feature_selected, X_test_feature_selected, y_train, y_test = split_scale_data(
 
-    for name, clf in classifiers.items():
+                df, print_feature_scores=False)
+            classifiers = {
+                # activation='relu', learning_rate_init=0.001, alpha=1, max_iter=1000),
+                # "Neural_Net": MLPClassifier(hidden_layer_sizes=(100,), max_iter=100, random_state=46),
+                "RBF_SVM": SVC(kernel='rbf', C=1.5, gamma=0.15, random_state=46),
+                "Random_Forest": RandomForestClassifier(criterion='entropy', random_state=46),
+                "LGBM": LGBMClassifier(max_depth=10, num_leaves=100, objective='multiclass', learning_rate=0.1,\
+                                       num_class=3, n_estimators=60, device_type='cpu', random_state=46),
+            }
 
-        accuracy_scores, f1_scores = train(X_train_feature_selected, X_test_feature_selected,
-                                           y_train, y_test, clf, name)
+            accuracies = {}
+            f1s = {}
 
-        accuracies[name] = accuracy_scores
-        f1s[name] = f1_scores
+            for name, clf in classifiers.items():
+
+                accuracy_scores, f1_scores = train(X_train_feature_selected, X_test_feature_selected,
+                                                   y_train, y_test, clf, name)
+
+                accuracies[name] = accuracy_scores
+                f1s[name] = f1_scores
+
+            # for i in range(len(accuracies)):
+            for name, score in accuracies.items():
+
+                print("League: {}, With ELO: {}, Classifier: {}, Accuracy score: {}, F1 score: {}"
+                      .format(str(league), str(has_elo), name, score, f1s[name]))

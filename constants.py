@@ -41,6 +41,17 @@ CLUBELO_URL = 'http://api.clubelo.com/'
 
 HISTORY_LENGTH = 10
 
+MATCH_WEIGHTS = {
+    0: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+    1: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+    2: [0, 0, 0, 1, 2, 3, 4, 5, 6, 7],
+    3: [0, 0, 0, 0, 0, 0, 0, 1, 1, 1],
+    4: [0, 0, 0, 0, 0, 0, 0, 1, 2, 3],
+    5: [0, 0, 0, 0, 0, 0, 1, 1, 1, 1],
+    6: [0, 0, 0, 0, 0, 1, 1, 1, 1, 1],
+    7: [0, 0, 0, 0, 0, 1, 2, 3, 4, 5],
+}
+
 elomapping = {'ManchesterUtd': 'ManUnited', 'ManchesterCity': 'ManCity', 'SheffieldUtd': 'SheffieldUnited',
               'NorwichCity': 'Norwich', 'Alavés': 'Alaves', 'AthleticClub': 'Bilbao', 'Leganés': 'Leganes',
               'CeltaVigo': 'Celta', 'HellasVerona': 'Verona', 'NewcastleUtd': 'Newcastle',
