@@ -12,7 +12,7 @@ from sklearn.preprocessing import MinMaxScaler, StandardScaler
 from sklearn.feature_selection import SelectKBest, chi2, f_regression, f_classif
 from sklearn.decomposition import PCA
 from sklearn.model_selection import train_test_split, GridSearchCV
-from sklearn.metrics import mean_squared_error, accuracy_score, f1_score
+from sklearn.metrics import mean_squared_error, accuracy_score, f1_score, precision_score, recall_score
 from sklearn.neural_network import MLPClassifier
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.svm import SVC
@@ -195,13 +195,14 @@ def split_scale_data(df, print_feature_scores=True):
     return X_train_feature_selected, X_test_feature_selected, y_train, y_test
 
 
-def train(X_train_list, X_test_list, y_train, y_test, classifier):
+def train(X_train_list, X_test_list, y_train, y_test, classifier, classifier_name):
     """
     train and predict
     """
 
-    accuracies = []
-    f1s = []
+    home_win_mask = (y_test.values == 1)
+    draw_mask = (y_test.values == 0)
+    away_win_mask = (y_test.values == -1)
 
     for i in range(len(X_train_list)):
 
@@ -211,14 +212,21 @@ def train(X_train_list, X_test_list, y_train, y_test, classifier):
 
         # print(list(y_pred), list(y_test))
 
-        accuracy = accuracy_score(y_test, y_pred)
-        f1 = f1_score(y_test, y_pred, average='macro')
+        accuracy = "{:.2%}".format(accuracy_score(y_test, y_pred))
+        f1_macro = "{:.2%}".format(f1_score(y_test, y_pred, average='macro'))
+        f1_weighted = "{:.2%}".format(
+            f1_score(y_test, y_pred, average='weighted'))
 
-        accuracies.append(accuracy)
-        f1s.append(f1)
-        # todo calculate precision, recall, f1 on different labels
+        print("Classifier: {}, Average accuracy score: {}, Macro f1 score: {}, Weighted f1 score: {}".format(
+            classifier_name, accuracy, f1_macro, f1_weighted))
 
-    return accuracies, f1s
+        y_pred_hw = y_pred[home_win_mask]
+        y_pred_d = y_pred[draw_mask]
+        y_pred_aw = y_pred[away_win_mask]
+
+        print("Home win: {}/{}, Draw: {}/{}, Away win: {}/{}".format(
+            len(y_pred_hw[y_pred_hw == 1]), len(y_pred_hw),
+            len(y_pred_d[y_pred_d == 0]), len(y_pred_d), len(y_pred_aw[y_pred_aw == -1]), len(y_pred_aw)))
 
 
 if __name__ == "__main__":
@@ -247,20 +255,11 @@ if __name__ == "__main__":
                                        num_class=3, n_estimators=60, device_type='cpu', random_state=46),
             }
 
-            accuracies = {}
-            f1s = {}
+            print("League: {}, With ELO: {}".format(str(league), str(has_elo)))
 
             for name, clf in classifiers.items():
 
-                accuracy_scores, f1_scores = train(X_train_feature_selected, X_test_feature_selected,
-                                                   y_train, y_test, clf)
+                train(X_train_feature_selected, X_test_feature_selected,
+                      y_train, y_test, clf, name)
 
-                accuracies[name] = accuracy_scores
-                f1s[name] = f1_scores
-
-            # for i in range(len(accuracies)):
-            for name, score in accuracies.items():
-
-                print("League: {}, With ELO: {}, Classifier: {}, Accuracy score: {}, F1 score: {}"
-                      .format(str(league), str(has_elo), name, score, f1s[name]))
             print("=====================================")
