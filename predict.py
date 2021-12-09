@@ -9,7 +9,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.preprocessing import MinMaxScaler, StandardScaler
-from sklearn.feature_selection import SelectKBest, chi2, f_regression, f_classif
+from sklearn.feature_selection import SelectKBest, chi2, f_regression, f_classif, mutual_info_classif
 from sklearn.decomposition import PCA
 from sklearn.model_selection import train_test_split, GridSearchCV
 from sklearn.metrics import mean_squared_error, accuracy_score, f1_score, precision_score, recall_score
@@ -113,7 +113,9 @@ def select_n_features(x, y, n_features, features):
     select features by chi2
     """
 
-    select = SelectKBest(score_func=chi2, k=n_features)
+    # select = SelectKBest(score_func=chi2, k=n_features)
+    select = SelectKBest(score_func=f_regression, k=n_features)
+
     x_selected = select.fit_transform(x, y)
 
     filter = select.get_support()
@@ -125,11 +127,6 @@ def select_n_features(x, y, n_features, features):
     feature_scores = sort_dict(feature_scores, reverse=True)
 
     return x_selected, features[filter], feature_scores
-
-
-def pca_reduction(x, n_dimension):
-    pca = PCA(n_components=n_dimension)
-    return pca.fit_transform(x)
 
 
 def split_scale_data(df, print_feature_scores=True):
