@@ -13,10 +13,10 @@ def load_df(weights, weight_name):
     base_cols = ['league', 'match_link', 'Season',
                  'date', 'score', 'label', 'spread']
 
-    for league in ['EPL', 'ISA', 'SLL']:
+    # for league in ['EPL', 'ISA', 'SLL']:
+    for league in ['EPL']:
         for season in ['2018-2019', '2019-2020', '2020-2021']:
-
-            f = season + league + '-' + str(HISTORY_LENGTH) + '.csv'
+            f = season + league + '-' + str(HISTORY_LENGTH) + 'x.csv'
 
             df = pd.read_csv(os.path.join(DATASETS_DIR, f))
 

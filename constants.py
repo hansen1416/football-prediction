@@ -52,6 +52,17 @@ MATCH_WEIGHTS = {
     7: [0, 0, 0, 0, 0, 1, 2, 3, 4, 5],
 }
 
+KEEP_COMP = ['Serie A',
+             'La Liga',
+             'FIFA World Cup',
+             'Ligue 1',
+             'Premier League',
+             'Bundesliga',
+             'Champions Lg',
+             'UEFA Euro',
+             'Europa Lg', ]
+
+
 elomapping = {'ManchesterUtd': 'ManUnited', 'ManchesterCity': 'ManCity', 'SheffieldUtd': 'SheffieldUnited',
               'NorwichCity': 'Norwich', 'Alavés': 'Alaves', 'AthleticClub': 'Bilbao', 'Leganés': 'Leganes',
               'CeltaVigo': 'Celta', 'HellasVerona': 'Verona', 'NewcastleUtd': 'Newcastle',

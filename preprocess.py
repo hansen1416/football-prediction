@@ -109,7 +109,7 @@ def get_player_history(df, date, player_link, player_name):
     dp = list(map(int, date.split('-')))
 
     hist = df[(df['Date'].dt.date < datetime.date(*dp))
-              & (df['PlayerUrl'] == player_link)]
+              & (df['PlayerUrl'] == player_link) & (df['Comp'].isin(KEEP_COMP))]
 
     hist = hist.tail(HISTORY_LENGTH)
     hist = hist.drop(['Season', 'Date', 'Comp'], axis=1)
@@ -394,7 +394,7 @@ if __name__ == "__main__":
         for season in seasons:
             data_season = build_season_data(pdata1821c, sdata, season, l)
 
-            filename = season + l + '-' + str(HISTORY_LENGTH) + '.csv'
+            filename = season + l + '-' + str(HISTORY_LENGTH) + 'x.csv'
 
             data_season.to_csv(os.path.join(
                 DATASETS_DIR, filename), index=False)
