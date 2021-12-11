@@ -113,8 +113,8 @@ def select_n_features(x, y, n_features, features):
     select features by chi2
     """
 
-    # select = SelectKBest(score_func=chi2, k=n_features)
-    select = SelectKBest(score_func=f_regression, k=n_features)
+    select = SelectKBest(score_func=chi2, k=n_features)
+    # select = SelectKBest(score_func=f_regression, k=n_features)
 
     x_selected = select.fit_transform(x, y)
 
@@ -205,6 +205,17 @@ def train(X_train_list, X_test_list, y_train, y_test, classifier, classifier_nam
 
         classifier.fit(X_train_list[i], y_train)
 
+        # y_train_pred = classifier.predict(X_train_list[i])
+
+        # t_accuracy = "{:.2%}".format(accuracy_score(y_train, y_train_pred))
+        # t_f1_macro = "{:.2%}".format(
+        #     f1_score(y_train, y_train_pred, average='macro'))
+        # t_f1_weighted = "{:.2%}".format(
+        #     f1_score(y_train, y_train_pred, average='weighted'))
+
+        # print("Classifier: {}, Average accuracy score: {}, Macro f1 score: {}, Weighted f1 score: {}. Training".format(
+        #     classifier_name, t_accuracy, t_f1_macro, t_f1_weighted))
+
         y_pred = classifier.predict(X_test_list[i])
 
         # print(list(y_pred), list(y_test))
@@ -217,6 +228,12 @@ def train(X_train_list, X_test_list, y_train, y_test, classifier, classifier_nam
         print("Classifier: {}, Average accuracy score: {}, Macro f1 score: {}, Weighted f1 score: {}".format(
             classifier_name, accuracy, f1_macro, f1_weighted))
 
+        scores = classif_metrics(y_test.values, y_pred)
+
+        for l, score in scores.items():
+            print(l + ": " + str({k: "{:.2%}".format(v)
+                  for k, v in score.items()}))
+
         y_pred_hw = y_pred[home_win_mask]
         y_pred_d = y_pred[draw_mask]
         y_pred_aw = y_pred[away_win_mask]
@@ -224,6 +241,49 @@ def train(X_train_list, X_test_list, y_train, y_test, classifier, classifier_nam
         print("Home win: {}/{}, Draw: {}/{}, Away win: {}/{}".format(
             len(y_pred_hw[y_pred_hw == 1]), len(y_pred_hw),
             len(y_pred_d[y_pred_d == 0]), len(y_pred_d), len(y_pred_aw[y_pred_aw == -1]), len(y_pred_aw)))
+
+        print('-------------------------------')
+
+
+def hwin_binary(np_array):
+    return np.where(np_array == -1, 0, np_array)
+
+
+def draw_binary(np_array):
+    np_array = np.where(np_array == 0, 2, np_array)
+    np_array = np.where(np_array != 2, 0, np_array)
+    return np.where(np_array == 2, 1, np_array)
+
+
+def awin_binary(np_array):
+    np_array = np.where(np_array != -1, 0, np_array)
+    return np.where(np_array == -1, 1, np_array)
+
+
+def classif_metrics(y_true, y_pred):
+
+    y_true_hw = hwin_binary(y_true)
+    y_pred_hw = hwin_binary(y_pred)
+
+    home_win = {'precision': precision_score(y_true_hw, y_pred_hw),
+                'recall': recall_score(y_true_hw, y_pred_hw),
+                'f1': f1_score(y_true_hw, y_pred_hw)}
+
+    y_true_d = draw_binary(y_true)
+    y_pred_d = draw_binary(y_pred)
+
+    draw = {'precision': precision_score(y_true_d, y_pred_d),
+            'recall': recall_score(y_true_d, y_pred_d),
+            'f1': f1_score(y_true_d, y_pred_d)}
+
+    y_true_aw = awin_binary(y_true)
+    y_pred_aw = awin_binary(y_pred)
+
+    away_win = {'precision': precision_score(y_true_aw, y_pred_aw),
+                'recall': recall_score(y_true_aw, y_pred_aw),
+                'f1': f1_score(y_true_aw, y_pred_aw)}
+
+    return {'Home win': home_win, 'Draw': draw, 'Away win': away_win}
 
 
 if __name__ == "__main__":
