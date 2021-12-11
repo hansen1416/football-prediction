@@ -328,8 +328,7 @@ def test_match_metrics(mdata, pdata_c, rand_n=100):
 
 if __name__ == "__main__":
 
-    # leagues = ['EPL', 'ISA', 'SLL']
-    leagues = ['EPL']
+    leagues = ['EPL', 'ISA', 'SLL']
     seasons = ['2018-2019', '2019-2020', '2020-2021']
 
     mdata = matches_data(leagues, seasons)
@@ -394,7 +393,7 @@ if __name__ == "__main__":
         for season in seasons:
             data_season = build_season_data(pdata1821c, sdata, season, l)
 
-            filename = season + l + '-' + str(HISTORY_LENGTH) + 'x.csv'
+            filename = season + l + '-' + str(HISTORY_LENGTH) + '.csv'
 
             data_season.to_csv(os.path.join(
                 DATASETS_DIR, filename), index=False)

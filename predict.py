@@ -229,6 +229,7 @@ def train(X_train_list, X_test_list, y_train, y_test, classifier, classifier_nam
 if __name__ == "__main__":
 
     leagues = [['EPL'], ['ISA'], ['SLL']]
+    # leagues = [['EPL']]
 
     for league in leagues:
         for has_elo in [True, False]:
