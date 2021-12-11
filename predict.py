@@ -205,16 +205,16 @@ def train(X_train_list, X_test_list, y_train, y_test, classifier, classifier_nam
 
         classifier.fit(X_train_list[i], y_train)
 
-        # y_train_pred = classifier.predict(X_train_list[i])
+        y_train_pred = classifier.predict(X_train_list[i])
 
-        # t_accuracy = "{:.2%}".format(accuracy_score(y_train, y_train_pred))
-        # t_f1_macro = "{:.2%}".format(
-        #     f1_score(y_train, y_train_pred, average='macro'))
-        # t_f1_weighted = "{:.2%}".format(
-        #     f1_score(y_train, y_train_pred, average='weighted'))
+        t_accuracy = "{:.2%}".format(accuracy_score(y_train, y_train_pred))
+        t_f1_macro = "{:.2%}".format(
+            f1_score(y_train, y_train_pred, average='macro'))
+        t_f1_weighted = "{:.2%}".format(
+            f1_score(y_train, y_train_pred, average='weighted'))
 
-        # print("Classifier: {}, Average accuracy score: {}, Macro f1 score: {}, Weighted f1 score: {}. Training".format(
-        #     classifier_name, t_accuracy, t_f1_macro, t_f1_weighted))
+        print("Classifier: {}, Average accuracy score: {}, Macro f1 score: {}, Weighted f1 score: {}. Training".format(
+            classifier_name, t_accuracy, t_f1_macro, t_f1_weighted))
 
         y_pred = classifier.predict(X_test_list[i])
 
@@ -307,9 +307,9 @@ if __name__ == "__main__":
             classifiers = {
                 # activation='relu', learning_rate_init=0.001, alpha=1, max_iter=1000),
                 # "Neural_Net": MLPClassifier(hidden_layer_sizes=(100,), max_iter=100, random_state=46),
-                "RBF_SVM": SVC(kernel='rbf', C=1.5, gamma=0.15, random_state=46),
-                "Random_Forest": RandomForestClassifier(criterion='entropy', random_state=46),
-                "LGBM": LGBMClassifier(max_depth=10, num_leaves=100, objective='multiclass', learning_rate=0.1,\
+                # "RBF_SVM": SVC(kernel='rbf', C=1.5, gamma=0.15, random_state=46),
+                # "Random_Forest": RandomForestClassifier(criterion='entropy', random_state=46),
+                "LGBM": LGBMClassifier(max_depth=4, min_data_in_leaf=11, num_leaves=7, objective='multiclass', learning_rate=0.1,\
                                        num_class=3, n_estimators=60, device_type='cpu', random_state=46),
             }
 
