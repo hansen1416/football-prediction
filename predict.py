@@ -181,7 +181,7 @@ def split_scale_data(df, print_feature_scores=True):
             count += 1
             if count > 20:
                 break
-        exit()
+        # exit()
 
     X_train_feature_selected.append(x_selected)
     # apply the train mask to test data
@@ -305,11 +305,9 @@ if __name__ == "__main__":
                 df, print_feature_scores=False)
 
             classifiers = {
-                # activation='relu', learning_rate_init=0.001, alpha=1, max_iter=1000),
-                # "Neural_Net": MLPClassifier(hidden_layer_sizes=(100,), max_iter=100, random_state=46),
                 "RBF_SVM": SVC(kernel='rbf', C=1.5, gamma=0.15, random_state=46),
                 "Random_Forest": RandomForestClassifier(criterion='entropy', max_depth=7, n_estimators=31, random_state=46),
-                "LGBM": LGBMClassifier(max_depth=3, min_data_in_leaf=12, num_leaves=20, objective='multiclass', learning_rate=0.1,\
+                "LGBM": LGBMClassifier(max_depth=3, min_data_in_leaf=12, num_leaves=20, objective='multiclass', learning_rate=0.1,
                                        num_class=3, n_estimators=60, device_type='cpu', random_state=46),
             }
 
