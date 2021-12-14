@@ -6,81 +6,61 @@ import string
 import pandas as pd
 import numpy as np
 from pandas.core import base
+import matplotlib.pyplot as plt
 
 from constants import *
 
 
-def players_data():
-
-    cap = list(map(lambda x: x.upper(), string.ascii_uppercase))
-    data = None
-
-    for c in cap:
-        df = pd.read_csv(os.path.join(
-            DATASETS_DIR, 'player_log_' + c + '.csv'))
-
-        if data is None:
-            data = df
-        else:
-            data = data.append(df)
-
-    data['Date'] = pd.to_datetime(data['Date'])
-
-    return data.reset_index(drop=True)
-
-
 if __name__ == "__main__":
 
-    # df = players_data()
+    table = {'EPL with ELO': {'RBF_SVM': {'Accuracy score': '0.61', 'Weighted F1 score': '0.55', 'Home win precision': 0.6312056737588653, 'Home win recall': 0.8018018018018018, 'Home win f1': 0.7063492063492063, 'Draw precision': 1.0, 'Draw recall': 0.022727272727272728, 'Draw f1': 0.044444444444444446, 'Away win precision': 0.5697674418604651, 'Away win recall': 0.6712328767123288, 'Away win f1': 0.6163522012578616}, 'Random_Forest': {'Accuracy score': '0.57', 'Weighted F1 score': '0.52', 'Home win precision': 0.6363636363636364, 'Home win recall': 0.7567567567567568, 'Home win f1': 0.691358024691358, 'Draw precision': 0.2, 'Draw recall': 0.022727272727272728, 'Draw f1': 0.04081632653061225, 'Away win precision': 0.5054945054945055, 'Away win recall': 0.6301369863013698, 'Away win f1': 0.5609756097560975}, 'LGBM': {'Accuracy score': '0.59', 'Weighted F1 score': '0.56', 'Home win precision': 0.6693548387096774, 'Home win recall': 0.7477477477477478, 'Home win f1': 0.7063829787234043, 'Draw precision': 0.3333333333333333, 'Draw recall': 0.11363636363636363, 'Draw f1': 0.16949152542372878, 'Away win precision': 0.5168539325842697, 'Away win recall': 0.6301369863013698, 'Away win f1': 0.5679012345679012}}, 'EPL without ELO': {'RBF_SVM': {'Accuracy score': '0.55', 'Weighted F1 score': '0.50', 'Home win precision': 0.583941605839416, 'Home win recall': 0.7207207207207207, 'Home win f1': 0.6451612903225806, 'Draw precision': 1.0, 'Draw recall': 0.022727272727272728, 'Draw f1': 0.044444444444444446, 'Away win precision': 0.4888888888888889, 'Away win recall': 0.6027397260273972, 'Away win f1': 0.5398773006134968}, 'Random_Forest': {'Accuracy score': '0.54', 'Weighted F1 score': '0.49', 'Home win precision': 0.5925925925925926, 'Home win recall': 0.7207207207207207, 'Home win f1': 0.6504065040650406, 'Draw precision': 0.2, 'Draw recall': 0.022727272727272728, 'Draw f1': 0.04081632653061225, 'Away win precision': 0.4772727272727273, 'Away win recall': 0.5753424657534246, 'Away win f1': 0.5217391304347826}, 'LGBM': {'Accuracy score': '0.57', 'Weighted F1 score': '0.55', 'Home win precision': 0.6201550387596899, 'Home win recall': 0.7207207207207207, 'Home win f1': 0.6666666666666666, 'Draw precision': 0.5384615384615384, 'Draw recall': 0.1590909090909091, 'Draw f1': 0.2456140350877193, 'Away win precision': 0.5, 'Away win recall': 0.589041095890411, 'Away win f1': 0.5408805031446541}}, 'ISA with ELO': {'RBF_SVM': {'Accuracy score': '0.54', 'Weighted F1 score': '0.48', 'Home win precision': 0.5106382978723404, 'Home win recall': 0.8372093023255814, 'Home win f1': 0.6343612334801763, 'Draw precision': 0.2, 'Draw recall': 0.034482758620689655, 'Draw f1': 0.0588235294117647, 'Away win precision': 0.6493506493506493, 'Away win recall': 0.5952380952380952, 'Away win f1': 0.6211180124223602}, 'Random_Forest': {'Accuracy score': '0.51', 'Weighted F1 score': '0.45', 'Home win precision': 0.4788732394366197, 'Home win recall': 0.7906976744186046, 'Home win f1': 0.5964912280701755, 'Draw precision': 0.3333333333333333, 'Draw recall': 0.034482758620689655, 'Draw f1': 0.0625, 'Away win precision': 0.5875, 'Away win recall': 0.5595238095238095, 'Away win f1': 0.573170731707317}, 'LGBM': {'Accuracy score': '0.51', 'Weighted F1 score': '0.49', 'Home win precision': 0.47107438016528924, 'Home win recall': 0.6627906976744186, 'Home win f1': 0.5507246376811594, 'Draw precision': 0.4074074074074074, 'Draw recall': 0.1896551724137931, 'Draw f1': 0.2588235294117647, 'Away win precision': 0.6, 'Away win recall': 0.5714285714285714, 'Away win f1': 0.5853658536585366}},
+             'ISA without ELO': {'RBF_SVM': {'Accuracy score': '0.47', 'Weighted F1 score': '0.40', 'Home win precision': 0.453416149068323, 'Home win recall': 0.8488372093023255, 'Home win f1': 0.5910931174089068, 'Draw precision': 0.0, 'Draw recall': 0.0, 'Draw f1': 0.0, 'Away win precision': 0.5573770491803278, 'Away win recall': 0.40476190476190477, 'Away win f1': 0.46896551724137925}, 'Random_Forest': {'Accuracy score': '0.49', 'Weighted F1 score': '0.44', 'Home win precision': 0.46206896551724136, 'Home win recall': 0.7790697674418605, 'Home win f1': 0.5800865800865801, 'Draw precision': 0.45454545454545453, 'Draw recall': 0.08620689655172414, 'Draw f1': 0.14492753623188406, 'Away win precision': 0.5416666666666666, 'Away win recall': 0.4642857142857143, 'Away win f1': 0.5}, 'LGBM': {'Accuracy score': '0.47', 'Weighted F1 score': '0.45', 'Home win precision': 0.45038167938931295, 'Home win recall': 0.686046511627907, 'Home win f1': 0.543778801843318, 'Draw precision': 0.35714285714285715, 'Draw recall': 0.1724137931034483, 'Draw f1': 0.23255813953488377, 'Away win precision': 0.5652173913043478, 'Away win recall': 0.4642857142857143, 'Away win f1': 0.5098039215686274}}, 'SLL with ELO': {'RBF_SVM': {'Accuracy score': '0.49', 'Weighted F1 score': '0.41', 'Home win precision': 0.5182926829268293, 'Home win recall': 0.8252427184466019, 'Home win f1': 0.6367041198501874, 'Draw precision': 0.375, 'Draw recall': 0.04285714285714286, 'Draw f1': 0.07692307692307691, 'Away win precision': 0.4107142857142857, 'Away win recall': 0.41818181818181815, 'Away win f1': 0.41441441441441446}, 'Random_Forest': {'Accuracy score': '0.46', 'Weighted F1 score': '0.42', 'Home win precision': 0.5347222222222222, 'Home win recall': 0.7475728155339806, 'Home win f1': 0.6234817813765182, 'Draw precision': 0.2, 'Draw recall': 0.08571428571428572, 'Draw f1': 0.12000000000000001, 'Away win precision': 0.4074074074074074, 'Away win recall': 0.4, 'Away win f1': 0.4036697247706423}, 'LGBM': {'Accuracy score': '0.48', 'Weighted F1 score': '0.45', 'Home win precision': 0.5503875968992248, 'Home win recall': 0.6893203883495146, 'Home win f1': 0.6120689655172414, 'Draw precision': 0.34375, 'Draw recall': 0.15714285714285714, 'Draw f1': 0.21568627450980393, 'Away win precision': 0.40298507462686567, 'Away win recall': 0.4909090909090909, 'Away win f1': 0.4426229508196721}}, 'SLL without ELO': {'RBF_SVM': {'Accuracy score': '0.46', 'Weighted F1 score': '0.37', 'Home win precision': 0.4915254237288136, 'Home win recall': 0.8446601941747572, 'Home win f1': 0.6214285714285713, 'Draw precision': 0.2, 'Draw recall': 0.014285714285714285, 'Draw f1': 0.026666666666666665, 'Away win precision': 0.3695652173913043, 'Away win recall': 0.3090909090909091, 'Away win f1': 0.33663366336633666}, 'Random_Forest': {'Accuracy score': '0.47', 'Weighted F1 score': '0.41', 'Home win precision': 0.525974025974026, 'Home win recall': 0.7864077669902912, 'Home win f1': 0.6303501945525293, 'Draw precision': 0.2727272727272727, 'Draw recall': 0.08571428571428572, 'Draw f1': 0.13043478260869562, 'Away win precision': 0.38461538461538464, 'Away win recall': 0.36363636363636365, 'Away win f1': 0.37383177570093457}, 'LGBM': {'Accuracy score': '0.48', 'Weighted F1 score': '0.45', 'Home win precision': 0.5390070921985816, 'Home win recall': 0.7378640776699029, 'Home win f1': 0.6229508196721312, 'Draw precision': 0.3870967741935484, 'Draw recall': 0.17142857142857143, 'Draw f1': 0.2376237623762376, 'Away win precision': 0.39285714285714285, 'Away win recall': 0.4, 'Away win f1': 0.39639639639639634}}}
 
-    # comps = df['Comp'].unique()
-    # # print(df)
+    # print(table)
 
-    # cols = df.columns
-    # comp_nan = []
+    row_labels = []
+    col_labels = []
 
-    # for comp in comps:
-    #     tmp_df = df[df['Comp'] == comp]
+    table_data = [[], [], [], [], [], []]
+    i = 0
 
-    #     naperc = tmp_df.isna().sum().sum() / tmp_df.shape[0]
+    for k1, v1 in table.items():
+        row_labels.append(k1)
+        for k2, v2 in v1.items():
+            for k3, v3 in v2.items():
+                if i == 0:
+                    col_labels.append(k2 + ' ' + k3)
+                table_data[i].append("{:.2f}".format(float(v3)))
+                # print(k3, v3)
+        i += 1
 
-    #     comp_nan.append(
-    #         {'comp': comp, 'shape': tmp_df.shape[0], 'naperc': naperc})
+    table_data = np.array(table_data)
 
-    #     print("Comp {}, shape {}, na percentage {}".format(
-    #         comp, tmp_df.shape[0], naperc))
-    #     # print(tmp_df.shape)
-    #     # print(tmp_df.isna().sum().sum())
+    new_table_data = np.zeros((table_data.shape[1], table_data.shape[0]))
+    new_table_data = new_table_data.tolist()
 
-    # comp_nan = sorted(comp_nan, key=lambda x: x['naperc'])
+    for i in range(table_data.shape[0]):
+        for j in range(table_data.shape[1]):
+            new_table_data[j][i] = table_data[i][j]
 
-    # print(comp_nan)
+    # print(row_labels)
+    # print(col_labels)
+    print(table_data)
+    print(new_table_data)
 
-    # # print(df['Comp'].unique())
+    fig, ax = plt.subplots()
+    ax.set_axis_off()
+    table = ax.table(
+        cellText=new_table_data,
+        rowLabels=col_labels,
+        colLabels=row_labels,
+        # rowColours=["palegreen"] * 10,
+        # colColours=["palegreen"] * 10,
+        cellLoc='center',
+        loc='upper left')
 
-    c = [{'comp': 'Serie A', 'shape': 48494, 'naperc': 5.90689569843692}, {'comp': 'La Liga', 'shape': 51200, 'naperc': 7.20720703125}, {'comp': 'FIFA World Cup', 'shape': 941, 'naperc': 15.479277364505846}, {'comp': 'Ligue 1', 'shape': 8991, 'naperc': 33.6455344233122}, {'comp': 'Premier League', 'shape': 57155, 'naperc': 46.42839646575103}, {'comp': 'Bundesliga', 'shape': 6359, 'naperc': 54.145463123132565}, {'comp': 'Champions Lg', 'shape': 10327, 'naperc': 55.896000774668344}, {'comp': 'UEFA Euro', 'shape': 1136, 'naperc': 56.10299295774648}, {'comp': 'Europa Lg', 'shape': 10704, 'naperc': 64.99598281016442}, {'comp': 'Copa América', 'shape': 534, 'naperc': 80.85205992509363}, {'comp': 'MLS', 'shape': 1231, 'naperc': 109.54183590576767}, {'comp': 'Super Cup', 'shape': 109, 'naperc': 125.36697247706422}, {'comp': 'Supercoppa Italiana', 'shape': 136, 'naperc': 126.6029411764706}, {'comp': 'Asian Cup', 'shape': 65, 'naperc': 126.70769230769231}, {'comp': 'Euro Qualifying', 'shape': 2676, 'naperc': 127.9050822122571}, {'comp': 'Trophée des Champions', 'shape': 47, 'naperc': 128.0}, {'comp': 'EFL Cup', 'shape': 4314, 'naperc': 128.25776541492814}, {'comp': 'Supercopa de España', 'shape': 331, 'naperc': 128.71601208459214}, {'comp': 'Community Shield', 'shape': 163, 'naperc': 129.38036809815952}, {'comp': 'FIFA Confederations Cup', 'shape': 73, 'naperc': 130.32876712328766}, {'comp': 'DFB-Pokal', 'shape': 571, 'naperc': 130.55866900175133}, {'comp': 'Süper Lig', 'shape': 4444, 'naperc': 131.07358235823583}, {'comp': 'Coupe de France', 'shape': 713, 'naperc': 131.38849929873774}, {'comp': 'Copa del Rey', 'shape': 6208, 'naperc': 131.67380798969072}, {'comp': 'Copa América Centenario', 'shape': 115, 'naperc': 131.8}, {'comp': 'UEFA Nations League', 'shape': 2612, 'naperc': 131.9552067381317}, {'comp': 'Libertadores', 'shape': 587, 'naperc': 132.23850085178876}, {'comp': 'FA Cup', 'shape': 5964, 'naperc': 132.47551978537894}, {'comp': 'Coppa Italia', 'shape': 4044, 'naperc': 132.48862512363996}, {'comp': 'Premiership', 'shape': 1356, 'naperc': 133.1976401179941}, {'comp': 'Dutch Eredivisie', 'shape': 4678, 'naperc': 133.28858486532707}, {'comp': 'Super League', 'shape': 1952, 'naperc': 133.60655737704917}, {'comp': 'Championship', 'shape': 30392, 'naperc': 133.9577191366149}, {'comp': 'Swiss Super League', 'shape': 1092, 'naperc': 134.25824175824175}, {'comp': 'Liga MX', 'shape': 1201, 'naperc': 134.89508742714403}, {'comp': 'Segunda División', 'shape': 27273, 'naperc': 135.49818501814983}, {'comp': 'WCQ — UEFA (M)', 'shape': 2486, 'naperc': 136.20233306516494}, {'comp': 'WCQ', 'shape': 926, 'naperc': 136.23974082073434}, {'comp': 'League One', 'shape': 3329, 'naperc': 136.67347551817363}, {'comp': 'Coupe de la Ligue', 'shape': 475, 'naperc': 137.0757894736842}, {'comp': 'Tippeligaen', 'shape': 87, 'naperc': 138.75862068965517}, {'comp': 'National League', 'shape': 169, 'naperc': 139.3846153846154}, {'comp': 'Friendlies (M)', 'shape': 6860, 'naperc': 139.78804664723032}, {'comp': 'PL2 — Div. 2', 'shape': 1547, 'naperc': 140.26308985132513}, {'comp': 'PL2 — Div. 1', 'shape': 2598, 'naperc': 140.8791377983064}, {'comp': 'WCQ — AFC (M)', 'shape': 221, 'naperc': 141.46153846153845}, {
-        'comp': 'League Cup', 'shape': 772, 'naperc': 142.66709844559585}, {'comp': 'Gold Cup', 'shape': 115, 'naperc': 128.9304347826087}, {'comp': 'Africa Cup of Nations', 'shape': 545, 'naperc': 129.0697247706422}, {'comp': 'Primeira Liga', 'shape': 3768, 'naperc': 130.96523354564755}, {'comp': 'Série A', 'shape': 1590, 'naperc': 131.78490566037735}, {'comp': 'Copa Sudamericana', 'shape': 37, 'naperc': 132.02702702702703}, {'comp': 'DFL-Supercup', 'shape': 38, 'naperc': 132.07894736842104}, {'comp': 'Eliteserien', 'shape': 111, 'naperc': 132.26126126126127}, {'comp': 'Sudamericana', 'shape': 290, 'naperc': 132.44137931034481}, {'comp': 'Primera Div', 'shape': 2208, 'naperc': 133.15715579710144}, {'comp': 'Allsvenskan', 'shape': 360, 'naperc': 133.16666666666666}, {'comp': 'Copa Libertadores', 'shape': 66, 'naperc': 133.5}, {'comp': 'J1 League', 'shape': 108, 'naperc': 133.7037037037037}, {'comp': 'USL Champ', 'shape': 20, 'naperc': 133.75}, {'comp': 'UEL Play-offs', 'shape': 12, 'naperc': 133.83333333333334}, {'comp': 'Superliga', 'shape': 910, 'naperc': 133.84835164835164}, {'comp': 'USL Championship', 'shape': 6, 'naperc': 134.33333333333334}, {'comp': 'Série B', 'shape': 91, 'naperc': 134.43956043956044}, {'comp': '3. Liga', 'shape': 188, 'naperc': 134.6595744680851}, {'comp': '2. Bundesliga', 'shape': 791, 'naperc': 134.71554993678888}, {'comp': 'Eerste Divisie', 'shape': 613, 'naperc': 134.8042414355628}, {'comp': 'Serie B', 'shape': 15073, 'naperc': 134.8264446361043}, {'comp': 'A-League', 'shape': 227, 'naperc': 134.94273127753303}, {'comp': 'First Division A', 'shape': 3178, 'naperc': 135.56356198867212}, {'comp': 'League Two', 'shape': 1053, 'naperc': 136.78252611585944}, {'comp': 'Ligue 2', 'shape': 940, 'naperc': 137.15}, {'comp': 'Ekstraklasa', 'shape': 871, 'naperc': 137.45120551090702}, {'comp': 'Pro League', 'shape': 1020, 'naperc': 138.03333333333333}, {'comp': '1. HNL', 'shape': 715, 'naperc': 138.36503496503497}, {'comp': 'SuperLiga', 'shape': 507, 'naperc': 138.41617357001974}, {'comp': 'First League', 'shape': 824, 'naperc': 138.71116504854368}, {'comp': 'Liga I', 'shape': 965, 'naperc': 139.49844559585492}, {'comp': 'Africa Cup of Nations qualification', 'shape': 1075, 'naperc': 139.84093023255815}, {'comp': 'Rel/Pro Play-offs', 'shape': 7, 'naperc': 141.0}, {'comp': 'WCQ — CAF (M)', 'shape': 429, 'naperc': 141.34032634032633}, {'comp': 'First Division B', 'shape': 57, 'naperc': 142.33333333333334}, {'comp': 'WCQ — OFC (M)', 'shape': 6, 'naperc': 142.33333333333334}, {'comp': 'K League 1', 'shape': 53, 'naperc': 142.41509433962264}, {'comp': 'K-League', 'shape': 48, 'naperc': 142.4375}, {'comp': 'Premier Division', 'shape': 66, 'naperc': 142.53030303030303}, {'comp': 'Primera División', 'shape': 301, 'naperc': 142.64451827242524}, {'comp': 'OFC Nations Cup', 'shape': 1, 'naperc': 143.0}, {'comp': 'Superettan', 'shape': 15, 'naperc': 143.0}, {'comp': 'NB I', 'shape': 15, 'naperc': 143.0}, {'comp': 'J2 League', 'shape': 23, 'naperc': 143.0}, {'comp': 'U19 Bundesliga', 'shape': 120, 'naperc': 143.06666666666666}, {'comp': 'U17 Bundesliga', 'shape': 30, 'naperc': 143.26666666666668}]
+    # ax.set_title('matplotlib.axes.Axes.table() function Example',
+    #              fontweight="bold")
 
-    ls = ['Serie A',
-          'La Liga',
-          'FIFA World Cup',
-          'Ligue 1',
-          'Premier League',
-          'Bundesliga',
-          'Champions Lg',
-          'UEFA Euro',
-          'Europa Lg', ]
-
-    st = 0
-    lst = 0
-    xst = 0
-
-    for i in c:
-        if i['comp'] in ls:
-            lst += i['shape']
-        else:
-            xst += i['shape']
-
-        st += i['shape']
-
-    print(st, lst, xst)
+    # plt.show()
+    plt.savefig("mygraph.png")

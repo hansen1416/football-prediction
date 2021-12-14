@@ -206,34 +206,46 @@ def train(X_train_list, X_test_list, y_train, y_test, classifier, classifier_nam
 
         classifier.fit(X_train_list[i], y_train)
 
-        y_train_pred = classifier.predict(X_train_list[i])
+        # print(classifier.feature_importances_)
 
-        t_accuracy = "{:.2%}".format(accuracy_score(y_train, y_train_pred))
-        t_f1_macro = "{:.2%}".format(
-            f1_score(y_train, y_train_pred, average='macro'))
-        t_f1_weighted = "{:.2%}".format(
-            f1_score(y_train, y_train_pred, average='weighted'))
+        # y_train_pred = classifier.predict(X_train_list[i])
 
-        print("Classifier: {}, Average accuracy score: {}, Macro f1 score: {}, Weighted f1 score: {}. Training".format(
-            classifier_name, t_accuracy, t_f1_macro, t_f1_weighted))
+        # t_accuracy = "{:.2f}".format(accuracy_score(y_train, y_train_pred))
+        # t_f1_macro = "{:.2f}".format(
+        #     f1_score(y_train, y_train_pred, average='macro'))
+        # t_f1_weighted = "{:.2f}".format(
+        #     f1_score(y_train, y_train_pred, average='weighted'))
+
+        # print("Classifier: {}, Average accuracy score: {}, Macro f1 score: {}, Weighted f1 score: {}. Training".format(
+        #     classifier_name, t_accuracy, t_f1_macro, t_f1_weighted))
 
         y_pred = classifier.predict(X_test_list[i])
 
         # print(list(y_pred), list(y_test))
 
-        accuracy = "{:.2%}".format(accuracy_score(y_test, y_pred))
-        f1_macro = "{:.2%}".format(f1_score(y_test, y_pred, average='macro'))
-        f1_weighted = "{:.2%}".format(
+        accuracy = "{:.2f}".format(accuracy_score(y_test, y_pred))
+        # f1_macro = "{:.2f}".format(f1_score(y_test, y_pred, average='macro'))
+        f1_weighted = "{:.2f}".format(
             f1_score(y_test, y_pred, average='weighted'))
 
-        print("Classifier: {}, Average accuracy score: {}, Macro f1 score: {}, Weighted f1 score: {}".format(
-            classifier_name, accuracy, f1_macro, f1_weighted))
+        # print("Classifier: {}, Average accuracy score: {}, Macro f1 score: {}, Weighted f1 score: {}".format(
+        #     classifier_name, accuracy, f1_macro, f1_weighted))
+
+        result = {}
+        result['Accuracy score'] = accuracy
+        result['Weighted F1 score'] = f1_weighted
 
         scores = classif_metrics(y_test.values, y_pred)
 
         for l, score in scores.items():
-            print(l + ": " + str({k: "{:.2%}".format(v)
-                  for k, v in score.items()}))
+            # print(l + ": " + str({k: "{:.2f}".format(v)
+            #       for k, v in score.items()}))
+            for k, v in score.items():
+                result[l + ' ' + k] = v
+
+        # print(result)
+
+        return result
 
         y_pred_hw = y_pred[home_win_mask]
         y_pred_d = y_pred[draw_mask]
@@ -290,9 +302,17 @@ def classif_metrics(y_true, y_pred):
 if __name__ == "__main__":
 
     leagues = [['EPL'], ['ISA'], ['SLL']]
+    metrics_table = {}
 
     for league in leagues:
         for has_elo in [True, False]:
+
+            if has_elo:
+                table_title = league[0] + ' with ELO'
+            else:
+                table_title = league[0] + ' without ELO'
+
+            metrics_table[table_title] = {}
 
             weight_num = 6
 
@@ -315,7 +335,11 @@ if __name__ == "__main__":
 
             for name, clf in classifiers.items():
 
-                train(X_train_feature_selected, X_test_feature_selected,
-                      y_train, y_test, clf, name)
+                scores = train(X_train_feature_selected,
+                               X_test_feature_selected, y_train, y_test, clf, name)
+
+                metrics_table[table_title][name] = scores
 
             print("=====================================")
+
+    print(metrics_table)
