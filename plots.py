@@ -135,6 +135,69 @@ def league_comparison():
     plt.savefig("charts/league_comparison.png", dpi=1000)
 
 
+def league_elo_comparison():
+    # compare leagure data
+    league_elo_keys = ['EPL with ELO', 'EPL without ELO', 'ISA with ELO',
+                       'ISA without ELO', 'SLL with ELO', 'SLL without ELO']
+
+    classifier = ['RBF_SVM', 'Random_Forest', 'LGBM']
+
+    average_metrics = ['Accuracy score', 'Weighted F1 score']
+
+    league_elo_compare = {}
+
+    for le in league_elo_keys:
+        league_elo_compare[le] = {}
+        for v2i in range(len(average_metrics)):
+            score = []
+            # for v1i in range(len(v1)):
+            for v3i in range(len(classifier)):
+                # print(v1[v1i], classifier[v3i], average_metrics[v2i])
+                # print(metrics_table[v1[v1i]][classifier[v3i]][average_metrics[v2i]])
+                score.append(
+                    metrics_table[le][classifier[v3i]][average_metrics[v2i]])
+
+            score = np.array(score)
+            league_elo_compare[le][average_metrics[v2i]] = np.average(score)
+
+    print(league_elo_compare)
+    with_elo = ['EPL with ELO', 'ISA with ELO', 'SLL with ELO']
+    without_elo = ['EPL without ELO', 'ISA without ELO', 'SLL without ELO']
+
+    with_elo_acc = [league_elo_compare[x]['Accuracy score'] for x in with_elo]
+    with_elo_f1 = [league_elo_compare[x]['Weighted F1 score']
+                   for x in with_elo]
+    without_elo_acc = [league_elo_compare[x]['Accuracy score']
+                       for x in without_elo]
+    without_elo_f1 = [league_elo_compare[x]['Weighted F1 score']
+                      for x in without_elo]
+
+    print((sum(with_elo_acc) - sum(without_elo_acc)) /
+          3, (sum(with_elo_f1)-sum(without_elo_f1))/3)
+
+    return
+
+    fig = plt.figure()
+    X = np.arange(6)
+    ax = fig.add_axes([0, 0, 1, 1])
+
+    accuracy_score = [v['Accuracy score']
+                      for k, v in league_elo_compare.items()]
+    f1_score = [v['Weighted F1 score'] for k, v in league_elo_compare.items()]
+
+    ax.bar(X + 0.00, accuracy_score, color='b',
+           width=0.25, label="Accuracy score")
+    ax.bar(X + 0.25, f1_score, color='g',
+           width=0.25, label="Weighted F1 score")
+
+    plt.xticks(X + 0.1, ['EPL with ELO', 'EPL without ELO', 'ISA with ELO',
+                         'ISA without ELO', 'SLL with ELO', 'SLL without ELO'])
+    # plt.title('Different league model performance')
+    plt.legend()
+    # plt.tight_layout()
+    plt.savefig("charts/league_elo_comparison.png", dpi=1000)
+
+
 def elo_comparison():
     elo_keys = {'with': ['EPL with ELO', 'ISA with ELO', 'SLL with ELO'],
                 'without': ['EPL without ELO', 'ISA without ELO', 'SLL without ELO']}
@@ -152,13 +215,39 @@ def elo_comparison():
             score = 0
             for v1i in range(len(v1)):
                 for v3i in range(len(classifier)):
-                    print(v1[v1i], classifier[v3i], metrics[v2i])
+                    # print(v1[v1i], classifier[v3i], metrics[v2i])
                     score += metrics_table_num[v1[v1i]
                                                ][classifier[v3i]][metrics[v2i]]
 
             elo_compare[w][metrics[v2i]] = score / 9
 
     print(elo_compare)
+
+    with_elo = list(elo_compare['with'].values())
+    without_elo = list(elo_compare['without'].values())
+
+    print(with_elo, without_elo)
+
+    diff = [with_elo[i] - without_elo[i] for i in range(len(with_elo))]
+
+    print(diff, sum(diff)/9)
+    print(sum(diff[: 3])/3, sum(diff[3: 6])/3, sum(diff[6:])/3)
+
+    fig = plt.figure()
+    X = np.arange(len(with_elo))
+    ax = fig.add_axes([0, 0, 1, 1])
+
+    ax.bar(X + 0.00, with_elo, color='b',
+           width=0.25, label="With ELO")
+    ax.bar(X + 0.25, without_elo, color='g',
+           width=0.25, label="Without ELO")
+
+    plt.xticks(X-0.1, ['Home win precision', 'Home win recall', 'Home win f1', 'Draw precision',
+               'Draw recall', 'Draw f1', 'Away win precision', 'Away win recall', 'Away win f1'], rotation=45)
+    # plt.title('Different league model performance')
+    plt.legend()
+    # plt.tight_layout()
+    plt.savefig("charts/elo_comparison.png", dpi=1000)
 
 
 if __name__ == "__main__":
@@ -169,4 +258,4 @@ if __name__ == "__main__":
             for l3, v3 in v2.items():
                 metrics_table_num[l1][l2][l3] = float(v3)
 
-    elo_comparison()
+    league_elo_comparison()
