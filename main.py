@@ -9,7 +9,7 @@ desc = 'The is a soccer result prediction program.\n run'
 parser = argparse.ArgumentParser(description=desc)
 
 parser.add_argument('--plot', action='store', type=str,
-                    help=f"'--plot all' generate a char of all classification matrics;\
+                    help="'--plot all' generate a char of all classification matrics;\
                          '--plot league' generate a chart that compare accuracy score and f1 score of different leagues;\
                          '--plot elo' compares leagues with and without ELO;\
                          '--league-elo league' compares results with and without ELO'")
