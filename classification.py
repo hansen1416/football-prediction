@@ -243,10 +243,6 @@ def train(X_train_list, X_test_list, y_train, y_test, classifier, classifier_nam
             for k, v in score.items():
                 result[l + ' ' + k] = v
 
-        # print(result)
-
-        return result
-
         y_pred_hw = y_pred[home_win_mask]
         y_pred_d = y_pred[draw_mask]
         y_pred_aw = y_pred[away_win_mask]
@@ -255,25 +251,31 @@ def train(X_train_list, X_test_list, y_train, y_test, classifier, classifier_nam
             len(y_pred_hw[y_pred_hw == 1]), len(y_pred_hw),
             len(y_pred_d[y_pred_d == 0]), len(y_pred_d), len(y_pred_aw[y_pred_aw == -1]), len(y_pred_aw)))
 
-        print('-------------------------------')
+        return result
 
 
 def hwin_binary(np_array):
+    # replace draw and away win with 0
     return np.where(np_array == -1, 0, np_array)
 
 
 def draw_binary(np_array):
+    # draw:1, home win/away win:0
     np_array = np.where(np_array == 0, 2, np_array)
     np_array = np.where(np_array != 2, 0, np_array)
     return np.where(np_array == 2, 1, np_array)
 
 
 def awin_binary(np_array):
+    # home win/draw:0, away win:1
     np_array = np.where(np_array != -1, 0, np_array)
     return np.where(np_array == -1, 1, np_array)
 
 
 def classif_metrics(y_true, y_pred):
+    """
+    calculate precision, draw and f1 for labels
+    """
 
     y_true_hw = hwin_binary(y_true)
     y_pred_hw = hwin_binary(y_pred)
@@ -299,9 +301,10 @@ def classif_metrics(y_true, y_pred):
     return {'Home win': home_win, 'Draw': draw, 'Away win': away_win}
 
 
-if __name__ == "__main__":
-
-    leagues = [['EPL'], ['ISA'], ['SLL']]
+def main(leagues=[['EPL'], ['ISA'], ['SLL']]):
+    """
+    calculate various classification metrics for each leagues
+    """
     metrics_table = {}
 
     for league in leagues:
@@ -328,7 +331,7 @@ if __name__ == "__main__":
                 "RBF_SVM": SVC(kernel='rbf', C=1.5, gamma=0.15, random_state=46),
                 "Random_Forest": RandomForestClassifier(criterion='entropy', max_depth=7, n_estimators=31, random_state=46),
                 "LGBM": LGBMClassifier(max_depth=3, min_data_in_leaf=12, num_leaves=20, objective='multiclass', learning_rate=0.1,
-                                       num_class=3, n_estimators=60, device_type='cpu', random_state=46),
+                                       num_class=3, n_estimators=60, device_type='cpu', random_state=46, verbosity=-1),
             }
 
             print("League: {}, With ELO: {}".format(str(league), str(has_elo)))
@@ -340,6 +343,15 @@ if __name__ == "__main__":
 
                 metrics_table[table_title][name] = scores
 
+            print(scores)
+
             print("=====================================")
+
+    return metrics_table
+
+
+if __name__ == "__main__":
+
+    metrics_table = main()
 
     print(metrics_table)
