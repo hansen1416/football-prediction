@@ -349,6 +349,32 @@ if __name__ == "__main__":
     sdata['label'] = sdata['score'].apply(score_label)
     sdata['spread'] = sdata['score'].apply(score_spread)
 
+    # score_fig = sdata['score'].value_counts().sort_values().plot(
+    #     kind='barh', figsize=(20, 16)).get_figure()
+
+    # score_fig.savefig(os.path.join('charts', 'score_distribution.jpg'))
+
+    # score_fig = sdata['spread'].value_counts().sort_values().plot(
+    #     kind='bar', figsize=(20, 16), fontsize=26).get_figure()
+
+    # score_fig.savefig(os.path.join('charts', 'spread_distribution.jpg'))
+
+    # sspread = sdata['spread'].value_counts()
+
+    # sspread_l = {'h': 0, 'd': 0, 'a': 0}
+
+    # for val, cnt in sspread.iteritems():
+    #     if val > 0:
+    #         sspread_l['h'] += cnt
+    #     elif val == 0:
+    #         sspread_l['d'] += cnt
+    #     else:
+    #         sspread_l['a'] += cnt
+
+    # print(sspread_l)
+
+    # exit()
+
     # for season in seasons:
     #     season_sdata = sdata[sdata['Season'] == season]
     #     label_dis = season_sdata['label'].value_counts()  # 1,0,-1
